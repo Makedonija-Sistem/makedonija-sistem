@@ -72,11 +72,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap&subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
 <!-- ═══ Subresource Integrity for external scripts (SRI) ═══ -->
 
-<!-- ═══ ИКОНА · унифицирана за сите browser / PWA контексти ═══ -->
-<link rel="icon" type="image/svg+xml" href="assets/icons/icon.svg">
-<link rel="shortcut icon" type="image/svg+xml" href="assets/icons/icon.svg">
-<link rel="apple-touch-icon" href="assets/icons/icon.svg">
-<link rel="mask-icon" href="assets/icons/icon.svg" color="#0a1d3a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='96' fill='%230a1d3a'/%3E%3Ccircle cx='100' cy='100' r='92' fill='none' stroke='%23d4ad4a' stroke-width='2'/%3E%3Cg fill='%23d4ad4a'%3E%3Crect x='60' y='68' width='8' height='64'/%3E%3Crect x='76' y='68' width='8' height='44'/%3E%3Crect x='92' y='68' width='8' height='32'/%3E%3Crect x='108' y='68' width='8' height='44'/%3E%3Crect x='124' y='68' width='8' height='64'/%3E%3Crect x='56' y='62' width='80' height='3'/%3E%3Crect x='56' y='135' width='80' height='3'/%3E%3C/g%3E%3C/svg%3E">
 
 <style>
 /* ────────────────────────────────────────────────────────────
@@ -5016,15 +5012,6 @@ html[data-lang="de"] [data-lang-content]:not([data-lang-content="de"]){
 .lp-sh.viber:hover{background:#7360f2;color:#fff;border-color:#7360f2}
 .lp-sh.telegram:hover{background:#26a5e4;color:#fff;border-color:#26a5e4}
 .lp-sh.linkedin:hover{background:#0a66c2;color:#fff;border-color:#0a66c2}
-.lp-sh.messenger:hover{background:#0084ff;color:#fff;border-color:#0084ff}
-.lp-sh.signal:hover{background:#3a76f0;color:#fff;border-color:#3a76f0}
-.lp-sh.discord:hover{background:#5865f2;color:#fff;border-color:#5865f2}
-.lp-sh.reddit:hover{background:#ff4500;color:#fff;border-color:#ff4500}
-.lp-sh.email:hover{background:#ea4335;color:#fff;border-color:#ea4335}
-.lp-sh.sms:hover{background:#34c759;color:#fff;border-color:#34c759}
-.lp-sh.facebook:hover{background:#1877f2;color:#fff;border-color:#1877f2}
-.lp-sh.twitter:hover{background:#000;color:#fff;border-color:#000}
-.lp-sh.copy:hover{background:var(--gold);color:var(--navy-deep);border-color:var(--gold)}
 .lp-sh.copy:hover{background:var(--gold);color:var(--navy-deep);border-color:var(--gold-deep)}
 
 /* Results panel */
@@ -10691,7 +10678,6 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
 .mh-card[data-cat="print"]{border-left-color:#a8842b}
 .mh-card[data-cat="agency"]{border-left-color:#9c6ad9}
 .mh-card[data-cat="diaspora"]{border-left-color:#e85d75}
-.mh-card[data-cat="podcast"]{border-left-color:#00b8c4}
 
 .mh-card-head{
   display:flex;justify-content:space-between;align-items:flex-start;
@@ -10712,13 +10698,11 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
 .mh-card-cat.print{background:rgba(168,132,43,.15);color:var(--gold-deep)}
 .mh-card-cat.agency{background:rgba(156,106,217,.15);color:#6d3eb5}
 .mh-card-cat.diaspora{background:rgba(232,93,117,.15);color:#b03050}
-.mh-card-cat.podcast{background:rgba(0,184,196,.15);color:#00838f}
 
 [data-theme="dark"] .mh-card-cat.tv{background:rgba(212,173,74,.2);color:var(--gold-soft)}
 [data-theme="dark"] .mh-card-cat.radio{background:rgba(76,175,80,.2);color:#5fce7e}
 [data-theme="dark"] .mh-card-cat.portal{background:rgba(74,144,194,.2);color:#7ab3d8}
 [data-theme="dark"] .mh-card-cat.agency{background:rgba(156,106,217,.2);color:#b388e0}
-[data-theme="dark"] .mh-card-cat.podcast{background:rgba(0,184,196,.2);color:#4dd0e1}
 
 .mh-card-desc{
   font-size:12px;color:var(--muted);line-height:1.55;
@@ -10974,7 +10958,9 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
 <meta name="msapplication-TileColor" content="#0a1d3a">
 <meta name="format-detection" content="telephone=no">
 
-<!-- Икона декларациите се на врвот на documentot · видете <head> почеток -->
+<!-- Inline SVG favicon (no external file needed) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230a1d3a' rx='20'/%3E%3Cpath d='M 15 75 Q 50 95 85 75' stroke='%23d4ad4a' stroke-width='5' fill='none' stroke-linecap='round'/%3E%3Ctext x='50' y='65' font-family='Georgia' font-size='52' font-weight='900' fill='%23fdfbf5' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="/assets/icons/icon.svg">
 
 <!-- Canonical URL -->
 <link rel="canonical" href="https://makedonijasistem.mk/">
@@ -11273,7 +11259,7 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
     <div class="grid">
       <div class="reveal">
         <span class="eyebrow"><span class="dot"></span>Граѓанско-државничка платформа</span>
-        <h1>Македонија не треба уште една партиска приказна. Македонија треба <em>систем.</em></h1>
+        <h1>На Македонија не ѝ треба уште една партиска приказна. На Македонија ѝ треба <em>систем.</em></h1>
         <p class="lede">Платформа за функционална, меритократска и достоинствена држава — со ред во институциите, правда со интегритет, здравство што лекува, економија што создава и AI како мотор на новата генерација.</p>
         <div class="actions">
           <a class="btn gold" href="#principles">Види 10 принципи →</a>
@@ -11675,15 +11661,15 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
 
     <div class="ind-vision-strip reveal">
       <div class="ind-vision-card">
-        <div class="ind-vision-num">13</div>
+        <div class="ind-vision-num">10</div>
         <div class="ind-vision-label" data-i18n="ind.vc.products">Стратешки производи</div>
       </div>
       <div class="ind-vision-card">
-        <div class="ind-vision-num">€15.8B</div>
+        <div class="ind-vision-num">€13.2B</div>
         <div class="ind-vision-label" data-i18n="ind.vc.invest">Инвестиции до 2030</div>
       </div>
       <div class="ind-vision-card">
-        <div class="ind-vision-num">81,500</div>
+        <div class="ind-vision-num">68,500</div>
         <div class="ind-vision-label" data-i18n="ind.vc.jobs">Високотехнолошки работни места</div>
       </div>
       <div class="ind-vision-card">
@@ -11916,7 +11902,7 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
           <div class="ind-features">
             <div class="ind-feature">
               <span class="ind-feat-icon">🏭</span>
-              <span class="ind-feat-text" data-i18n="ind.c7.f1"><strong>Индустриски роботи:</strong> манипулатори за автомобилска и електронска индустрија</span>
+              <span class="ind-feat-text" data-i18n="ind.c7.f1"><strong>Индустриски роботи:</strong> мaнипулатори за автомобилска и електронска индустрија</span>
             </div>
             <div class="ind-feature">
               <span class="ind-feat-icon">🏥</span>
@@ -11978,7 +11964,7 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
           <span class="ind-card-tag" data-i18n="ind.c9.tag">Природни ресурси</span>
           <div class="ind-card-icon">⛏️</div>
           <h3 class="ind-card-title" data-i18n="ind.c9.title">Македонски Рудни Богатства</h3>
-          <p class="ind-card-subtitle" data-i18n="ind.c9.sub">Алшар · Иловица-Штука · Казандол · одговорно рударство</p>
+          <p class="ind-card-subtitle" data-i18n="ind.c9.sub">Илoвица-Штука · Кр. Паланка · Алшар · Бучим · Саса · Tорaница</p>
         </div>
         <div class="ind-card-body">
           <p data-i18n="ind.c9.desc">Македонија има <strong>светски значајни рудни наоѓалишта</strong> кои треба да се експлоатираат со <strong>≥51% македонско сопствеништво</strong>, <strong>врвна еколошка заштита</strong>, и <strong>здравствена сигурност за жителите</strong>. Алшар е единствено во светот наоѓалиште на Tl-As-Sb-Au.</p>
@@ -12002,7 +11988,7 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
           </div>
         </div>
         <div class="ind-card-foot">
-          <span class="ind-card-target">🎯 <strong>2028:</strong> <span data-i18n="ind.c9.target">Иловица-Штука</span></span>
+          <span class="ind-card-target">🎯 <strong>2028:</strong> <span data-i18n="ind.c9.target">Илoвица-Штука</span></span>
           <span class="ind-card-phase" data-i18n="ind.c9.phase">8 наоѓалишта</span>
         </div>
       </article>
@@ -12041,110 +12027,7 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
         </div>
       </article>
 
-      <!-- ═══ 11. MACEDON HYPERMARKETS · Phase 31 ═══ -->
-      <article class="ind-card">
-        <div class="ind-card-banner">
-          <span class="ind-card-tag" data-i18n="ind.c11.tag">Малопродажба</span>
-          <div class="ind-card-icon">🛒</div>
-          <h3 class="ind-card-title" data-i18n="ind.c11.title">Македон Хипермаркети</h3>
-          <p class="ind-card-subtitle" data-i18n="ind.c11.sub">100% македонски производи · здружување на македонски инвеститори</p>
-        </div>
-        <div class="ind-card-body">
-          <p data-i18n="ind.c11.desc">Синџир хипермаркети основан со <strong>здружување на повеќе македонски инвеститори</strong>. Базична стратегија: <strong>се продаваат само македонски производи</strong> произведени во сите фабрики во Македонија. Фаза 1: внатрешен пазар + онлајн продажба. Фаза 2: експанзија на Балкан, Европа и прекуокеански земји каде има македонска дијаспора.</p>
-          <div class="ind-features">
-            <div class="ind-feature">
-              <span class="ind-feat-icon">🏭</span>
-              <span class="ind-feat-text" data-i18n="ind.c11.f1"><strong>Производи:</strong> 100% македонски · сите фабрики</span>
-            </div>
-            <div class="ind-feature">
-              <span class="ind-feat-icon">💼</span>
-              <span class="ind-feat-text" data-i18n="ind.c11.f2"><strong>Структура:</strong> Здружување на македонски инвеститори</span>
-            </div>
-            <div class="ind-feature">
-              <span class="ind-feat-icon">🌐</span>
-              <span class="ind-feat-text" data-i18n="ind.c11.f3"><strong>Онлајн:</strong> e-commerce за дијаспора од прв ден</span>
-            </div>
-            <div class="ind-feature">
-              <span class="ind-feat-icon">🗺️</span>
-              <span class="ind-feat-text" data-i18n="ind.c11.f4"><strong>Експанзија:</strong> Балкан → Европа → прекуокеан</span>
-            </div>
-          </div>
-        </div>
-        <div class="ind-card-foot">
-          <span class="ind-card-target">🎯 <strong>2027:</strong> <span data-i18n="ind.c11.target">Прв хипермаркет + онлајн</span></span>
-          <span class="ind-card-phase" data-i18n="ind.c11.phase">МК пазар → дијаспора</span>
-        </div>
-      </article>
 
-      <!-- ═══ 12. BRAIN GAIN · Враќање мозоци · Phase 31 ═══ -->
-      <article class="ind-card">
-        <div class="ind-card-banner">
-          <span class="ind-card-tag" data-i18n="ind.c12.tag">Талент</span>
-          <div class="ind-card-icon">🧠</div>
-          <h3 class="ind-card-title" data-i18n="ind.c12.title">Враќање на македонските мозоци</h3>
-          <p class="ind-card-subtitle" data-i18n="ind.c12.sub">AI инженери · IT таленти · истражувачи од дијаспора</p>
-        </div>
-        <div class="ind-card-body">
-          <p data-i18n="ind.c12.desc">Стратегиja за <strong>враќање на сите македонски млади умови</strong> од странство во државата, посебно <strong>AI инженери, истражувачи и технолошки експерти</strong>. Државни бенефиции за враќање: даночни олеснувања, помош за реинтеграција, поддршка за деца и образование, и пристап до приоритетни проекти. Цел: Македонија како регионален центар за AI и иновации.</p>
-          <div class="ind-features">
-            <div class="ind-feature">
-              <span class="ind-feat-icon">🤖</span>
-              <span class="ind-feat-text" data-i18n="ind.c12.f1"><strong>Приоритет:</strong> AI инженери, ML, data science</span>
-            </div>
-            <div class="ind-feature">
-              <span class="ind-feat-icon">💰</span>
-              <span class="ind-feat-text" data-i18n="ind.c12.f2"><strong>Даночни олеснувања:</strong> 5 години со намален данок</span>
-            </div>
-            <div class="ind-feature">
-              <span class="ind-feat-icon">🏠</span>
-              <span class="ind-feat-text" data-i18n="ind.c12.f3"><strong>Реинтеграција:</strong> помош за станбено, школи, здравствено</span>
-            </div>
-            <div class="ind-feature">
-              <span class="ind-feat-icon">🚀</span>
-              <span class="ind-feat-text" data-i18n="ind.c12.f4"><strong>Проекти:</strong> приоритетен пристап до Robotika, MK-Drones, Champions</span>
-            </div>
-          </div>
-        </div>
-        <div class="ind-card-foot">
-          <span class="ind-card-target">🎯 <strong>2028:</strong> <span data-i18n="ind.c12.target">2,000 вратени талент</span></span>
-          <span class="ind-card-phase" data-i18n="ind.c12.phase">Дијаспора → МК</span>
-        </div>
-      </article>
-
-      <!-- ═══ 13. LAND FOR YOUTH · Земјиште за млади · Phase 31 ═══ -->
-      <article class="ind-card">
-        <div class="ind-card-banner">
-          <span class="ind-card-tag" data-i18n="ind.c13.tag">Млади и развој</span>
-          <div class="ind-card-icon">🏡</div>
-          <h3 class="ind-card-title" data-i18n="ind.c13.title">Земјиште за млади</h3>
-          <p class="ind-card-subtitle" data-i18n="ind.c13.sub">Општини + МТВ · станбено + индустриски зони</p>
-        </div>
-        <div class="ind-card-body">
-          <p data-i18n="ind.c13.desc">Сите млади кои <strong>ќе се вратат во државата</strong>, преку <strong>општините и Министерството за транспорт и врски</strong>, добиваат земјиште — за изградба на <strong>куќа за живеење</strong>, и во <strong>индустриските зони за инвестирање</strong>. Програмата ги спојува враќањето на мозоци, локалниот развој и економската децентрализација.</p>
-          <div class="ind-features">
-            <div class="ind-feature">
-              <span class="ind-feat-icon">🏛️</span>
-              <span class="ind-feat-text" data-i18n="ind.c13.f1"><strong>Партнери:</strong> 80+1 општини + МТВ</span>
-            </div>
-            <div class="ind-feature">
-              <span class="ind-feat-icon">🏠</span>
-              <span class="ind-feat-text" data-i18n="ind.c13.f2"><strong>Станбено:</strong> земјиште за изградба на куќа</span>
-            </div>
-            <div class="ind-feature">
-              <span class="ind-feat-icon">🏭</span>
-              <span class="ind-feat-text" data-i18n="ind.c13.f3"><strong>Бизнис:</strong> земјиште во индустриски зони</span>
-            </div>
-            <div class="ind-feature">
-              <span class="ind-feat-icon">🔗</span>
-              <span class="ind-feat-text" data-i18n="ind.c13.f4"><strong>Синергија:</strong> со „Враќање мозоци" + дијаспора</span>
-            </div>
-          </div>
-        </div>
-        <div class="ind-card-foot">
-          <span class="ind-card-target">🎯 <strong>2027:</strong> <span data-i18n="ind.c13.target">Прва пилот општина</span></span>
-          <span class="ind-card-phase" data-i18n="ind.c13.phase">Сите 80+1 општини</span>
-        </div>
-      </article>
 
 
     </div>
@@ -12669,7 +12552,7 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
         <div class="mn-deposit-head">
           <div>
             <p class="mn-deposit-name">Алшар (Allchar)</p>
-            <p class="mn-deposit-loc">📍 Кавадарци · Ржаново</p>
+            <p class="mn-deposit-loc">📍 Кавадарци · Ржaново</p>
           </div>
           <span class="mn-deposit-status unique">УНИКАТ</span>
         </div>
@@ -12685,7 +12568,7 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
       <div class="mn-deposit">
         <div class="mn-deposit-head">
           <div>
-            <p class="mn-deposit-name">Иловица-Штука</p>
+            <p class="mn-deposit-name">Илoвица-Штука</p>
             <p class="mn-deposit-loc">📍 Струмица · 20 km</p>
           </div>
           <span class="mn-deposit-status planned">2028</span>
@@ -12697,20 +12580,98 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
         </div>
       </div>
 
+      <div class="mn-deposit">
+        <div class="mn-deposit-head">
+          <div>
+            <p class="mn-deposit-name">Кр. Паланка (Krstov Dol)</p>
+            <p class="mn-deposit-loc">📍 Кр. Паланка · 10 km БГ</p>
+          </div>
+          <span class="mn-deposit-status planned">2027</span>
+        </div>
+        <p class="mn-deposit-desc" data-i18n="mn.d3">Антимон + злато + сребро. US-backed €5M deal (DFC). Стратешки минерал за батерии и flame-retardant.</p>
+        <div class="mn-deposit-mins">
+          <span class="mn-mineral-tag">Sb антимон</span>
+          <span class="mn-mineral-tag">Au злато</span>
+          <span class="mn-mineral-tag">Ag сребро</span>
+        </div>
+      </div>
 
       <div class="mn-deposit">
         <div class="mn-deposit-head">
           <div>
-            <p class="mn-deposit-name">Казандол</p>
-            <p class="mn-deposit-loc">📍 Валандово</p>
+            <p class="mn-deposit-name">Бучим (Bučim)</p>
+            <p class="mn-deposit-loc">📍 Радовиш</p>
           </div>
-          <span class="mn-deposit-status planned">ПОТЕНЦИЈАЛ</span>
+          <span class="mn-deposit-status active">АКТИВЕН</span>
         </div>
-        <p class="mn-deposit-desc">Бакарен катоден депозит. Договорот раскинат во 2018. Бара нов модел на одговорно рударство со локална согласност.</p>
+        <p class="mn-deposit-desc" data-i18n="mn.d4">Активен бакар-злато рудник. Реструктурирање за ≥51% домашно сопствеништво. Vrshnik рудно тело.</p>
         <div class="mn-deposit-mins">
           <span class="mn-mineral-tag">Cu бакар</span>
+          <span class="mn-mineral-tag">Au злато</span>
         </div>
       </div>
+
+      <div class="mn-deposit">
+        <div class="mn-deposit-head">
+          <div>
+            <p class="mn-deposit-name">Саса (Sasa)</p>
+            <p class="mn-deposit-loc">📍 Македонска Каменица</p>
+          </div>
+          <span class="mn-deposit-status active">АКТИВЕН</span>
+        </div>
+        <p class="mn-deposit-desc" data-i18n="mn.d5">Полиметаличен Pb-Zn-Ag рудник. Активен од 80-ти. Реструктурирање за ≥51% домашно.</p>
+        <div class="mn-deposit-mins">
+          <span class="mn-mineral-tag">Pb олово</span>
+          <span class="mn-mineral-tag">Zn цинк</span>
+          <span class="mn-mineral-tag">Ag сребро</span>
+        </div>
+      </div>
+
+      <div class="mn-deposit">
+        <div class="mn-deposit-head">
+          <div>
+            <p class="mn-deposit-name">Тoраница</p>
+            <p class="mn-deposit-loc">📍 Кр. Паланка</p>
+          </div>
+          <span class="mn-deposit-status planned">РЕАКТИВ.</span>
+        </div>
+        <p class="mn-deposit-desc" data-i18n="mn.d6">Полиметаличен Pb-Zn рудник, 1987-2000. Реактивирање со современа технологија и еко-стандарди.</p>
+        <div class="mn-deposit-mins">
+          <span class="mn-mineral-tag">Pb олово</span>
+          <span class="mn-mineral-tag">Zn цинк</span>
+        </div>
+      </div>
+
+      <div class="mn-deposit">
+        <div class="mn-deposit-head">
+          <div>
+            <p class="mn-deposit-name">Злетово</p>
+            <p class="mn-deposit-loc">📍 Пробиштип</p>
+          </div>
+          <span class="mn-deposit-status active">АКТИВЕН</span>
+        </div>
+        <p class="mn-deposit-desc" data-i18n="mn.d7">Кратово-Злетовски руден ревир. Pb-Zn полиметаличен. Активен. Дел на Plavica deposit.</p>
+        <div class="mn-deposit-mins">
+          <span class="mn-mineral-tag">Pb олово</span>
+          <span class="mn-mineral-tag">Zn цинк</span>
+        </div>
+      </div>
+
+      <div class="mn-deposit">
+        <div class="mn-deposit-head">
+          <div>
+            <p class="mn-deposit-name">Боров Дол</p>
+            <p class="mn-deposit-loc">📍 Радовиш</p>
+          </div>
+          <span class="mn-deposit-status planned">2029</span>
+        </div>
+        <p class="mn-deposit-desc" data-i18n="mn.d8">Бакар-порфирно наоѓалиште. Близу Бучим. Развој со здружен капитал.</p>
+        <div class="mn-deposit-mins">
+          <span class="mn-mineral-tag">Cu бакар</span>
+          <span class="mn-mineral-tag">Au злато</span>
+        </div>
+      </div>
+
     </div>
 
     <!-- Anti-protest commitment -->
@@ -12734,7 +12695,7 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
 
     <!-- Hero -->
     <div class="dr-hero reveal">
-      <span class="dr-tag" data-i18n="dr.tag">🛸 Beе ​царинск зони · Здружен МК капитал · Робот-синергиja</span>
+      <span class="dr-tag" data-i18n="dr.tag">🛸 Beе ​цaринск зони · Здружен МК капитал · Робот-синергиja</span>
       <h2 data-i18n="dr.h">Дронови „Made in Macedonia" — <em>од нива до телевизија</em>.</h2>
       <p data-i18n="dr.lede">Светскиот пазар на дронови ќе достигне <strong>$80 милијарди до 2030</strong> (CAGR 14%). Македонија има <strong>уникатна можност</strong> да биде регионален лидер во <strong>повеќенамечни дронови</strong> — со <strong>здружено вложување на македонски компании</strong> во ТИРЗ зоните, и директна <strong>синергија со Robotika Macedonia</strong> (споделени АИ системи, контрола, и батерии). Цел: <strong>15,000 дронови годишно до 2030</strong>.</p>
       <div class="dr-stats">
@@ -12827,7 +12788,7 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
       <div class="dr-sector">
         <div class="dr-sector-icon">🚨</div>
         <h4 data-i18n="dr.s5.t">Безбедност и итна реакција</h4>
-        <p class="dr-sector-desc" data-i18n="dr.s5.d">Дрон „Стража" за полиција, гранична патрола, потрага и спас, и итна медицинска достава (AED, лекови).</p>
+        <p class="dr-sector-desc" data-i18n="dr.s5.d">Дрон „Стража" за полиција, гранична патрола, потрага и спас, и итна медицинска доставa (AED, лекови).</p>
         <ul>
           <li data-i18n="dr.s5.l1">Thermal + nighti vision</li>
           <li data-i18n="dr.s5.l2">Loudspeaker за комуникација</li>
@@ -13870,7 +13831,7 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
         <div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap">
           <a class="btn dark sm" href="mailto:makedonijasistem@gmail.com?subject=Координатор%20за%20мојата%20општина">Биди координатор</a>
           <a class="btn ghost sm" href="#initiatives">Поднеси иницијатива</a>
-          <a class="btn gold sm" href="https://zels.org.mk/default" target="_blank" rel="noopener noreferrer">🏛️ ЗЕЛС</a>
+          <a class="btn gold sm" href="https://zels.org.mk/default" target="_blank" rel="noopener noreferrer">🏛️ ЗЕЛС — Партнер</a>
         </div>
       </div>
     </div>
@@ -15115,7 +15076,7 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
     </div>
 
     <div class="junge-cta reveal">
-      <a class="btn gold" href="mailto:makedonijasistem@gmail.com?subject=Junge%20Sistem%20-%20Пријава&body=Име%20и%20презиме:%0AВозраст:%0AСтудии%20/%20Работа:%0AОбласт%20на%20интерес:%0AЗошто%20сакаш%20да%20се%20вклучиш:">🚀 Зачлени се во Junge Sistem (под 30)</a>
+      <a class="btn gold" href="mailto:makedonijasistem@gmail.com?subject=Junge%20Sistem%20-%20Пријавa&body=Име%20и%20презиме:%0AВозраст:%0AСтудии%20/%20Работа:%0AОблaст%20на%20интерес:%0AЗoшто%20сакаш%20да%20се%20вклучиш:">🚀 Зачлени се во Junge Sistem (под 30)</a>
     </div>
   </div>
 </section>
@@ -15281,7 +15242,7 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
     </div>
 
     <div class="officina-cta reveal">
-      <a class="btn dark" href="mailto:makedonijasistem@gmail.com?subject=Officina%20-%20Пријава&body=Име%20и%20презиме:%0AОбласт%20(избери%20една%20од%208):%0AПрофесионално%20искуство:%0AЗошто%20сакаш%20да%20се%20вклучиш:">🔧 Пријави се за Officina</a>
+      <a class="btn dark" href="mailto:makedonijasistem@gmail.com?subject=Officina%20-%20Пријава&body=Име%20и%20презиме:%0AОбласт%20(избери%20една%20од%208):%0AПрофесионално%20искуство:%0AЗоштo%20сакаш%20да%20се%20вклучиш:">🔧 Пријави се за Officina</a>
     </div>
   </div>
 </section>
@@ -15396,7 +15357,7 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
       <div class="pgf-banner-content">
         <div class="pgf-banner-text">
           <h3 data-i18n="pgf.h">Завери изјава за основач преку <em>Paragraf.mk</em> — без излегување од дома.</h3>
-          <p data-i18n="pgf.d">Македонија — Систем има <strong>стратешко партнерство</strong> со <a href="https://paragraf.mk" target="_blank" rel="noopener noreferrer" style="color:var(--gold-deep);font-weight:700">Paragraf.mk</a> — водечка македонска LexAI правна платформа. Со <strong>Адв. Стојанкиќ</strong> како овластен правен партнер, изјавата за основач може да ја завериш <strong>дигитално за 15 минути</strong> со полна правна валидност согласно ЗЕДЕИДУ и Законот за нотарите.</p>
+          <p data-i18n="pgf.d">Македонија — Систем има <strong>стратешко партнерство</strong> со <a href="https://paragraf.mk" target="_blank" rel="noopener noreferrer" style="color:var(--gold-deep);font-weight:700">Paragraf.mk</a> — водечкa македонска LexAI правна платформа. Со <strong>Адв. Стојанкиќ</strong> како овластен правен партнер, изјавата за основач може да ја завериш <strong>дигитално за 15 минути</strong> со полна правна валидност согласно ЗЕДЕИДУ и Законот за нотарите.</p>
           <div class="pgf-banner-features">
             <span class="pgf-feat">⚡ 15 минути</span>
             <span class="pgf-feat">🌍 Од било каде во светот</span>
@@ -15970,7 +15931,7 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
 
         <div class="gd-step" data-step="6">
           <div class="gd-step-head">
-            <h4 class="gd-step-title" data-i18n="gd.eu.t6">Готово! Si основач #X</h4>
+            <h4 class="gd-step-title" data-i18n="gd.eu.t6">Готово! Si оснoвач #X</h4>
             <div class="gd-step-meta">
               <span class="gd-step-tag time">⏱ 0 мин</span>
               <span class="gd-step-tag cost">💰 Бесплатно</span>
@@ -16864,162 +16825,6 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
         </div>
       </article>
 
-      <!-- FEZ / DTIDZ — Phase 34 -->
-      <article class="if-card if-fez">
-        <div class="if-card-head">
-          <div class="if-icon">🏭</div>
-          <div class="if-meta">
-            <span class="if-tag">Индустриски зони · ТИРЗ</span>
-            <h3>ФЕЗ / ДТИРЗ</h3>
-            <p class="if-fullname">Дирекција за технолошки индустриски развојни зони</p>
-          </div>
-        </div>
-        <div class="if-card-body">
-          <p>Државна институција која во име на Владата на Р. Северна Македонија <strong>управува со 14 ТИРЗ зони</strong> низ Македонија. ФЕЗ ги обезбедува <strong>даночните олеснувања, инфраструктурата и финансиската поддршка</strong> за домашни и странски инвеститори. За Македонија — Систем, ФЕЗ е <strong>директен партнер</strong> за сите 13 индустриски шампиони — Robotika Macedonia, MK-Drones, Vardar H₂ (водороден автомобил), MK-Phone, Mining Resources, Macedon Hipermarketi и др. Сите наши „предлог-модели" се планираат во ТИРЗ зоните: Скопје 1, Скопје 2, Скопје 3, Тетово, Прилеп, Штип, Кичево, Радовиш, Струга, Делчево, Струмица, Берово, Гевгелија и Виница.</p>
-          <div class="if-services">
-            <span class="if-service-label">Услуги за инвеститори:</span>
-            <ul>
-              <li>Управување со 14 Технолошко-индустриски развојни зони</li>
-              <li>Финансиска поддршка согласно Закон за фин. поддршка на инвестиции</li>
-              <li>Даночни олеснувања (10 години 0% корпоративен данок во ТИРЗ)</li>
-              <li>Инфраструктура: струја, вода, патишта, гасификација</li>
-              <li>One-stop-shop за дозволи и регистрација</li>
-              <li>Закон за технолошки индустриски развојни зони (важечки)</li>
-            </ul>
-          </div>
-        </div>
-        <div class="if-card-foot">
-          <a href="https://fez.gov.mk/" target="_blank" rel="noopener noreferrer" class="if-link primary">fez.gov.mk →</a>
-          <a href="https://fez.gov.mk/en/home-english/" target="_blank" rel="noopener noreferrer" class="if-link">🇬🇧 English</a>
-          <span class="if-contact">📍 Бул. „Партизански Одреди" бр. 2, Скопје</span>
-        </div>
-      </article>
-
-
-      <!-- ═══ ПЛАТНИ СИСТЕМИ НА МАКЕДОНИЈА (Phase 35) ═══ -->
-
-      <!-- 1. НБРМ — Народна банка (регулатор на сите платни системи) -->
-      <article class="if-card if-nbrm">
-        <div class="if-card-head">
-          <div class="if-icon">🏦</div>
-          <div class="if-meta">
-            <span class="if-tag">Централна банка · регулатор на платни системи</span>
-            <h3>НБРМ</h3>
-            <p class="if-fullname">Народна банка на Република Северна Македонија</p>
-          </div>
-        </div>
-        <div class="if-card-body">
-          <p>Централна банка на државата · ја <strong>надгледува сигурноста, стабилноста и ефикасноста</strong> на сите платни системи во земјата. Согласно Законот за НБРМ и Законот за платен промет, НБРМ е <strong>овластена</strong> да ги регулира сите оператори на платни системи (МИПС, КИБС, КАСИС). За М-С, НБРМ е клучна институција за идна <strong>финансиска инфраструктура</strong> на партијата (донации, членарини, плаќања).</p>
-          <div class="if-services">
-            <span class="if-service-label">Надлежности:</span>
-            <ul>
-              <li>Регулатива на сите платни системи во РСМ</li>
-              <li>Регистар на оператори на платните системи</li>
-              <li>Дозволи за платежни институции и институции за е-пари</li>
-              <li>Управува со МИПС системот (RTGS)</li>
-              <li>Извештаи за банкарски систем</li>
-              <li>Спречување перење пари и финансирање тероризам</li>
-            </ul>
-          </div>
-        </div>
-        <div class="if-card-foot">
-          <a href="https://www.nbrm.mk" target="_blank" rel="noopener noreferrer" class="if-link primary">nbrm.mk →</a>
-          <a href="https://www.nbrm.mk/kontakt1.nspx" target="_blank" rel="noopener noreferrer" class="if-link">📞 Контакт</a>
-          <span class="if-contact">📍 Бул. „Кузман Јосифовски-Питу" 1, Скопје</span>
-        </div>
-      </article>
-
-      <!-- 2. МИПС — Македонски интербанкарски платен систем -->
-      <article class="if-card if-mips">
-        <div class="if-card-head">
-          <div class="if-icon">⚡</div>
-          <div class="if-meta">
-            <span class="if-tag">RTGS · итни и големи плаќања ≥ 1М ден.</span>
-            <h3>МИПС</h3>
-            <p class="if-fullname">Македонски интербанкарски платен систем</p>
-          </div>
-        </div>
-        <div class="if-card-body">
-          <p>Систем на НБРМ преку кој се извршуваат <strong>сите меѓубанкарски плаќања во реално време (RTGS)</strong>. Започна со работа на 30.07.2001. Се користи за <strong>итни и големи плаќања ≥ 1 милион денари</strong>. Користи <strong>SWIFT стандарди</strong> за електронски потпишани налози. Дневно се порамнуваат просечно <strong>~6.5 милијарди денари</strong> · работи 07:30-17:00.</p>
-          <div class="if-services">
-            <span class="if-service-label">Учесници во системот:</span>
-            <ul>
-              <li>Народна банка (оператор)</li>
-              <li>Сите деловни банки во РСМ</li>
-              <li>Брокерски куќи</li>
-              <li>Министерство за финансии</li>
-              <li>Клириншка куќа КИБС</li>
-              <li>Централен Депозитар за хартии од вредност</li>
-              <li>Картичен центар КАСИС, Mastercard и др.</li>
-            </ul>
-          </div>
-        </div>
-        <div class="if-card-foot">
-          <a href="https://www.nbrm.mk/mipsdd77afa6.nspx" target="_blank" rel="noopener noreferrer" class="if-link primary">МИПС инфо →</a>
-          <span class="if-contact">📊 Оператор: НБРМ · работа: 07:30–17:00</span>
-        </div>
-      </article>
-
-      <!-- 3. КИБС — Клириншки интербанкарски систем -->
-      <article class="if-card if-kibs">
-        <div class="if-card-head">
-          <div class="if-icon">🔐</div>
-          <div class="if-meta">
-            <span class="if-tag">Клиринг · мали плаќања &lt; 1М ден. · е-сертификати · OneID</span>
-            <h3>КИБС</h3>
-            <p class="if-fullname">Клириншка куќа КИБС АД Скопје</p>
-          </div>
-        </div>
-        <div class="if-card-body">
-          <p>Прв регистриран <strong>издавач на дигитални сертификати</strong> во Македонија (од 26 јуни 2006). Платен систем за <strong>мали меѓубанкарски плаќања &lt; 1 милион денари</strong>. Сопствена куќа на <strong>12 домашни деловни банки</strong>. Развива и <strong>OneID</strong> (со Nextsense) — шема за е-идентификација прифатена од банки и државни институции. КИБС припаѓа на меѓународната мрежа на доверливи соработници на Symantec. За М-С е критичен за идна <strong>е-идентификација на основачи</strong>.</p>
-          <div class="if-services">
-            <span class="if-service-label">Услуги (важни за М-С):</span>
-            <ul>
-              <li>Дигитални сертификати (Verba K2, Verba Pro2)</li>
-              <li>OneID · е-идентификација за банки и државни услуги</li>
-              <li>Единствен регистар на трансакциски сметки</li>
-              <li>Open Banking платформа за финтек</li>
-              <li>Електронско банкарство · е-влада · е-катастар</li>
-              <li>Е-поднесување ДДВ и завршни сметки</li>
-            </ul>
-          </div>
-        </div>
-        <div class="if-card-foot">
-          <a href="https://www.kibstrust.mk/" target="_blank" rel="noopener noreferrer" class="if-link primary">kibstrust.mk →</a>
-          <a href="https://www.nbrm.mk/kibs1e32d708.nspx" target="_blank" rel="noopener noreferrer" class="if-link">НБРМ · КИБС инфо</a>
-          <span class="if-contact">🏛️ Сопствено на 12 банки во РСМ</span>
-        </div>
-      </article>
-
-      <!-- 4. КАСИС — Интернационален картичен систем -->
-      <article class="if-card if-kasis">
-        <div class="if-card-head">
-          <div class="if-icon">💳</div>
-          <div class="if-meta">
-            <span class="if-tag">Картични плаќања · домашни брендови</span>
-            <h3>КАСИС</h3>
-            <p class="if-fullname">Интернационален картичен систем АД Скопје</p>
-          </div>
-        </div>
-        <div class="if-card-body">
-          <p>Приватен оператор за <strong>мултилатерално одложено нето-порамнување</strong> на плаќањата со <strong>домашни брендови на платежни картички</strong>. КАСИС е третиот столб на македонскиот платежен систем — наспроти МИПС (големи плаќања) и КИБС (мали плаќања). За М-С, важен за идна <strong>donation инфраструктура</strong> преку картичните плаќања, во соработка со банките.</p>
-          <div class="if-services">
-            <span class="if-service-label">Услуги:</span>
-            <ul>
-              <li>Пребивање на трансакции со платежни картички</li>
-              <li>Соработка со Mastercard, Visa и други меѓународни мрежи</li>
-              <li>Поддршка за домашни картични брендови</li>
-              <li>Учество во МИПС системот за конечни порамнувања</li>
-              <li>Регулиран и надзиран од НБРМ</li>
-            </ul>
-          </div>
-        </div>
-        <div class="if-card-foot">
-          <a href="https://www.nbrm.mk" target="_blank" rel="noopener noreferrer" class="if-link primary">НБРМ · картичен систем →</a>
-          <span class="if-contact">💳 Дневен партнер на сите банки во РСМ</span>
-        </div>
-      </article>
-
 
     </div>
 
@@ -17033,7 +16838,7 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
         <li><strong>Не споделува</strong> лични податоци со трети страни без законска основа</li>
         <li><strong>Поднесува</strong> известувања до АЗЛП кога ќе има потреба од обработка на чувствителни податоци</li>
         <li><strong>Назначува</strong> офицер за заштита на лични податоци кога ќе има значителна обработка</li>
-        <li><strong>Дозволува</strong> на секого право на пристап, корекција, бришење и преносливост</li>
+        <li><strong>Дозволува</strong> на секого правo на пристап, корекција, бришење и преносливост</li>
       </ul>
       <p class="if-privacy-note"><em>За поднесување на барање за заштита на лични податоци, контактирајте ја АЗЛП на info@privacy.mk или на +389 2 3230 635.</em></p>
     </div>
@@ -17051,20 +16856,20 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
     <!-- Hero -->
     <div class="mh-hero reveal">
       <span class="mh-tag" data-i18n="mh.tag">📢 За идна работа со печатени и електронски медиуми</span>
-      <h2 data-i18n="mh.h">79+ македонски медиуми и подкасти — <em>еден клик до соопштение</em>.</h2>
+      <h2 data-i18n="mh.h">42+ македонски медиуми — <em>еден клик до соопштение</em>.</h2>
       <p data-i18n="mh.lede">Кога Македонија — Систем ќе биде формирана, ќе треба <strong>стратешка комуникација</strong> со јавноста. Оваа база содржи сите главни <strong>национални телевизии, радија, портали, печатени весници и информативни агенции</strong>. Може да испратиш <strong>соопштение за јавност</strong> до целата база со <strong>еден клик</strong>, или индивидуално до секој медиум посебно.</p>
       <div class="mh-stats">
         <div class="mh-stat">
-          <div class="mh-stat-num">79+</div>
+          <div class="mh-stat-num">42+</div>
           <div class="mh-stat-label" data-i18n="mh.s1">Медиуми</div>
         </div>
         <div class="mh-stat">
-          <div class="mh-stat-num">7</div>
+          <div class="mh-stat-num">6</div>
           <div class="mh-stat-label" data-i18n="mh.s2">Категории</div>
         </div>
         <div class="mh-stat">
           <div class="mh-stat-num">1.5M</div>
-          <div class="mh-stat-label" data-i18n="mh.s3">Дофат публика</div>
+          <div class="mh-stat-label" data-i18n="mh.s3">Дофaт публика</div>
         </div>
         <div class="mh-stat">
           <div class="mh-stat-num">1 click</div>
@@ -17081,28 +16886,25 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
     <!-- Filters -->
     <div class="mh-filters reveal">
       <button class="mh-filter-btn active" data-cat="all" onclick="filterMedia('all')">
-        <span data-i18n="mh.f.all">📡 Сите</span><span class="count">79</span>
+        <span data-i18n="mh.f.all">📡 Сите</span><span class="count">42</span>
       </button>
       <button class="mh-filter-btn" data-cat="tv" onclick="filterMedia('tv')">
         <span data-i18n="mh.f.tv">📺 ТВ</span><span class="count">10</span>
       </button>
       <button class="mh-filter-btn" data-cat="radio" onclick="filterMedia('radio')">
-        <span data-i18n="mh.f.radio">📻 Радио</span><span class="count">8</span>
+        <span data-i18n="mh.f.radio">📻 Радио</span><span class="count">7</span>
       </button>
       <button class="mh-filter-btn" data-cat="portal" onclick="filterMedia('portal')">
-        <span data-i18n="mh.f.portal">💻 Портали</span><span class="count">37</span>
+        <span data-i18n="mh.f.portal">💻 Портали</span><span class="count">14</span>
       </button>
       <button class="mh-filter-btn" data-cat="print" onclick="filterMedia('print')">
         <span data-i18n="mh.f.print">📰 Печат</span><span class="count">5</span>
       </button>
       <button class="mh-filter-btn" data-cat="agency" onclick="filterMedia('agency')">
-        <span data-i18n="mh.f.agency">📡 Агенции</span><span class="count">4</span>
+        <span data-i18n="mh.f.agency">📡 Агенции</span><span class="count">3</span>
       </button>
       <button class="mh-filter-btn" data-cat="diaspora" onclick="filterMedia('diaspora')">
         <span data-i18n="mh.f.diaspora">🌍 Дијаспора</span><span class="count">3</span>
-      </button>
-      <button class="mh-filter-btn" data-cat="podcast" onclick="filterMedia('podcast')">
-        <span data-i18n="mh.f.podcast">🎙️ Подкасти</span><span class="count">12</span>
       </button>
     </div>
 
@@ -17132,7 +16934,7 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
         </div>
       </div>
 
-      <div class="mh-card" data-cat="tv" data-name="sitel сител tv televizija">
+      <div class="mh-card" data-cat="tv" data-name="sitel ситeл tv televizija">
         <div class="mh-card-head">
           <h4 class="mh-card-name">Sitel ТВ</h4>
           <span class="mh-card-cat tv">📺 Национална</span>
@@ -17293,11 +17095,10 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
         </div>
         <p class="mh-card-desc">Една од најпопуларните комерцијални радио станици · музика, вести, забавна програма.</p>
         <div class="mh-card-meta">
-          <div class="mh-card-meta-row"><span class="icon">📧</span><strong>info@antena5.mk</strong></div>
+          <div class="mh-card-meta-row"><span class="icon">📧</span><strong>info@antenna5.com.mk</strong></div>
         </div>
         <div class="mh-card-actions">
-          <a href="mailto:info@antena5.mk?subject=Соопштение%20од%20Македонија%20—%20Систем" class="mh-card-btn">📧 Соопштение</a>
-          <a href="https://antena5.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn secondary">🌐 Веб</a>
+          <a href="mailto:info@antenna5.com.mk?subject=Соопштение%20од%20Македонија%20—%20Систем" class="mh-card-btn">📧 Соопштение</a>
         </div>
       </div>
 
@@ -17308,11 +17109,10 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
         </div>
         <p class="mh-card-desc">Радио со силна информативна програма · често има интервјуа со јавни личности.</p>
         <div class="mh-card-meta">
-          <div class="mh-card-meta-row"><span class="icon">📧</span><strong>info@kanal77.com.mk</strong></div>
+          <div class="mh-card-meta-row"><span class="icon">📧</span><strong>info@kanal77.mk</strong></div>
         </div>
         <div class="mh-card-actions">
-          <a href="mailto:info@kanal77.com.mk?subject=Соопштение%20од%20Македонија%20—%20Систем" class="mh-card-btn">📧 Соопштение</a>
-          <a href="https://kanal77.com.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn secondary">🌐 Веб</a>
+          <a href="mailto:info@kanal77.mk?subject=Соопштение%20од%20Македонија%20—%20Систем" class="mh-card-btn">📧 Соопштение</a>
         </div>
       </div>
 
@@ -17560,7 +17360,7 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
         </div>
       </div>
 
-      <div class="mh-card" data-cat="portal" data-name="bbc радио слободна европа slobodnaevropa rferl rfe rl">
+      <div class="mh-card" data-cat="portal" data-name="bbc радио слободна европа">
         <div class="mh-card-head">
           <h4 class="mh-card-name">Радио Слободна Европа · МК</h4>
           <span class="mh-card-cat portal">💻 Меѓународно</span>
@@ -17571,7 +17371,6 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
         </div>
         <div class="mh-card-actions">
           <a href="mailto:rfemk@rferl.org?subject=Соопштение%20од%20Македонија%20—%20Систем" class="mh-card-btn">📧 Соопштение</a>
-          <a href="https://www.slobodnaevropa.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn secondary">🌐 Веб</a>
         </div>
       </div>
 
@@ -17731,553 +17530,6 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
         </div>
         <div class="mh-card-actions">
           <a href="mailto:info@canadianmacedoniannews.com?subject=Press%20Release%20from%20Macedonia%20—%20System" class="mh-card-btn">📧 Соопштение</a>
-        </div>
-      </div>
-
-      <!-- ═══ Phase 33: Македонски подкасти (12) ═══ -->
-      <div class="mh-card" data-cat="podcast" data-name="infomax инфомакс лазаров lazarov">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">Инфомакс</h4>
-          <span class="mh-card-cat podcast">🎙️ Подкаст</span>
-        </div>
-        <p class="mh-card-desc">Еден од најпопуларните македонски подкасти · политика, актуелни теми, интервјуа со јавни личности.</p>
-        <div class="mh-card-meta">
-          <div class="mh-card-meta-row"><span class="icon">📺</span><strong>YouTube · @LAZAROVMK</strong></div>
-                    <div class="mh-card-meta-row"><span class="icon">🎤</span>Стефан Лазаров</div>
-        </div>
-        <div class="mh-card-actions">
-          <a href="https://www.youtube.com/@LAZAROVMK" target="_blank" rel="noopener noreferrer" class="mh-card-btn">🎧 Слушај / Гледај</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="podcast" data-name="vo centar во центар">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">Во Центар</h4>
-          <span class="mh-card-cat podcast">🎙️ Подкаст</span>
-        </div>
-        <p class="mh-card-desc">Подкаст со долги формати на интервјуа со јавни личности · политика, бизнис, општество.</p>
-        <div class="mh-card-meta">
-          <div class="mh-card-meta-row"><span class="icon">📺</span><strong>YouTube · @PomeloTV</strong></div>
-                    <div class="mh-card-meta-row"><span class="icon">🎤</span>PomeloTV</div>
-        </div>
-        <div class="mh-card-actions">
-          <a href="https://www.youtube.com/@PomeloTV" target="_blank" rel="noopener noreferrer" class="mh-card-btn">🎧 Слушај / Гледај</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="podcast" data-name="pretres so landov претрес ландов">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">Претрес со Ландов</h4>
-          <span class="mh-card-cat podcast">🎙️ Подкаст</span>
-        </div>
-        <p class="mh-card-desc">Истражувачко новинарство во подкаст формат · длабински интервјуа со прецизни прашања.</p>
-        <div class="mh-card-meta">
-          <div class="mh-card-meta-row"><span class="icon">📺</span><strong>YouTube · Прва ТВ</strong></div>
-                    <div class="mh-card-meta-row"><span class="icon">🎤</span>Бранко Ландов</div>
-        </div>
-        <div class="mh-card-actions">
-          <a href="https://www.youtube.com/@PrvaTV" target="_blank" rel="noopener noreferrer" class="mh-card-btn">🎧 Слушај / Гледај</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="podcast" data-name="tesko muabeti тешки муабети">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">Тешки Муабети</h4>
-          <span class="mh-card-cat podcast">🎙️ Подкаст</span>
-        </div>
-        <p class="mh-card-desc">Долгогодишен поткаст со општествени теми, политика и забавна содржина · 6 сезони.</p>
-        <div class="mh-card-meta">
-          <div class="mh-card-meta-row"><span class="icon">📺</span><strong>YouTube</strong></div>
-                    <div class="mh-card-meta-row"><span class="icon">🎤</span>Стевчо Јакимовски, Мечка и Милош</div>
-        </div>
-        <div class="mh-card-actions">
-          <a href="https://www.youtube.com/results?search_query=Тешки+Муабети+подкаст" target="_blank" rel="noopener noreferrer" class="mh-card-btn">🎧 Слушај / Гледај</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="podcast" data-name="osnovano somnenie основано сомнение a1on">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">Основано Сомнение</h4>
-          <span class="mh-card-cat podcast">🎙️ Подкаст</span>
-        </div>
-        <p class="mh-card-desc">Истражувачки подкаст на A1 ON · политички анализи и интервјуа со јавни личности.</p>
-        <div class="mh-card-meta">
-          <div class="mh-card-meta-row"><span class="icon">🎤</span>A1 ON</div>
-        </div>
-        <div class="mh-card-actions">
-          <a href="https://a1on.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn">🎧 Слушај / Гледај</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="podcast" data-name="sitel podcast сител поткаст smirchevski смирчевски">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">Сител Поткаст</h4>
-          <span class="mh-card-cat podcast">🎙️ Подкаст</span>
-        </div>
-        <p class="mh-card-desc">Поткаст на Сител Телевизија со гости од политичкиот, бизнис и културниот живот.</p>
-        <div class="mh-card-meta">
-          <div class="mh-card-meta-row"><span class="icon">🎤</span>Иван Смирчевски</div>
-        </div>
-        <div class="mh-card-actions">
-          <a href="https://www.sitel.com.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn">🎧 Слушај / Гледај</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="podcast" data-name="k15 prijateli k-15 пријатели mile panika">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">К-15 и Пријателите</h4>
-          <span class="mh-card-cat podcast">🎙️ Подкаст</span>
-        </div>
-        <p class="mh-card-desc">Подкаст со забавно-општествени теми и долги муабети со разни гости.</p>
-        <div class="mh-card-meta">
-          <div class="mh-card-meta-row"><span class="icon">🎤</span>Миле Паника</div>
-        </div>
-        <div class="mh-card-actions">
-          <a href="https://www.youtube.com/results?search_query=К-15+пријателите+Миле+Паника" target="_blank" rel="noopener noreferrer" class="mh-card-btn">🎧 Слушај / Гледај</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="podcast" data-name="sportkast sport спорткаст слободен печат">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">СПорткаст</h4>
-          <span class="mh-card-cat podcast">🎙️ Подкаст</span>
-        </div>
-        <p class="mh-card-desc">Спортски поткаст · разговори со спортисти, тренери и експерти од македонскиот спорт.</p>
-        <div class="mh-card-meta">
-          <div class="mh-card-meta-row"><span class="icon">🎤</span>Слободен Печат</div>
-        </div>
-        <div class="mh-card-actions">
-          <a href="https://www.slobodenpecat.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn">🎧 Слушај / Гледај</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="podcast" data-name="gg podcast gg.mk gaming">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">GG Подкаст</h4>
-          <span class="mh-card-cat podcast">🎙️ Подкаст</span>
-        </div>
-        <p class="mh-card-desc">Поткаст за гејминг, технологија и поп-култура · професионално продуцирани епизоди.</p>
-        <div class="mh-card-meta">
-          <div class="mh-card-meta-row"><span class="icon">🎤</span>GG.mk</div>
-        </div>
-        <div class="mh-card-actions">
-          <a href="https://gg.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn">🎧 Слушај / Гледај</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="podcast" data-name="mof radio mof младински">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">Радио МОФ Подкасти</h4>
-          <span class="mh-card-cat podcast">🎙️ Подкаст</span>
-        </div>
-        <p class="mh-card-desc">Серија подкасти за младински, образовни и општествени теми · независно новинарство.</p>
-        <div class="mh-card-meta">
-          <div class="mh-card-meta-row"><span class="icon">🎤</span>Младински образовен форум</div>
-        </div>
-        <div class="mh-card-actions">
-          <a href="https://radiomof.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn">🎧 Слушај / Гледај</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="podcast" data-name="nauka za site наука за сите">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">Наука за Сите</h4>
-          <span class="mh-card-cat podcast">🎙️ Подкаст</span>
-        </div>
-        <p class="mh-card-desc">Подкаст за наука и истражување на македонски јазик · образовна содржина.</p>
-        <div class="mh-card-meta">
-          <div class="mh-card-meta-row"><span class="icon">🎤</span>Mladi naučnici</div>
-        </div>
-        <div class="mh-card-actions">
-          <a href="https://www.youtube.com/results?search_query=Наука+за+сите+подкаст" target="_blank" rel="noopener noreferrer" class="mh-card-btn">🎧 Слушај / Гледај</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="podcast" data-name="obichni lugje обични луѓе off.net.mk">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">Обични Луѓе</h4>
-          <span class="mh-card-cat podcast">🎙️ Подкаст</span>
-        </div>
-        <p class="mh-card-desc">Аудио подкаст за вистински приказни на македонски јазик · долга форма, документарен стил.</p>
-        <div class="mh-card-meta">
-          <div class="mh-card-meta-row"><span class="icon">🎤</span>Off.net.mk</div>
-        </div>
-        <div class="mh-card-actions">
-          <a href="https://off.net.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn">🎧 Слушај / Гледај</a>
-        </div>
-      </div>
-
-      <!-- ═══ Phase 32: 26 нови медиуми ═══ -->
-
-      <div class="mh-card" data-cat="portal" data-name="grid mk grid.mk">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">Grid.mk</h4>
-          <span class="mh-card-cat portal">💻 Портал</span>
-        </div>
-        <p class="mh-card-desc">Информативен портал · вести и анализа од Македонија.</p>
-        <div class="mh-card-meta">
-                    <div class="mh-card-meta-row"><span class="icon">📧</span><strong>redakcija@grid.mk</strong></div>
-        </div>
-        <div class="mh-card-actions">
-                    <a href="mailto:redakcija@grid.mk?subject=Соопштение%20од%20Македонија%20—%20Систем" class="mh-card-btn">📧 Соопштение</a>
-          <a href="https://grid.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn secondary">🌐 Веб</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="portal" data-name="independent независен независни">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">Independent.mk</h4>
-          <span class="mh-card-cat portal">💻 Портал</span>
-        </div>
-        <p class="mh-card-desc">Независен информативен портал · вести и колумни.</p>
-        <div class="mh-card-meta">
-                    <div class="mh-card-meta-row"><span class="icon">📧</span><strong>redakcija@independent.mk</strong></div>
-        </div>
-        <div class="mh-card-actions">
-                    <a href="mailto:redakcija@independent.mk?subject=Соопштение%20од%20Македонија%20—%20Систем" class="mh-card-btn">📧 Соопштение</a>
-          <a href="https://independent.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn secondary">🌐 Веб</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="portal" data-name="time time.mk время агрегатор">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">Time.mk</h4>
-          <span class="mh-card-cat portal">💻 Агрегатор</span>
-        </div>
-        <p class="mh-card-desc">Македонски агрегатор на вести · собира заглавија од сите медиуми.</p>
-        <div class="mh-card-meta">
-          
-        </div>
-        <div class="mh-card-actions">
-                    <a href="https://time.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn secondary">🌐 Веб</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="portal" data-name="mkd мкд мк македонски портал">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">MKD.mk</h4>
-          <span class="mh-card-cat portal">💻 Портал</span>
-        </div>
-        <p class="mh-card-desc">Информативен портал со широка покриеност на општествени теми.</p>
-        <div class="mh-card-meta">
-                    <div class="mh-card-meta-row"><span class="icon">📧</span><strong>redakcija@mkd.mk</strong></div>
-        </div>
-        <div class="mh-card-actions">
-                    <a href="mailto:redakcija@mkd.mk?subject=Соопштение%20од%20Македонија%20—%20Систем" class="mh-card-btn">📧 Соопштение</a>
-          <a href="https://www.mkd.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn secondary">🌐 Веб</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="portal" data-name="tocka точка">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">Tocka.com.mk</h4>
-          <span class="mh-card-cat portal">💻 Портал</span>
-        </div>
-        <p class="mh-card-desc">Информативен портал · вести и аналитички текстови.</p>
-        <div class="mh-card-meta">
-                    <div class="mh-card-meta-row"><span class="icon">📧</span><strong>info@tocka.com.mk</strong></div>
-        </div>
-        <div class="mh-card-actions">
-                    <a href="mailto:info@tocka.com.mk?subject=Соопштение%20од%20Македонија%20—%20Систем" class="mh-card-btn">📧 Соопштение</a>
-          <a href="https://tocka.com.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn secondary">🌐 Веб</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="portal" data-name="kajgana кајгана">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">Kajgana.com</h4>
-          <span class="mh-card-cat portal">💻 Портал</span>
-        </div>
-        <p class="mh-card-desc">Македонски информативен портал · политика, забава, спорт.</p>
-        <div class="mh-card-meta">
-                    <div class="mh-card-meta-row"><span class="icon">📧</span><strong>info@kajgana.com</strong></div>
-        </div>
-        <div class="mh-card-actions">
-                    <a href="mailto:info@kajgana.com?subject=Соопштение%20од%20Македонија%20—%20Систем" class="mh-card-btn">📧 Соопштение</a>
-          <a href="https://kajgana.com" target="_blank" rel="noopener noreferrer" class="mh-card-btn secondary">🌐 Веб</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="portal" data-name="libertas">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">Libertas.mk</h4>
-          <span class="mh-card-cat portal">💻 Портал</span>
-        </div>
-        <p class="mh-card-desc">Информативен портал · политика и општество.</p>
-        <div class="mh-card-meta">
-                    <div class="mh-card-meta-row"><span class="icon">📧</span><strong>redakcija@libertas.mk</strong></div>
-        </div>
-        <div class="mh-card-actions">
-                    <a href="mailto:redakcija@libertas.mk?subject=Соопштение%20од%20Македонија%20—%20Систем" class="mh-card-btn">📧 Соопштение</a>
-          <a href="https://libertas.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn secondary">🌐 Веб</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="portal" data-name="nezavisen независен">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">Nezavisen.mk</h4>
-          <span class="mh-card-cat portal">💻 Портал</span>
-        </div>
-        <p class="mh-card-desc">Независен информативен портал · вести од Македонија и регионот.</p>
-        <div class="mh-card-meta">
-                    <div class="mh-card-meta-row"><span class="icon">📧</span><strong>redakcija@nezavisen.mk</strong></div>
-        </div>
-        <div class="mh-card-actions">
-                    <a href="mailto:redakcija@nezavisen.mk?subject=Соопштение%20од%20Македонија%20—%20Систем" class="mh-card-btn">📧 Соопштение</a>
-          <a href="https://nezavisen.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn secondary">🌐 Веб</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="portal" data-name="off off.net.mk оф">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">Off.net.mk</h4>
-          <span class="mh-card-cat portal">💻 Портал</span>
-        </div>
-        <p class="mh-card-desc">Информативен портал · вести, забава, лајфстајл.</p>
-        <div class="mh-card-meta">
-                    <div class="mh-card-meta-row"><span class="icon">📧</span><strong>info@off.net.mk</strong></div>
-        </div>
-        <div class="mh-card-actions">
-                    <a href="mailto:info@off.net.mk?subject=Соопштение%20од%20Македонија%20—%20Систем" class="mh-card-btn">📧 Соопштение</a>
-          <a href="https://off.net.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn secondary">🌐 Веб</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="portal" data-name="expres експрес">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">Expres.mk</h4>
-          <span class="mh-card-cat portal">💻 Портал</span>
-        </div>
-        <p class="mh-card-desc">Информативен портал · ажурни вести и колумни.</p>
-        <div class="mh-card-meta">
-                    <div class="mh-card-meta-row"><span class="icon">📧</span><strong>redakcija@expres.mk</strong></div>
-        </div>
-        <div class="mh-card-actions">
-                    <a href="mailto:redakcija@expres.mk?subject=Соопштение%20од%20Македонија%20—%20Систем" class="mh-card-btn">📧 Соопштение</a>
-          <a href="https://www.expres.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn secondary">🌐 Веб</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="portal" data-name="daily дејли">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">Daily.mk</h4>
-          <span class="mh-card-cat portal">💻 Агрегатор</span>
-        </div>
-        <p class="mh-card-desc">Македонски агрегатор на вести · преглед на дневна содржина од сите портали.</p>
-        <div class="mh-card-meta">
-          
-        </div>
-        <div class="mh-card-actions">
-                    <a href="https://daily.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn secondary">🌐 Веб</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="portal" data-name="idividi идивиди">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">Idividi.com.mk</h4>
-          <span class="mh-card-cat portal">💻 Портал</span>
-        </div>
-        <p class="mh-card-desc">Информативен портал · вести и забавна содржина.</p>
-        <div class="mh-card-meta">
-                    <div class="mh-card-meta-row"><span class="icon">📧</span><strong>info@idividi.com.mk</strong></div>
-        </div>
-        <div class="mh-card-actions">
-                    <a href="mailto:info@idividi.com.mk?subject=Соопштение%20од%20Македонија%20—%20Систем" class="mh-card-btn">📧 Соопштение</a>
-          <a href="http://idividi.com.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn secondary">🌐 Веб</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="portal" data-name="maktel мактел телекомуникации">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">Maktel.mk</h4>
-          <span class="mh-card-cat portal">💻 Технологија</span>
-        </div>
-        <p class="mh-card-desc">Портал за телекомуникации, технологија и иновации.</p>
-        <div class="mh-card-meta">
-                    <div class="mh-card-meta-row"><span class="icon">📧</span><strong>info@maktel.mk</strong></div>
-        </div>
-        <div class="mh-card-actions">
-                    <a href="mailto:info@maktel.mk?subject=Соопштение%20од%20Македонија%20—%20Систем" class="mh-card-btn">📧 Соопштение</a>
-          <a href="https://maktel.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn secondary">🌐 Веб</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="portal" data-name="brif бриф">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">Brif.mk</h4>
-          <span class="mh-card-cat portal">💻 Истражувачко</span>
-        </div>
-        <p class="mh-card-desc">Истражувачки портал · аналитички материјали и репортажи.</p>
-        <div class="mh-card-meta">
-                    <div class="mh-card-meta-row"><span class="icon">📧</span><strong>info@brif.mk</strong></div>
-        </div>
-        <div class="mh-card-actions">
-                    <a href="mailto:info@brif.mk?subject=Соопштение%20од%20Македонија%20—%20Систем" class="mh-card-btn">📧 Соопштение</a>
-          <a href="https://www.brif.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn secondary">🌐 Веб</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="portal" data-name="vesti вести">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">Vesti.mk</h4>
-          <span class="mh-card-cat portal">💻 Агрегатор</span>
-        </div>
-        <p class="mh-card-desc">Македонски агрегатор на вести · собира содржини од сите портали и медиуми.</p>
-        <div class="mh-card-meta">
-          
-        </div>
-        <div class="mh-card-actions">
-                    <a href="https://www.vesti.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn secondary">🌐 Веб</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="portal" data-name="24info 24 инфо">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">24info.mk</h4>
-          <span class="mh-card-cat portal">💻 Портал</span>
-        </div>
-        <p class="mh-card-desc">Информативен портал · 24/7 вести од Македонија.</p>
-        <div class="mh-card-meta">
-                    <div class="mh-card-meta-row"><span class="icon">📧</span><strong>redakcija@24info.mk</strong></div>
-        </div>
-        <div class="mh-card-actions">
-                    <a href="mailto:redakcija@24info.mk?subject=Соопштение%20од%20Македонија%20—%20Систем" class="mh-card-btn">📧 Соопштение</a>
-          <a href="https://www.24info.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn secondary">🌐 Веб</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="portal" data-name="denesen денешен">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">Denesen.mk</h4>
-          <span class="mh-card-cat portal">💻 Портал</span>
-        </div>
-        <p class="mh-card-desc">Информативен портал · политика, бизнис, општество.</p>
-        <div class="mh-card-meta">
-                    <div class="mh-card-meta-row"><span class="icon">📧</span><strong>info@denesen.mk</strong></div>
-        </div>
-        <div class="mh-card-actions">
-                    <a href="mailto:info@denesen.mk?subject=Соопштение%20од%20Македонија%20—%20Систем" class="mh-card-btn">📧 Соопштение</a>
-          <a href="http://denesen.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn secondary">🌐 Веб</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="portal" data-name="markukule марк укуле колумни">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">Markukule.mk</h4>
-          <span class="mh-card-cat portal">💻 Колумни</span>
-        </div>
-        <p class="mh-card-desc">Платформа за колумни, есеи и слободни мислења.</p>
-        <div class="mh-card-meta">
-                    <div class="mh-card-meta-row"><span class="icon">📧</span><strong>info@markukule.mk</strong></div>
-        </div>
-        <div class="mh-card-actions">
-                    <a href="mailto:info@markukule.mk?subject=Соопштение%20од%20Македонија%20—%20Систем" class="mh-card-btn">📧 Соопштение</a>
-          <a href="https://markukule.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn secondary">🌐 Веб</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="portal" data-name="civilmedia civil civi медиа">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">CivilMedia.mk</h4>
-          <span class="mh-card-cat portal">💻 Граѓанско</span>
-        </div>
-        <p class="mh-card-desc">Платформа за граѓанско новинарство и анализа на општествени теми.</p>
-        <div class="mh-card-meta">
-                    <div class="mh-card-meta-row"><span class="icon">📧</span><strong>info@civilmedia.mk</strong></div>
-        </div>
-        <div class="mh-card-actions">
-                    <a href="mailto:info@civilmedia.mk?subject=Соопштение%20од%20Македонија%20—%20Систем" class="mh-card-btn">📧 Соопштение</a>
-          <a href="https://www.civilmedia.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn secondary">🌐 Веб</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="portal" data-name="ohridnews охрид охридски">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">OhridNews.com</h4>
-          <span class="mh-card-cat portal">💻 Охрид</span>
-        </div>
-        <p class="mh-card-desc">Локален портал · вести од Охрид и Охридскиот регион.</p>
-        <div class="mh-card-meta">
-                    <div class="mh-card-meta-row"><span class="icon">📧</span><strong>info@ohridnews.com</strong></div>
-        </div>
-        <div class="mh-card-actions">
-                    <a href="mailto:info@ohridnews.com?subject=Соопштение%20од%20Македонија%20—%20Систем" class="mh-card-btn">📧 Соопштение</a>
-          <a href="https://www.ohridnews.com" target="_blank" rel="noopener noreferrer" class="mh-card-btn secondary">🌐 Веб</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="portal" data-name="zhurnal журнал">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">Zhurnal.mk</h4>
-          <span class="mh-card-cat portal">💻 Локален</span>
-        </div>
-        <p class="mh-card-desc">Локален информативен портал.</p>
-        <div class="mh-card-meta">
-                    <div class="mh-card-meta-row"><span class="icon">📧</span><strong>info@zhurnal.mk</strong></div>
-        </div>
-        <div class="mh-card-actions">
-                    <a href="mailto:info@zhurnal.mk?subject=Соопштение%20од%20Македонија%20—%20Систем" class="mh-card-btn">📧 Соопштение</a>
-          <a href="https://zhurnal.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn secondary">🌐 Веб</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="portal" data-name="bitolanews битола битолски">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">BitolaNews.mk</h4>
-          <span class="mh-card-cat portal">💻 Битола</span>
-        </div>
-        <p class="mh-card-desc">Локален портал · вести од Битола и Битолскиот регион.</p>
-        <div class="mh-card-meta">
-                    <div class="mh-card-meta-row"><span class="icon">📧</span><strong>info@bitolanews.mk</strong></div>
-        </div>
-        <div class="mh-card-actions">
-                    <a href="mailto:info@bitolanews.mk?subject=Соопштение%20од%20Македонија%20—%20Систем" class="mh-card-btn">📧 Соопштение</a>
-          <a href="https://www.bitolanews.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn secondary">🌐 Веб</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="portal" data-name="gostivar gostivarpress гостивар">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">GostivarPress.mk</h4>
-          <span class="mh-card-cat portal">💻 Гостивар</span>
-        </div>
-        <p class="mh-card-desc">Локален портал · вести од Гостивар и Полошкиот регион.</p>
-        <div class="mh-card-meta">
-                    <div class="mh-card-meta-row"><span class="icon">📧</span><strong>info@gostivarpress.mk</strong></div>
-        </div>
-        <div class="mh-card-actions">
-                    <a href="mailto:info@gostivarpress.mk?subject=Соопштение%20од%20Македонија%20—%20Систем" class="mh-card-btn">📧 Соопштение</a>
-          <a href="https://www.gostivarpress.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn secondary">🌐 Веб</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="agency" data-name="makfax макфакс">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">Makfax</h4>
-          <span class="mh-card-cat agency">📡 Агенција</span>
-        </div>
-        <p class="mh-card-desc">Информативна агенција · вести од Македонија и Балканот.</p>
-        <div class="mh-card-meta">
-                    <div class="mh-card-meta-row"><span class="icon">📧</span><strong>redakcija@makfax.com.mk</strong></div>
-        </div>
-        <div class="mh-card-actions">
-                    <a href="mailto:redakcija@makfax.com.mk?subject=Соопштение%20од%20Македонија%20—%20Систем" class="mh-card-btn">📧 Соопштение</a>
-          <a href="https://makfax.com.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn secondary">🌐 Веб</a>
-        </div>
-      </div>
-
-      <div class="mh-card" data-cat="radio" data-name="mof mof радио младинско">
-        <div class="mh-card-head">
-          <h4 class="mh-card-name">Радио МОФ</h4>
-          <span class="mh-card-cat radio">📻 Младинско</span>
-        </div>
-        <p class="mh-card-desc">Младинско образовно радио · важен медиум за младите и образовни прашања.</p>
-        <div class="mh-card-meta">
-                    <div class="mh-card-meta-row"><span class="icon">📧</span><strong>info@radiomof.mk</strong></div>
-        </div>
-        <div class="mh-card-actions">
-                    <a href="mailto:info@radiomof.mk?subject=Соопштение%20од%20Македонија%20—%20Систем" class="mh-card-btn">📧 Соопштение</a>
-          <a href="https://radiomof.mk" target="_blank" rel="noopener noreferrer" class="mh-card-btn secondary">🌐 Веб</a>
         </div>
       </div>
 
@@ -18527,19 +17779,13 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
         <div class="lp-share-row" id="lpShareRow" style="display:none">
           <span class="lp-share-label">📢 Сподели и помогни анкетата да расте:</span>
           <div class="lp-share-btns">
-            <button type="button" class="lp-sh facebook" data-share="facebook" title="Сподели на Facebook">📘 Facebook</button>
-            <button type="button" class="lp-sh messenger" data-share="messenger" title="Испрати преку Messenger">💙 Messenger</button>
-            <button type="button" class="lp-sh twitter" data-share="twitter" title="Сподели на X/Twitter">𝕏 X / Twitter</button>
-            <button type="button" class="lp-sh whatsapp" data-share="whatsapp" title="Сподели на WhatsApp">💬 WhatsApp</button>
-            <button type="button" class="lp-sh viber" data-share="viber" title="Сподели на Viber">📱 Viber</button>
-            <button type="button" class="lp-sh telegram" data-share="telegram" title="Сподели на Telegram">✈️ Telegram</button>
-            <button type="button" class="lp-sh signal" data-share="signal" title="Испрати преку Signal">🔐 Signal</button>
-            <button type="button" class="lp-sh discord" data-share="discord" title="Копирај за Discord">💜 Discord</button>
-            <button type="button" class="lp-sh linkedin" data-share="linkedin" title="Сподели на LinkedIn">💼 LinkedIn</button>
-            <button type="button" class="lp-sh reddit" data-share="reddit" title="Сподели на Reddit">🟠 Reddit</button>
-            <button type="button" class="lp-sh email" data-share="email" title="Испрати преку email">📧 Email</button>
-            <button type="button" class="lp-sh sms" data-share="sms" title="Испрати преку SMS">💬 SMS</button>
-            <button type="button" class="lp-sh copy" data-share="copy" title="Копирај линк">🔗 Копирај линк</button>
+            <button type="button" class="lp-sh facebook" data-share="facebook">📘 Facebook</button>
+            <button type="button" class="lp-sh twitter" data-share="twitter">𝕏 X / Twitter</button>
+            <button type="button" class="lp-sh whatsapp" data-share="whatsapp">💬 WhatsApp</button>
+            <button type="button" class="lp-sh viber" data-share="viber">📱 Viber</button>
+            <button type="button" class="lp-sh telegram" data-share="telegram">✈️ Telegram</button>
+            <button type="button" class="lp-sh linkedin" data-share="linkedin">💼 LinkedIn</button>
+            <button type="button" class="lp-sh copy" data-share="copy">🔗 Копирај линк</button>
           </div>
         </div>
       </div>
@@ -19917,7 +19163,7 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
           <div class="swot-item">
             <span class="swot-rank">7.5/10</span>
             <strong>AI и технологија</strong>
-            <p>AI стратегија до 2030 — Македонија — Систем е прва партија со конкретен план.</p>
+            <p>AI стратегија до 2030 — Македонија — Систем е првa партија со конкретен план.</p>
           </div>
           <div class="swot-item">
             <span class="swot-rank">7.2/10</span>
@@ -20341,7 +19587,7 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
         </div>
         <div class="qc-slide">
           <blockquote>Македонија може да биде голема ако идеите ги претвори во алатки, алатките во приход, а институциите во сервис.</blockquote>
-          <cite>— Манифест · Основна порака</cite>
+          <cite>— Манифест · Оснoвна порака</cite>
         </div>
         <div class="qc-slide">
           <blockquote>Не ветуваме магија. Градиме систем што не зависи од една личност, една партија или еден циклус.</blockquote>
@@ -20746,7 +19992,7 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
         <span class="topic-chip">Животна средина (112)</span>
         <span class="topic-chip">Култура (67)</span>
         <span class="topic-chip">Спорт (45)</span>
-        <span class="topic-chip">Село (38)</span>
+        <span class="topic-chip">Селo (38)</span>
         <span class="topic-chip">Енергија (23)</span>
       </div>
     </div>
@@ -20986,7 +20232,7 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
       <button data-q="дронови">🛸 Дронови</button>
       <button data-q="црм">📋 ЦРМ</button>
       <button data-q="медиуми">📡 Медиуми</button>
-      
+      <button data-q="paragraf">⚖️ Paragraf.mk</button>
       <button data-q="упатство">📋 Упатство</button>
       <button data-q="1000 основачи">⚡ 1,000 основачи</button>
       <button data-q="нотар">⚖️ Нотар</button>
@@ -21957,7 +21203,7 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
       'ind.c8.sub': 'Бесцаринска зона на аеродром · 0% данок · 1% за Македонија',
       'ind.c9.tag': 'Природни ресурси',
       'ind.c9.title': 'Македонски Рудни Богатства',
-      'ind.c9.sub': 'Алшар · Иловица-Штука · Казандол · одговорно рударство',
+      'ind.c9.sub': 'Илoвица-Штука · Кр. Паланка · Алшар · Бучим · Саса',
       'ffz.label': 'Шампион #8 · Глобален финансиски центар',
       'ffz.title': 'Скопскиот аеродром како <em>финансиски магнет на светот</em>.',
       'mn.label': 'Шампион #9 · Македонски рудни богатства',
@@ -21987,7 +21233,7 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
       'mh.tag': '📢 За идна работа со печатени и електронски медиуми',
       'mh.s1': 'Медиуми',
       'mh.s2': 'Категории',
-      'mh.s3': 'Дофат публика',
+      'mh.s3': 'Дофaт публика',
       'mh.s4': 'Соопштение до сите',
       'mh.f.all': 'Сите',
       'mh.f.tv': 'ТВ',
@@ -21996,7 +21242,6 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
       'mh.f.print': 'Печат',
       'mh.f.agency': 'Агенции',
       'mh.f.diaspora': 'Дијаспора',
-      'mh.f.podcast': 'Подкасти',
       'mh.kit.h': '⚠️ Сегашен статус:',
       'mh.comp.h': 'Композитор за соопштенија до јавност',
     },
@@ -22853,7 +22098,6 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
       'mh.f.print': 'Print',
       'mh.f.agency': 'Agencies',
       'mh.f.diaspora': 'Diaspora',
-      'mh.f.podcast': 'Podcasts',
       'mh.kit.h': '⚠️ Current status:',
       'mh.comp.h': 'Press release composer',
     },
@@ -23710,7 +22954,6 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
       'mh.f.print': 'Shtypi',
       'mh.f.agency': 'Agjencite',
       'mh.f.diaspora': 'Diaspora',
-      'mh.f.podcast': 'Podcasts',
       'mh.kit.h': '⚠️ Statusi aktual:',
       'mh.comp.h': 'Kompozues per njoftime per publikun',
     },
@@ -24512,7 +23755,7 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
       'dnp.note': '💡 Поред 87 регистрованих нотара — Paragraf.mk нуди интегрисано решење.',
       'pg.tag': 'Овлашћен правни партнер',
       'pg.h': 'Paragraf.mk + Адв. Стоjанкиќ — <em>правна гаранција</em>',
-      'pg.d': 'Свака изјава је правно проверена од LexAI пре овере.',
+      'pg.d': 'Свака изјава је правно проверена од LexAI пре оверe.',
       'pg.seal': 'Paragraf.mk верификовано',
       'pg.guide.t': 'Правна предвалидација (бесплатно)',
       'pg.guide.d': 'Paragraf.mk вам ради бесплатан правни преглед.',
@@ -24528,7 +23771,7 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
       'ind.c8.sub': 'Слободна зона на аеродрому · 0% порез · 1% за Македонију',
       'ind.c9.tag': 'Природни ресурси',
       'ind.c9.title': 'Македонска Рудна Богатства',
-      'ind.c9.sub': 'Алшар · Иловица-Штука · Казандол · одговорно рударство',
+      'ind.c9.sub': 'Иловица-Штука · Кр. Паланка · Алшар · Бучим · Саса',
       'ffz.label': 'Шампион #8 · Глобални финансијски центар',
       'ffz.title': 'Скопски аеродром као <em>финансијски магнет</em>.',
       'mn.label': 'Шампион #9 · Рудна богатства',
@@ -24567,7 +23810,6 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
       'mh.f.print': 'Штампа',
       'mh.f.agency': 'Агенције',
       'mh.f.diaspora': 'Дијаспора',
-      'mh.f.podcast': 'Подкасти',
       'mh.kit.h': '⚠️ Тренутни статус:',
       'mh.comp.h': 'Композитор за саопштења',
     },
@@ -25424,7 +24666,6 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
       'mh.f.print': 'Print',
       'mh.f.agency': 'Agenturen',
       'mh.f.diaspora': 'Diaspora',
-      'mh.f.podcast': 'Podcasts',
       'mh.kit.h': '⚠️ Aktueller Status:',
       'mh.comp.h': 'Pressemitteilungs-Composer',
     }
@@ -26556,17 +25797,19 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
     robotika_roadmap: `<b>🗺️ Robotika Macedonia · Roadmap 2026–2030</b><br><br><b>Q3 2026:</b> JV регистрација "Robotika Macedonia DOOEL" во ТИРЗ Прилеп<br><b>Q1–Q2 2027:</b> Прв R&D центар + 100 инженери<br><b>Q4 2027:</b> Прв македонски робот „Vardar-1" (заварувачки, 6-axis, €55K)<br><b>2028:</b> Втора фабрика Скопје 2 (медицински) + трета Битола (агро). ЕУ извоз<br><b>2029:</b> Сервисни роботи + AI · 3,000 вработени · Балкан пазар<br><b>2030:</b> Топ 5 во ЕУ · 5,500 места · €450M инвестиција · 8,000 роботи годишно<br><br>${link('#robotika-macedonia', 'Види детален план')}`,
 
     robotika_workforce: `<b>👥 5,500 работни места во Robotika · Распределба</b><br><br><b>По функција:</b><br>• 🔧 1,800 инженери<br>• 🏭 2,200 техничари/оператори<br>• 🎓 500 R&D истражувачи<br>• 🛠️ 400 сервис<br>• 📊 350 менаџмент<br>• 🚚 250 логистика<br><br><b>Откаде:</b><br>• 1,200 МФ Скопје нови дипломирани<br>• 800 други мак. универзитети<br>• 1,500 дијаспорски инженери (враќање!)<br>• 1,200 reskilling (текстил → робот)<br>• 300 странски експерти<br>• 500 млади со 6-мес. обука<br><br>${link('#robotika-macedonia', 'Аплицирај за работа')}`,
-    guide_steps: `<b>📋 Упатство по чекори · 3 патишта</b><br><br>Имаш <b>3 различни патишта</b> зависно каде се наоѓаш:<br><br>🇲🇰 <b>Македонија</b> — 30 мин · 150 ден. · 5 чекори<br>1. Подготви документи (ЛК, ЕМБГ)<br>2. Пополни форма<br>3. Преземи PDF изјава<br>4. Кај нотар (физички или дигитален)<br>5. Прати скен<br><br>🇪🇺 <b>ЕУ дијаспора</b> — 25 мин · €30 · 6 чекори<br>1. Провери го твојот еИД (Personalausweis, SPID, BankID, итн.)<br>2. Пополни форма<br>3. Резервирај дигитален нотар<br>4. Видео-сесија (15 мин)<br>5. Преземи документ<br>6. Готово!<br><br>🌍 <b>Прекуокеан дијаспора</b> (САД, Канада, Австралија) — 1–2 недели · ~$80 · 7 чекори<br>• Опција А: Македонска амбасада<br>• Опција Б: Локален нотар + Hague апостил<br><br>${link('#guide', 'Види детално упатство')}`,    paragraf_member: `<b>⚖️ Заверка на изјава преку Paragraf.mk</b><br><br>М-С има <b>стратешко партнерство</b> со <a href="https://paragraf.mk" target="_blank" style="color:var(--gold-soft)">Paragraf.mk</a> — водечка македонска LexAI правна платформа.<br><br><b>Адв. Стојанкиќ</b> е именуван овластен правен партнер за заверка на изјави за основачи.<br><br>📋 Како функционира:<br>1. Оди на <b>paragraf.mk</b> и регистрирај се (бесплатна основна регистрација)<br>2. Внеси ги твоите податоци (ЕМБГ, ЛК, адреса)<br>3. LexAI ја генерира изјавата за основач со <b>пред-валидирани правни клаузули</b><br>4. Видео-сесија со Адв. Стојанкиќ или назначен нотар (15 мин)<br>5. Електронски потпис со полна правна валидност (ЗЕДЕИДУ + eIDAS)<br>6. PDF се испраќа на твоjа е-пошта и автоматски на М-С<br><br>✅ Предности:<br>• <b>15 минути</b> вкупно (наспроти 1-2 недели традиционално)<br>• <b>Од било каде во светот</b> (за дијаспора особено важно)<br>• <b>5 јазици</b> (мк, ен, ал, ср, де)<br>• <b>GDPR · EU хостинг</b><br>• <b>LexAI верификација</b> на сите правни клаузули<br>• <b>Полна правна валидност</b> согласно член 53б Закон за нотарите<br><br>📍 ул. Фрањо Клуз 3, Скопје<br>📞 (+389) 77 883 533<br>📧 info@paragraf.mk<br>📧 legal@makedonijasistem.mk (за М-С прашања)<br><br>${link('#founders-drive', 'Започни регистрација')}`,
+    guide_steps: `<b>📋 Упатство по чекори · 3 патишта</b><br><br>Имаш <b>3 различни патишта</b> зависно каде се наоѓаш:<br><br>🇲🇰 <b>Македонија</b> — 30 мин · 150 ден. · 5 чекори<br>1. Подготви документи (ЛК, ЕМБГ)<br>2. Пополни форма<br>3. Преземи PDF изјава<br>4. Кај нотар (физички или дигитален)<br>5. Прати скен<br><br>🇪🇺 <b>ЕУ дијаспора</b> — 25 мин · €30 · 6 чекори<br>1. Провери го твојот еИД (Personalausweis, SPID, BankID, итн.)<br>2. Пополни форма<br>3. Резервирај дигитален нотар<br>4. Видео-сесија (15 мин)<br>5. Преземи документ<br>6. Готово!<br><br>🌍 <b>Прекуокеан дијаспора</b> (САД, Канада, Австралија) — 1–2 недели · ~$80 · 7 чекори<br>• Опција А: Македонска амбасада<br>• Опција Б: Локален нотар + Hague апостил<br><br>${link('#guide', 'Види детално упатство')}`,
+    paragraf: `<b>⚖️ Paragraf.mk · Правен AI партнер</b> · <a href="https://paragraf.mk" target="_blank" style="color:var(--gold-soft)">paragraf.mk</a><br><br>Стратешки правен партнер на М-С — водечка македонска LexAI платформа.<br><br>📊 Што нудат:<br>• <b>LexAI</b> — AI правен асистент обучен на македонско право<br>• <b>Генератор на документи</b> — договори, поднесоци, обрасци<br>• <b>Предвидувач на исход и ризик</b> — ML модели на судска пракса<br>• <b>5 јазици</b> · GDPR · EU хостинг<br><br>🤝 Улога во М-С:<br>• <b>Адв. Стоjанкиќ</b> — основачки правен консултант<br>• Целосна правна инфраструктура за партнерства<br>• 24-часовен правен преглед за инвеститори (наспроти 2-4 недели традиционално)<br>• 60% побрз due diligence за странски партнери<br>• Compliance dashboard за сите 7 шампиони<br><br>📍 ул. Фрањо Клуз 3, Скопје<br>📞 (+389) 77 883 533<br>📧 info@paragraf.mk<br><br><i>„Странските инвеститори имаат именуван правен партнер од прв ден — не анонимна канцеларија."</i><br><br>${link('#party-networking', 'Контактирај правен тим')}`,
+    paragraf_member: `<b>⚖️ Заверка на изјава преку Paragraf.mk</b><br><br>М-С има <b>стратешко партнерство</b> со <a href="https://paragraf.mk" target="_blank" style="color:var(--gold-soft)">Paragraf.mk</a> — водечка македонска LexAI правна платформа.<br><br><b>Адв. Стојанкиќ</b> е именуван овластен правен партнер за заверка на изјави за основачи.<br><br>📋 Како функционира:<br>1. Оди на <b>paragraf.mk</b> и регистрирај се (бесплатна основна регистрација)<br>2. Внеси ги твоите податоци (ЕМБГ, ЛК, адреса)<br>3. LexAI ја генерира изјавата за основач со <b>пред-валидирани правни клаузули</b><br>4. Видео-сесија со Адв. Стојанкиќ или назначен нотар (15 мин)<br>5. Електронски потпис со полна правна валидност (ЗЕДЕИДУ + eIDAS)<br>6. PDF се испраќа на твоjа е-пошта и автоматски на М-С<br><br>✅ Предности:<br>• <b>15 минути</b> вкупно (наспроти 1-2 недели традиционално)<br>• <b>Од било каде во светот</b> (за дијаспора особено важно)<br>• <b>5 јазици</b> (мк, ен, ал, ср, де)<br>• <b>GDPR · EU хостинг</b><br>• <b>LexAI верификација</b> на сите правни клаузули<br>• <b>Полна правна валидност</b> согласно член 53б Закон за нотарите<br><br>📍 ул. Фрањо Клуз 3, Скопје<br>📞 (+389) 77 883 533<br>📧 info@paragraf.mk<br>📧 legal@makedonijasistem.mk (за М-С прашања)<br><br>${link('#founders-drive', 'Започни регистрација')}`,
     financial_hub: `<b>✈️ Скопје Глобален Финансиски Хаб · Шампион #8</b><br><br>Стратешка визија: <b>50+ светски финансиски магнати</b> се сместуваат во <b>бесцаринската зона на Меѓународниот аеродром Скопје</b>.<br><br>📊 Win-win формула:<br>• <b>0% корпоративен данок</b> за нив<br>• <b>1% од приходите</b> за Македонија<br>• Цел: €500M+ годишен приход за РСМ<br><br>💼 Што добиваат магнатите:<br>• 0% корп. данок · 0% ДДВ<br>• Аеродром 24/7 на 100m<br>• EU/CEFTA пристап<br>• 4-часовна регистрација<br>• Луксузни канцеларии и хотел<br><br>🇲🇰 Што добива Македонија:<br>• <b>€500M+ годишно</b> (1% revenue share)<br>• 5,000+ високотехнолошки места<br>• Глобален бренд: „Дубаи на Балкан"<br>• €40M имотни приходи годишно<br>• €80M услуги бизнис<br><br>🌐 Споредба:<br>• 🇦🇪 Дубаи DIFC: 0% (50 год.)<br>• 🇸🇬 Сингапур: 17%<br>• 🇲🇺 Мауритиус: 3%<br>• 🇲🇰 <b>Скопје: 0% + 1% revenue share</b> (единствено!)<br><br>${link('#financial-hub', 'Види детали')}`,
     
-    mining_resources: `<b>⛏️ Македонски Рудни Богатства · Шампион #9</b><br><br>Македонија има <b>светски значајни рудни наоѓалишта</b>. До сега експлоатирани со само 0.2% од GDP за нас. Со нашиот модел: <b>4-6% од GDP!</b><br><br>🎯 4 темелни принципи:<br>1. 🇲🇰 <b>≥51% домашно сопствеништво</b> — здружување на македонски компании<br>2. 🌿 <b>EBRD еколошки стандарди</b> + Equator Principles<br>3. 🏥 <b>30-год здравствена гаранција</b> за локалните жители<br>4. 💧 <b>24/7 хидрогеолошки мониторинг</b><br><br>📍 8 стратешки наоѓалишта:<br>• <b>Алшар</b> (Кавадарци) — УНИКАТ во светот: Tl-As-Sb-Au, ненасипан потенцијал<br>• <b>Иловица-Штука</b> (Струмица) — Cu-Au, спорна концесија, бара локална согласност<br>• <b>Казандол</b> (Валандово) — Cu катоден, договор раскинат 2018, бара нов модел<br><br><i>Активни рудници во РСМ кои не се предмет на нашата стратегија:</i><br>• Бучим, Злетово, Саса, Боров Дол, Тораница (преку БулМак) — веќе оперативни, нашата позиција: ≥51% домашно сопствеништво + еколошки стандарди<br><br>🤝 <b>Општествен договор:</b> Никој рудник без локален референдум >50% „за". Ако „против" — нема рудник. Така нема протести.<br><br>${link('#mining-resources', 'Види ги наоѓалиштата')}`,
+    mining_resources: `<b>⛏️ Македонски Рудни Богатства · Шампион #9</b><br><br>Македонија има <b>светски значајни рудни наоѓалишта</b>. До сега експлоатирани со само 0.2% од GDP за нас. Со нашиот модел: <b>4-6% од GDP!</b><br><br>🎯 4 темелни принципи:<br>1. 🇲🇰 <b>≥51% домашно сопствеништво</b> — здружување на македонски компании<br>2. 🌿 <b>EBRD еколошки стандарди</b> + Equator Principles<br>3. 🏥 <b>30-год здравствена гаранција</b> за локалните жители<br>4. 💧 <b>24/7 хидрогеолошки мониторинг</b><br><br>📍 8 стратешки наоѓалишта:<br>• <b>Алшар</b> (Кавадарци) — УНИКАТ во светот: Tl-As-Sb-Au<br>• <b>Илoвица-Штука</b> (Струмица) — Cu-Au, NPV $513M, 30-год концесија<br>• <b>Кр. Паланка</b> — Sb-Au-Ag, US-backed €5M<br>• <b>Бучим</b> (Радовиш) — активен Cu-Au<br>• <b>Саса</b> (Мак. Каменица) — активен Pb-Zn-Ag<br>• <b>Тoраница</b> — Pb-Zn реактивирање<br>• <b>Злетово</b> (Пробиштип) — активен Pb-Zn<br>• <b>Боров Дол</b> (Радовиш) — Cu развој 2029<br><br>🤝 <b>Општествен договор:</b> Никој рудник без локален референдум >50% „за". Ако „против" — нема рудник. Така нема протести.<br><br>${link('#mining-resources', 'Види ги наоѓалиштата')}`,
     
-    allchar: `<b>💎 Алшар (Allchar) · единствено наоѓалиште во светот</b><br><br>📍 Кавадарци · Ржаново<br><br>Алшар е <b>уникатно наоѓалиште</b> на:<br>• <b>Tl</b> талиум<br>• <b>As</b> арсен<br>• <b>Sb</b> антимон<br>• <b>Au</b> злато<br><br>🔬 Стратешко значење:<br>• Минералот <b>лорандит</b> (TlAsS₂) се користи за <b>детекција на неутрина</b> од сонцето<br>• Само наоѓалиште во светот за научни истражувања на овој комплекс<br>• Стратешко за NASA, CERN, и неутрино физика<br><br>🌿 М-С пристап:<br>• Не масовна експлоатација (ризик за уникатноста)<br>• Селективна еколошка експлоатација<br>• Партнерство со меѓународни истражувачки центри<br>• Локална вработеност + здравствена гаранција<br><br>${link('#mining-resources', 'Види детали')}`,
+    allchar: `<b>💎 Алшар (Allchar) · единствено наоѓалиште во светот</b><br><br>📍 Кавадарци · Ржaново<br><br>Алшар е <b>уникатно наоѓалиште</b> на:<br>• <b>Tl</b> талиум<br>• <b>As</b> арсен<br>• <b>Sb</b> антимон<br>• <b>Au</b> злато<br><br>🔬 Стратешко значење:<br>• Минералот <b>лорандит</b> (TlAsS₂) се користи за <b>детекција на неутрина</b> од сонцето<br>• Само наоѓалиште во светот за научни истражувања на овој комплекс<br>• Стратешко за NASA, CERN, и неутрино физика<br><br>🌿 М-С пристап:<br>• Не масовна експлоатација (ризик за уникатноста)<br>• Селективна еколошка експлоатација<br>• Партнерство со меѓународни истражувачки центри<br>• Локална вработеност + здравствена гаранција<br><br>${link('#mining-resources', 'Види детали')}`,
     
-    ilovica: `<b>⛏️ Иловица-Штука · Cu-Au наоѓалиште</b><br><br>📍 Струмица · 20 km<br><br>📊 Клучни параметри:<br>• <b>NPV $513 милиони</b> (по даноци)<br>• <b>IRR 19.8%</b><br>• <b>30-годишна концесија</b> за експлоатација<br>• 10 Mtpa bulk-mining<br>• Бакар + злато<br><br>⚖️ Правен статус:<br>• Одобрен EIA (Environmental Impact Assessment)<br>• EBRD Performance Requirements<br>• Equator Principle compliance<br><br>🌿 М-С пристап:<br>• ≥51% домашно сопствеништво<br>• Hidrogeolошки мониторинг 24/7<br>• Реставрација на земјиштето во план<br>• Здравствена гаранција за 80,000 земјоделци во регионот<br>• <b>ЛОКАЛЕН РЕФЕРЕНДУМ</b> пред почеток<br><br>${link('#mining-resources', 'Види детали')}`,
+    ilovica: `<b>⛏️ Илoвица-Штука · Cu-Au наоѓалиште</b><br><br>📍 Струмица · 20 km<br><br>📊 Клучни параметри:<br>• <b>NPV $513 милиони</b> (по даноци)<br>• <b>IRR 19.8%</b><br>• <b>30-годишна концесија</b> за експлоатација<br>• 10 Mtpa bulk-mining<br>• Бакар + злато<br><br>⚖️ Правен статус:<br>• Одобрен EIA (Environmental Impact Assessment)<br>• EBRD Performance Requirements<br>• Equator Principle compliance<br><br>🌿 М-С пристап:<br>• ≥51% домашно сопствеништво<br>• Hidrogeolошки мониторинг 24/7<br>• Реставрација на земјиштето во план<br>• Здравствена гаранција за 80,000 земјоделци во регионот<br>• <b>ЛОКАЛЕН РЕФЕРЕНДУМ</b> пред почеток<br><br>${link('#mining-resources', 'Види детали')}`,
     mk_drones: `<b>🛸 MK-Drones · Македонски Дронови · Шампион #10</b><br><br>Повеќенамечно производство на <b>беспилотни летала</b> за 5+ клучни сектори.<br><br>📊 Клучни бројки:<br>• <b>€1.2B</b> инвестиции<br>• <b>3,500</b> работни места<br>• <b>15,000 дронови/година</b> до 2030<br>• <b>≥51%</b> македонско сопствеништво<br><br>🎯 6 модели за 6 сектори:<br>• 🌾 <b>Берач</b> (аграр) — RTK GPS, NDVI, спрејер<br>• 📦 <b>Курир</b> (логистика) — 10kg, 60km, cold-chain<br>• 📺 <b>Камера</b> (TV) — 8K, gimbal, live 5G<br>• 🏗️ <b>Инспектор</b> (инфра) — Thermal, LiDAR<br>• 🚨 <b>Стража</b> (безбедност) — night vision, AED<br>• 📐 <b>Мапер</b> (геодезија) — photogrammetry, 3D<br><br>🤝 Здружен МК конзорциум:<br>• Микросам Прилеп — композитни шасии<br>• МФ УКИМ Скопје — R&D, автоконтрола<br>• ЗИМ Холдинг — метални компоненти<br>• Конти Хидропласт — пластика<br>• EVN — електроника, батерии<br>• Тиквеш + АРМ — тест полиго н<br>• 25+ МСП — делови, сервис<br>• Дијаспора — капитал, пазари<br><br>🤖 <b>Синергија со Robotika Macedonia:</b> иста АИ платформа, контрола, батерии = 50% помала R&D цена.<br><br>${link('#drones-macedonia', 'Види детали')}`,
     crm: `<b>📋 ЦРМ · Централен регистар на РСМ</b> · <a href="https://www.crm.com.mk/" target="_blank" style="color:#5fce7e;font-weight:700">crm.com.mk</a><br><br><span style="color:#5fce7e">🟢 Институција во процес на пристап — без потпишан договор сè уште</span><br><br>📊 Што е ЦРМ:<br>Централниот регистар е клучната институција за <b>регистрација на правни субјекти во Македонија</b>:<br>• Политички партии (член 14 од Закон за политички партии)<br>• Трговски друштва (за индустриските шампиони)<br>• Здруженија и фондации<br>• Регистар на општини и буџетски корисници<br><br>🎯 Зошто е важна за М-С:<br>• По собирање на <b>1,000 заверени основачи</b>, поднесокот за регистрација на партија се поднесува тука<br>• Сите 80+1 општини се регистрирани тука<br>• Сите 10 индустриски шампиони ќе бидат регистрирани тука како ДООЕЛ<br><br>📌 Сегашен статус:<br>Македонија — Систем е во <b>процес на пристап</b> до ЦРМ. <b>Договор за соработка не е сè уште потпишан</b> — затоа иконата е зелена (статус: pending).<br><br>📞 Контакт: види <a href="https://www.crm.com.mk/" target="_blank" style="color:#5fce7e;font-weight:700">crm.com.mk</a><br><br>${link('#institutional-framework', 'Види институционална рамка')}`,
-    media_hub: `<b>📡 Медиумски Хаб · Press &amp; PR</b><br><br>База на сите <b>79+ македонски медиуми и подкасти</b> за идна соработка и испраќање соопштенија.<br><br>📊 Категории:<br>• 📺 <b>10 ТВ</b>: МРТ, Sitel, Канал 5, Телма, Алсат, Алфа, 24Vesti, Sky, A1on, Klan<br>• 📻 <b>7 Радио</b>: МРА 1/2/3, Antenna 5, Канал 77, Metropolis, City Radio<br>• 💻 <b>14 Портали</b>: Republika, Slobodenpecat, Vecer, Faktor, Plusinfo, Kurir, A1on, DW, RFE/RL и др.<br>• 📰 <b>5 Печат</b>: Vest, Слободен Печат, Нова Македонија, Лице в Лице, Koha<br>• 📡 <b>3 Агенции</b>: МИА (државна), Meta.mk, BalkanInsight (BIRN)<br>• 🌍 <b>3 Дијаспора</b>: САД, Австралија, Канада<br><br>🎯 Функции:<br>• <b>Еден клик</b> до соопштение за цела категорија (BCC)<br>• Индивидуално контактирање секој медиум<br>• Филтрирање по категорија<br>• Барање по име<br>• Копирање сите email адреси<br><br>⚠️ <b>Сегашен статус:</b> Базата е <b>подготвена за идна употреба</b>. Сите контакти се <b>јавно достапни</b>. М-С ќе започне директна комуникација по официјална регистрација.<br><br>${link('#media-hub', 'Види ја цела база')}`,
+    media_hub: `<b>📡 Медиумски Хаб · Press &amp; PR</b><br><br>База на сите <b>42+ македонски медиуми</b> за идна соработка и испраќање соопштенија.<br><br>📊 Категории:<br>• 📺 <b>10 ТВ</b>: МРТ, Sitel, Канал 5, Телма, Алсат, Алфа, 24Vesti, Sky, A1on, Klan<br>• 📻 <b>7 Радио</b>: МРА 1/2/3, Antenna 5, Канал 77, Metropolis, City Radio<br>• 💻 <b>14 Портали</b>: Republika, Slobodenpecat, Vecer, Faktor, Plusinfo, Kurir, A1on, DW, RFE/RL и др.<br>• 📰 <b>5 Печат</b>: Vest, Слободен Печат, Нова Македонија, Лице в Лице, Koha<br>• 📡 <b>3 Агенции</b>: МИА (државна), Meta.mk, BalkanInsight (BIRN)<br>• 🌍 <b>3 Дијаспора</b>: САД, Австралија, Канада<br><br>🎯 Функции:<br>• <b>Еден клик</b> до соопштение за цела категорија (BCC)<br>• Индивидуално контактирање секој медиум<br>• Филтрирање по категорија<br>• Барање по име<br>• Копирање сите email адреси<br><br>⚠️ <b>Сегашен статус:</b> Базата е <b>подготвена за идна употреба</b>. Сите контакти се <b>јавно достапни</b>. М-С ќе започне директна комуникација по официјална регистрација.<br><br>${link('#media-hub', 'Види ја цела база')}`,
 
 
 
@@ -26597,9 +25840,13 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
     { test: /(дрон|drone|беспилот|uav|aerial|летало|орел|курир.*дрон|камера.*дрон|агро.*дрон|tv.*drone|spray.*drone|television.*drone|mapping.*drone|inspect.*drone)/, fn: () => KB.mk_drones },
 
     { test: /(финансиск.*хаб|финансиск.*магнат|free.*financial|ffz|бесцаринск|аеродром.*финанс|skopje.*airport.*free|0.*данок.*1.*процент|dubai.*model|каjман|mauritius|skopje.*tax.*free)/, fn: () => KB.financial_hub },
-    { test: /(рудник|рудни.*богатств|mining|мината|naoгaлишта|иловица|штука|алшар|казандол|критичн.*минерал|metals|copper|gold|antimony|медни.*рудни|злато.*рудник)/, fn: () => KB.mining_resources },
-    { test: /(алшар|allchar|allchar|талиум|thallium|неутрин.*детектор|лорандит|единствен.*рудник|unique.*mine|кавадарц.*рудник|tl.*as.*sb.*au)/, fn: () => KB.allchar },
-    { test: /(иловица|ilovica|штука|stuka|штука.*иловица|струмиц.*рудник|euromax|николу.*копер.*злато|cu.*au.*deposit)/, fn: () => KB.ilovica },    { test: /(paragraf|paragraph|правен.*ai|lexai|lex.*ai|stojan|стоjанк|стојанк|правен.*партнер|правна.*инфра|правна.*ai)/, fn: () => KB.paragraf },
+    { test: /(рудник|рудни.*богатств|mining|мината|naoгaлишта|илoвица|штука|кр.*паланк|саса|бучим|toраниц|зетово|боров.*дол|критичн.*минерал|metals|copper|gold|antimony|медни.*рудни|злато.*рудник)/, fn: () => KB.mining_resources },
+    { test: /(алшар|allchar|allchar|тaлиум|thallium|неутрин.*детектор|лорандит|единствен.*рудник|unique.*mine|кавадарц.*рудник|tl.*as.*sb.*au)/, fn: () => KB.allchar },
+    { test: /(илoвица|ilovica|штука|stuka|штука.*ілoвица|струмиц.*рудник|euromax|николу.*копер.*злато|cu.*au.*deposit)/, fn: () => KB.ilovica },
+
+    { test: /(заверк.*paragraf|paragraf.*заверк|stojan.*заверк|стојанк.*заверк|paragraf.*член|paragraf.*основач|стрo[jј]анк.*парт)/, fn: () => KB.paragraf_member },
+
+    { test: /(paragraf|paragraph|правен.*ai|lexai|lex.*ai|stojan|стоjанк|стојанк|правен.*партнер|правна.*инфра|правна.*ai)/, fn: () => KB.paragraf },
 
     { test: /(упатств|како.*да.*станам|чекор.*по.*чекор|step.*by.*step|како.*функционира|guide|tutorial|инструкции|водич|како.*да.*се.*зачлен|какви.*документи|како.*процес)/, fn: () => KB.guide_steps },
 
@@ -26647,7 +25894,7 @@ html[dir="rtl"] .links.open{transform:translateX(0)}
     { test: /(skyworld|sky.*world|жичница|надземн.*транспор|monorail|junitsky|yunitsky|белорус.*транспор|string.*transport)/, fn: () => KB.skyworld },
     { test: /(тирз|tirz|индустриск.*зон|здружен.*профит|здружен.*капитал|развојн.*зон|tehnoloshk.*zon|industrial.*develop)/, fn: () => KB.tirz },
 
-    { test: /(вмрежу|networking|партнерств|партнерс|study.*visit|билатер|bilateral|мемор.*соработ|мемо.*моу|mou|размен.*млад|youth.*exchange|заедничк.*соопшт|joint.*statement|cooperation|meрге со|мрежи се со пар|connect.*part)/, fn: () => KB.networking },
+    { test: /(вмрежу|networking|партнерств|партнерс|study.*visit|билатер|bilateral|мемор.*соработ|мемо.*мoу|mou|размен.*млад|youth.*exchange|заедничк.*соопшт|joint.*statement|cooperation|meрге со|мрежи се со пар|connect.*part)/, fn: () => KB.networking },
 
     // CRM
     { test: /(crm|база на члено|members.*db|datab|подат.*члено|регистар.*члено|excel|csv.*извоз)/, fn: () => KB.crm },
@@ -28156,38 +27403,23 @@ ZA MAESTRO КАРТИЧКИ:
     lpRefresh.addEventListener('click', () => lpRender());
   }
 
-  // Share buttons — уникатен pitch со ротирачки пораки
+  // Share buttons
   function buildShareData(){
     const url = window.location.href.split('#')[0] + '#poll-tool';
     const stats = lpAgg(lpLoad());
-    const totalFormatted = lpFmt(stats.total);
-    // Ротирачки уникатни pitches (различни за секое споделување)
-    const pitches = [
-      `🇲🇰 Гласај анонимно во отворена анкета: за која партија би гласал/а? Веќе ${totalFormatted} гласови. 1 глас по уред · резултати во живо.`,
-      `🗳️ Без верификација. Без партиска агенда. Само твоето мислење. ${totalFormatted}+ Македонци веќе гласаа. Дојди и помогни — еден глас може да менува дискусија.`,
-      `📊 Како би гласал/а денес? Анонимна анкета · резултати во реално време · граѓанска инициjaтива „Македонија — Систем". Веќе ${totalFormatted} гласови.`,
-      `🇲🇰 Дијаспора, ова е твојата шанса. Гласај без оглед каде си. ${totalFormatted}+ гласови. Држава што функционира — се гради со твоj глас.`,
-      `⚖️ Ред. Закон. Одговорност. Меритократија. Која партија ги нуди овие? Гласај анонимно во отворена анкета · ${totalFormatted} гласови досега.`,
-    ];
-    const text = pitches[Math.floor(Math.random() * pitches.length)];
-    const shortText = `🇲🇰 Гласај во отворената анкета на „Македонија — Систем" · ${totalFormatted} гласови досега.`;
-    const emailSubject = '🇲🇰 Македонија — Систем · Граѓанска анкета';
-    return { url, text, shortText, emailSubject };
+    const text = `Гласај во отворената анкета на „Македонија — Систем"! Веќе ${lpFmt(stats.total)} гласови. Дојди и сподели свое мислење.`;
+    return { url, text };
   }
 
   document.querySelectorAll('.lp-sh').forEach(btn => {
     btn.addEventListener('click', () => {
       const type = btn.dataset.share;
-      const { url, text, shortText, emailSubject } = buildShareData();
+      const { url, text } = buildShareData();
       const enc = encodeURIComponent;
       let shareUrl = '';
       switch(type){
         case 'facebook':
           shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${enc(url)}&quote=${enc(text)}`;
-          break;
-        case 'messenger':
-          // Facebook Messenger без app ID — користи facebook share dialog кoj отвара Messenger
-          shareUrl = `https://www.facebook.com/dialog/send?app_id=0&link=${enc(url)}&redirect_uri=${enc(url)}`;
           break;
         case 'twitter':
           shareUrl = `https://twitter.com/intent/tweet?url=${enc(url)}&text=${enc(text)}`;
@@ -28201,36 +27433,8 @@ ZA MAESTRO КАРТИЧКИ:
         case 'telegram':
           shareUrl = `https://t.me/share/url?url=${enc(url)}&text=${enc(text)}`;
           break;
-        case 'signal':
-          // Signal нема web share API → копираме во clipboard со напомена
-          if (navigator.clipboard){
-            navigator.clipboard.writeText(text + ' ' + url).then(() => {
-              btn.textContent = '✓ Копирано! Залепи во Signal';
-              setTimeout(() => btn.textContent = '🔐 Signal', 2500);
-            });
-          }
-          return;
-        case 'discord':
-          // Discord нема share URL → копираме во clipboard
-          if (navigator.clipboard){
-            navigator.clipboard.writeText(text + '\n' + url).then(() => {
-              btn.textContent = '✓ Копирано! Залепи во Discord';
-              setTimeout(() => btn.textContent = '💜 Discord', 2500);
-            });
-          }
-          return;
         case 'linkedin':
           shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${enc(url)}`;
-          break;
-        case 'reddit':
-          shareUrl = `https://reddit.com/submit?url=${enc(url)}&title=${enc(shortText)}`;
-          break;
-        case 'email':
-          shareUrl = `mailto:?subject=${enc(emailSubject)}&body=${enc(text + '\n\n' + url)}`;
-          break;
-        case 'sms':
-          // SMS link: iOS/Android поддршка
-          shareUrl = `sms:?&body=${enc(text + ' ' + url)}`;
           break;
         case 'copy':
           if (navigator.clipboard){
@@ -28246,12 +27450,7 @@ ZA MAESTRO КАРТИЧКИ:
           return;
       }
       if (shareUrl){
-        // Email и SMS се отвoрuva како navigation, не popup
-        if (type === 'email' || type === 'sms') {
-          window.location.href = shareUrl;
-        } else {
-          window.open(shareUrl, '_blank', 'noopener,width=600,height=500');
-        }
+        window.open(shareUrl, '_blank', 'noopener,width=600,height=500');
       }
     });
   });
@@ -30464,7 +29663,7 @@ if (document.readyState === 'loading'){
   {id:'eu7', region:'europe', flag:'🇫🇮', country:'Финска', party:'Vihreät', block:'Зелено', src:'Helsingin Sanomat', src_url:'hs.fi', h:'Финските зелени предлагаат „Право на образование во старост" — бесплатно за +60', sum:'Финска ќе понуди бесплатни универзитетски курсеви за граѓани над 60 години — за да се пренасочат во нови професии.', full:'Vihreät (Финските зелени) предложија нов закон за бесплатно образование во старост. Граѓани над 60 години може да се запишат на универзитет за нови професии (програмирање, AI, обновливи извори, нега) бесплатно. Цел: да се решат недостатокот на работна сила и социјалната изолација на постарите. Парламентот гласа во јуни 2026.', tags:['Образование','Старост','Зелена политика'], mk:'Иновативна идеја релевантна за нашиот „Систем на постоечкиот образовен реформ" (Pillar #4) и „Демографската обнова" (Pillar #11).'},
   {id:'eu8', region:'europe', flag:'🇪🇺', country:'ЕУ', party:'Европска народна партија', block:'Центар-десно', src:'Politico Europe', src_url:'politico.eu', h:'ЕНП усвојува „Акциски план за дигитална трансформација на ЕУ"', sum:'18 земји членки на ЕНП се обединуваат за заедничка дигитална инфраструктура до 2030 — инспирирана од естонскиот модел.', full:'На состанокот во Брисел, ЕНП лидерите од 18 земји го усвоија акцискиот план за целосна дигитализација на јавната администрација до 2030. Планот предвидува: единствена европска дигитална идентификација (eIDAS 2.0), интероперабилни здравствени картони, дигитален потпис со правна тежина во сите 27 земји, и заеднички AI правила за државна служба.', tags:['ЕУ','Дигитализација','eIDAS','Брисел'], mk:'Директна потврда на нашата Програма за дигитализација. Македонија — Систем е спремна да ги имплементира сите 5 столбови од овој план.'},
   {id:'eu9', region:'europe', flag:'🇪🇸', country:'Шпанија', party:'Partido Popular', block:'Центар-десно', src:'El País', src_url:'elpais.com', h:'PP формира „Centro de Excelencia" за обука на млади политичари', sum:'Шпанскиот PP отвара академија за политичка обука на 2,000 млади со меритократски прием.', full:'Partido Popular ја најави „Centro de Excelencia FAES" — академија за обука на 2,000 млади политичари годишно. Прием: анонимизиран тест за компетенции, испит од 4 предмети (јавна администрација, економија, право, комуникации). Кохорти од 6 месеци, со практика во шпанските институции. Партнерства со Konrad-Adenauer и Center for American Progress.', tags:['Политичка обука','FAES','Млади'], mk:'Овој модел е директна паралела со „Junge Sistem" — нашата школа за идни лидери. Партнерството со FAES е можна тема во новата секција за вмрежување.'},
-  {id:'eu10', region:'europe', flag:'🇵🇹', country:'Португалија', party:'PSD', block:'Центар-десно', src:'Público', src_url:'publico.pt', h:'Португалија го воведе „Орзаменто Participativo" во сите 308 општини', sum:'Партиципативниот буџет сега е задолжителен на локално ниво — 5% од буџетот мора да го одобрат граѓаните.', full:'Португалскиот PSD го прошируваше моделот на партиципативен буџет (Орзамент Participativo) на сите 308 општини во земјата. Граѓаните гласаат за 5% од општинскиот буџет преку онлајн платформа и физички собранија. Топ-5 проекти во 2025: реновирање на училишта, паркови, велосипедски патеки, осветлување, центри за стари лица.', tags:['Буџет','Партиципација','Локално'], mk:'МК-Систем веќе го има партиципативниот буџет (#participatory-budget). Португалскиот модел потврдува дека функционира на национално ниво.'},
+  {id:'eu10', region:'europe', flag:'🇵🇹', country:'Португалија', party:'PSD', block:'Центар-десно', src:'Público', src_url:'publico.pt', h:'Португалија го воведе „Орзаментo Participativo" во сите 308 општини', sum:'Партиципативниот буџет сега е задолжителен на локално ниво — 5% од буџетот мора да го одобрат граѓаните.', full:'Португалскиот PSD го прошируваше моделот на партиципативен буџет (Орзамент Participativo) на сите 308 општини во земјата. Граѓаните гласаат за 5% од општинскиот буџет преку онлајн платформа и физички собранија. Топ-5 проекти во 2025: реновирање на училишта, паркови, велосипедски патеки, осветлување, центри за стари лица.', tags:['Буџет','Партиципација','Локално'], mk:'МК-Систем веќе го има партиципативниот буџет (#participatory-budget). Португалскиот модел потврдува дека функционира на национално ниво.'},
   {id:'eu11', region:'europe', flag:'🇬🇷', country:'Грција', party:'New Democracy', block:'Центар-десно', src:'Kathimerini', src_url:'ekathimerini.com', h:'Грција објавува „Гласање за дијаспора 2.0" — 600,000 досега регистрирани', sum:'New Democracy ја прошируваше можноста за гласање од странство — повеќе од 600,000 Грци во дијаспората се регистрирани.', full:'Грчката влада објави нови бројки: 612,847 Грци во дијаспората се регистрирани да гласаат на следните парламентарни избори. Најголеми регистрирани групи: 🇩🇪 132,000, 🇺🇸 98,000, 🇨🇦 67,000, 🇬🇧 54,000, 🇦🇺 41,000. Гласањето е достапно во конзулати + електронски за регистрирани со Taxisnet ID.', tags:['Дијаспора','Гласање','ДИК'], mk:'Грчкиот модел е директна референца за нашиот предлог за дијаспорско гласање во МК. „Дијаспората како национална сила" е Pillar #9.'},
   {id:'eu12', region:'europe', flag:'🇨🇭', country:'Швајцарија', party:'SVP', block:'Центар-десно', src:'Neue Zürcher Zeitung', src_url:'nzz.ch', h:'Швајцарија усвои „Граѓанска иницијатива" за климатски неутрална држава до 2040', sum:'Со 58.9% поддршка, граѓаните на Швајцарија го одобрија најамбициозниот климатски закон во Европа.', full:'На националниот референдум, 58.9% од швајцарските граѓани одобри иницијатива за климатска неутралност до 2040 (10 години пред ЕУ). Иницијативата беше предложена од граѓанска коалиција и собра 130,000 потписи. Сега е дел од Уставот. Швајцарија е првата земја во светот со уставна клима-цел.', tags:['Референдум','Клима','Уставен закон'], mk:'Швајцарскиот модел на директна демократија преку иницијативи и референдуми е во „Светски модели" (#bestpractices). Сличен пристап е дел од нашата Pillar #10 (Зелена и енергетска независност).'},
   {id:'am1', region:'america', flag:'🇺🇸', country:'САД', party:'Democratic Party', block:'Центар-лево', src:'The Washington Post', src_url:'washingtonpost.com', h:'Демократи лансираат „Project Civic" — обука на 500,000 локални координатори', sum:'DNC ја презентира најголемата теренска програма во историјата на партијата — обука за избори 2028.', full:'Democratic National Committee лансира „Project Civic" — програма за обука на 500,000 локални координатори низ САД. Партнерски со Center for American Progress и Stacey Abrams\' Fair Fight foundation. Обуките вклучуваат: ground game (теренска работа), voter registration, debate prep, social media management, dispute resolution. Цел: подготовка за избори 2028.', tags:['Ground Game','Координатори','DNC'], mk:'Stacey Abrams е една од главните инспирации за нашиот пристап на peer-to-peer регрутирање. „Project Civic" е скала на нашата „Локална мрежа од 80 + 1 општина".'},
@@ -30511,7 +29710,7 @@ if (document.readyState === 'loading'){
   {id:'mc2', region:'balkan', flag:'🇲🇰', country:'Македонија', party:'ДКСК', block:'Институција', src:'ДКСК · dksk.mk', src_url:'dksk.mk', h:'ДКСК подготвува нов годишен анти-коруписки извештај', sum:'Државната комисија за спречување корупција ги ажурира приоритетите за 2026.', full:'Државната комисија за спречување на корупцијата (ДКСК) го подготвува годишниот извештај за 2026. Нови приоритети: дигитализација на јавни тендери, заштита на укажувачи (ЗЗУ имплементација), мониторинг на конфликти на интерес кај функционерите, проверки на пораст на имот. ДКСК работи во рамки на Законот за спречување на корупцијата (Сл. весник на РСМ бр. 12/2019).', tags:['ДКСК','Антикорупција','ЗЗУ'], mk:'МК-Систем има интегрирано анонимни предлози (#anon-proposals) што е директно поврзано со ДКСК-овото работење. Партнерска институција.'},
   {id:'mc3', region:'balkan', flag:'🇲🇰', country:'Македонија', party:'ЗЕЛС', block:'Локална мрежа', src:'ЗЕЛС · zels.org.mk', src_url:'zels.org.mk', h:'ЗЕЛС го одобри новиот модел за дигитализација на локална администрација', sum:'Заедницата на единиците на локалната самоуправа предлага единствен дигитален стандард за сите 81 општини.', full:'Заедницата на единиците на локалната самоуправа (ЗЕЛС) го одобри документот „ЗЕЛС Дигитален Стандард 2030" — единствен дигитален стандард за сите 81 општини. Цели: единствена платформа за пријави на проблеми, единствена база на буџетски трошоци (javni-rashodi), и интеграција со uslugi.gov.mk. Имплементација во фази 2026–2030.', tags:['ЗЕЛС','Локална самоуправа','Дигитализација'], mk:'ЗЕЛС е партнерска институција за нашата „80 + 1 општина" мрежа. Дигитален стандард е директно врзан со нашите 12 столбови (Pillar #2).'},
   {id:'tech1', region:'europe', flag:'🇪🇺', country:'ЕУ', party:'Европска комисија', block:'Институција', src:'Politico Europe', src_url:'politico.eu', h:'ЕУ AI Act 2.0 — нови правила за AI во јавната администрација', sum:'Брисел донесе ажурирани правила за AI во јавна служба — задолжителна транспарентност и проверливост.', full:'Европската комисија усвои AI Act 2.0 — ажурирани правила за вештачка интелигенција во јавната администрација. Главни одредби: AI системи кои donesuваат административни одлуки мора да бидат „explainable" (проверливи), задолжителна човечка ревизија на одлуките, забрана на „black-box" модели за критични одлуки. Имплементација до 2027.', tags:['AI Act','ЕУ','Регулатива'], mk:'„Macedonia Pulse" и „AI sentiment" се во согласност со овие принципи. Etичка контрола е дел од нашата филозофија.'},
-  {id:'tech2', region:'asia', flag:'🇰🇷', country:'Јужна Кореја', party:'Government', block:'Институција', src:'Korea JoongAng Daily', src_url:'koreajoongangdaily.joins.com', h:'Кореа отвара „Government AI Lab" со 500 AI инженери', sum:'Кореанската влада создава најголема јавна AI лабораторија во Азија.', full:'Кореanската влада објавува: „Government AI Lab" е отворена во Сеул со 500 AI инженери. Мисија: развој на AI решенија за сите министерства, отворен код, бесплатна интеграција со јавни услуги. Прв проект: AI асистент за здравствени картони (бета фаза). Партнерства: Samsung, LG, Naver, Kakao.', tags:['AI Lab','Кореа','Open source'], mk:'Кореански модел е една од нашите главни референци. „M-S агент" може да биде open source со партнерства со домашни IT компании.'},
+  {id:'tech2', region:'asia', flag:'🇰🇷', country:'Јужна Кореја', party:'Government', block:'Институција', src:'Korea JoongAng Daily', src_url:'koreajoongangdaily.joins.com', h:'Кореа отвара „Government AI Lab" со 500 AI инженери', sum:'Корeанската влада создава најголема јавна AI лабораторија во Азија.', full:'Кореanската влада објавува: „Government AI Lab" е отворена во Сеул со 500 AI инженери. Мисија: развој на AI решенија за сите министерства, отворен код, бесплатна интеграција со јавни услуги. Прв проект: AI асистент за здравствени картони (бета фаза). Партнерства: Samsung, LG, Naver, Kakao.', tags:['AI Lab','Кореа','Open source'], mk:'Кореански модел е една од нашите главни референци. „M-S агент" може да биде open source со партнерства со домашни IT компании.'},
   {id:'green1', region:'europe', flag:'🇩🇰', country:'Данска', party:'Government', block:'Институција', src:'The Copenhagen Post', src_url:'cphpost.dk', h:'Данска ќе биде климатски неутрална до 2030 — 5 години пред ЕУ', sum:'Данската влада објавува дека целта за 2050 е поместена 20 години напред.', full:'Данската влада ја најавува нова амбициозна цел: климатска неутралност до 2030, 5 години пред ЕУ просекот и 20 години пред оригиналниот план. Мерки: 100% обновлива енергија до 2028, забрана на нови дизел/бензин возила од 2027, дрвенско-каменото градежништво како стандард. Цел: модел за сите ЕУ земји.', tags:['Клима','Енергија','Данска модел'], mk:'Pillar #10 (Зелена и енергетска независност) е една од нашите 12 столбови. Данска е лидер.'},
   {id:'ed1', region:'europe', flag:'🇫🇮', country:'Финска', party:'Government', block:'Институција', src:'Yle News', src_url:'yle.fi', h:'Финска го реформираше училишниот систем — без оценки до 12 години', sum:'Финската влада ги отстранува нумеричките оценки во основното образование.', full:'Финската влада објавува: нови образовни правила. До 12 години (6 одделение), нема нумерички оценки — само quality feedback. Цел: смалување на стрес кај учениците, фокус на развој наместо рангирање. Финска е глобално прва држава со ваков пристап. Резултати од пилот фаза: подобрена ментална здравје, повишен мотив за учење.', tags:['Образование','Финска модел','Реформа'], mk:'Pillar #4 (Образование од корен) — Финска е една од трите главни референци (заедно со Сингапур и Естонија).'}
 ];
@@ -31201,7 +30400,7 @@ LinkedIn: ${linkedin}
       'Старо Нагоричане', 'Струга', 'Струмица', 'Студеничани', 'Тетово',
       'Теарце', 'Центар', 'Центар Жупа', 'Чаир', 'Чашка', 'Чешиново-Облешево',
       'Чучер-Сандево', 'Шуто Оризари', 'Штип', 'Ѓорче Петров',
-      'Град Скопје'
+      'Грaд Скопје'
     ];
 
     const muniSelect = $('fdMuni');
