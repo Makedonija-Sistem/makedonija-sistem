@@ -1,0 +1,33 @@
+# Македонија — Систем · Robots.txt
+# https://makedonijasistem.mk
+
+User-agent: *
+Allow: /
+
+# Поврзани страници (за SEO)
+Allow: /index.html
+Allow: /legal/
+Allow: /docs/
+
+# Не се crawlа internal admin / API
+Disallow: /admin/
+Disallow: /api/private/
+
+# Sitemap
+Sitemap: https://makedonijasistem.mk/sitemap.xml
+
+# Краулинг бавно за да не оптовариме hosting (за GitHub Pages)
+Crawl-delay: 1
+
+# Специфични bot-и
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /

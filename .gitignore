@@ -1,0 +1,84 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+
+# Editors
+.vscode/
+.idea/
+*.sublime-*
+.history/
+
+# Node (за future backend)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.eslintcache
+
+# Python (за future backend)
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+venv/
+.venv/
+env/
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# Environment
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+
+# Logs
+logs/
+*.log
+
+# Cache
+.cache/
+.parcel-cache/
+
+# Coverage
+coverage/
+*.lcov
+
+# Sentry
+.sentryclirc
+
+# Local files
+*.local
+.local/
+
+# Backup files
+*.bak
+*.tmp
+~$*
+
+# Archive — disabled HTML files
+# These should never be served by GitHub Pages
+archive/*.html.disabled.bak
+archive/*.bak
+
+# Environment / secrets
+.env
+.env.local
+.env.production
+
+# Logs
+*.log
+
+# Build outputs (за идна верзија)
+dist/
+build/
+.next/
+.cache/

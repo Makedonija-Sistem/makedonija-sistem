@@ -1,0 +1,40 @@
+{
+  "name": "Македонија-Систем",
+  "short_name": "М-Систем",
+  "description": "Граѓанска, институционална и реформска платформа за модерна македонска држава",
+  "lang": "mk",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#0a1d3a",
+  "background_color": "#fdfbf5",
+  "categories": ["politics", "government", "social"],
+  "icons": [
+    {
+      "src": "assets/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Програма",
+      "short_name": "Програма",
+      "url": "/#programme"
+    },
+    {
+      "name": "Поддржувачи",
+      "short_name": "Поддршка",
+      "url": "/#founders-drive"
+    },
+    {
+      "name": "Дијаспора",
+      "short_name": "Дијаспора",
+      "url": "/#diaspora-hub"
+    }
+  ],
+  "prefer_related_applications": false
+}
