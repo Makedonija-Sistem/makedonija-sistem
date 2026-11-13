@@ -8,7 +8,7 @@
  * - Pre-cache само постоечки фајлови
  */
 
-const CACHE_NAME = 'mks-public-mvp-v0.1.0';
+const CACHE_NAME = 'mks-public-review-v0.1.3';
 const RUNTIME_CACHE = 'mks-runtime';
 
 // Pre-cache само фајлови што се сигурни дека постојат
@@ -74,7 +74,7 @@ self.addEventListener('fetch', (event) => {
         })
         .catch(() => {
           return caches.match(request).then((cached) => {
-            return cached || caches.match('/404.html') || caches.match('/');
+            return cached ? cached : caches.match('/404.html');
           });
         })
     );
