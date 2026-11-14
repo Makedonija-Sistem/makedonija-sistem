@@ -22,8 +22,10 @@ check('v0.1.3-preview' in (root/'VERSION').read_text(encoding='utf-8'),
       'content version is transparent')
 check('review/root-cutover-v0.1.6' in readme and 'DO NOT MERGE' in readme,
       'README truthfully describes PR, versions and release boundary')
-check('GitHub Pages' in privacy and 'Cloudflare' not in privacy,
-      'GitHub candidate hosting description is corrected')
+check('GitHub Pages' in privacy and 'Cloudflare Workers' in privacy
+      and 'информативен нацрт' in privacy.lower()
+      and 'не е завршена политика' in privacy.lower(),
+      'draft privacy notice truthfully identifies both GitHub Pages and Cloudflare Workers hosting')
 check((root/'archive/README_main_2026-05-11.md.disabled').exists(),
       'old README preserved')
 check((root/'archive/main-index-original-20261113.html.disabled').exists(),
