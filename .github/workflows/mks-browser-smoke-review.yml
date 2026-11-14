@@ -1,0 +1,59 @@
+name: MKS browser smoke review (NO DEPLOY)
+
+# Standalone offline-source browser review: no secrets, no Cloudflare access.
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "index.html"
+      - "404.html"
+      - "legal/**"
+      - "scripts/mks_browser_smoke.cjs"
+      - ".github/workflows/mks-browser-smoke-review.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  browser-smoke-review:
+    name: Local-only Chromium / five languages / nav / mobile (NO DEPLOY)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout review branch read-only
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Setup pinned Node runtime
+        uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          package-manager-cache: false
+      - name: Install pinned Playwright in runner temp folder
+        run: npm install --prefix /tmp/mks-browser-tools --no-save --no-audit --no-fund playwright@1.65.1
+      - name: Install isolated Chromium browser and dependencies
+        run: /tmp/mks-browser-tools/node_modules/.bin/playwright install --with-deps chromium
+      - name: Browser smoke both Cloudflare-root and GitHub-Pages-subpath locally
+        shell: bash
+        env:
+          MKS_PLAYWRIGHT_MODULE: /tmp/mks-browser-tools/node_modules/playwright
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/mks-browser-root-http.log 2>&1 &
+          root_pid=$!
+          (cd .. && python3 -m http.server 8766 --bind 127.0.0.1 > /tmp/mks-browser-subpath-http.log 2>&1) &
+          subpath_pid=$!
+          trap 'kill "$root_pid" "$subpath_pid" 2>/dev/null || true' EXIT
+          for attempt in {1..30}; do
+            if curl --fail --silent --output /dev/null http://127.0.0.1:8765/ &&
+               curl --fail --silent --output /dev/null http://127.0.0.1:8766/makedonija-sistem/; then break; fi
+            sleep 1
+          done
+          curl --fail --silent --output /dev/null http://127.0.0.1:8765/
+          curl --fail --silent --output /dev/null http://127.0.0.1:8766/makedonija-sistem/
+          node --check scripts/mks_browser_smoke.cjs
+          echo "Checking Cloudflare-style root path (LOCAL ONLY)"
+          MKS_LOCAL_URL=http://127.0.0.1:8765/ node scripts/mks_browser_smoke.cjs
+          echo "Checking GitHub Pages-style project subpath (LOCAL ONLY)"
+          MKS_LOCAL_URL=http://127.0.0.1:8766/makedonija-sistem/ node scripts/mks_browser_smoke.cjs
