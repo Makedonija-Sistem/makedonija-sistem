@@ -42,5 +42,29 @@
     "Setting a flag in this file never grants legal authority or deploy rights.",
     "No valid consent or membership is recorded by the demo interface.",
     "Separate verified legal review and a new backend implementation are required before any collection."
-  ]
+  ],
+  "diaspora_remote_process": {
+    "status": "BLOCKED_LEGAL_AND_PROVIDER_VERIFICATION",
+    "countries": [
+      "US",
+      "CA",
+      "AU"
+    ],
+    "video_call_is_legal_notarial_certification": false,
+    "remote_notarial_acceptance_confirmed": false,
+    "official_country_specific_court_acceptance_confirmed": false,
+    "approved_notary_or_consular_provider": false,
+    "appointment_scheduler_enabled": false,
+    "video_provider_enabled": false,
+    "membership_application_enabled": false,
+    "legal_controller_and_mandate_confirmed": false,
+    "official_consular_route_inclusion_confirmed": false,
+    "human_verifier_and_registrar_approved": false,
+    "proof_of_signature_acceptance_reviewed": false,
+    "enabled_registration_result": false,
+    "decision_reference": null,
+    "legal_opinion_reference": null,
+    "provider_contract_reference": null,
+    "warning": "Consultation via video is NOT notarial certification. No actual membership application, recording, document upload or enrollment is allowed."
+  }
 }
