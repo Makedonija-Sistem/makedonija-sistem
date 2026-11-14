@@ -80,6 +80,11 @@ function trackErrors(page) {
       assert.equal(await groups.first().evaluate(el => el.open),true);
       await groups.nth(1).locator('summary').click();
       assert.equal(await groups.nth(1).evaluate(el => el.open),true);
+      // The native <details> toggle event is queued; verify the settled state, not a synchronous snapshot.
+      await page.waitForFunction(() => {
+        const items = document.querySelectorAll('#navLinks details.mks-nav-group');
+        return items.length >= 2 && !items[0].open && items[1].open;
+      }, null, {timeout:3000});
       assert.equal(await groups.first().evaluate(el => el.open),false);
       const a = groups.nth(1).locator('.mks-nav-panel a').first();
       const hash = await a.getAttribute('href');
