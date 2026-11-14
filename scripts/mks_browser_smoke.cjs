@@ -101,7 +101,13 @@ function trackErrors(page) {
       for (const route of ['legal/PRIVACY.html','legal/TERMS.html']) {
         const response = await page.request.get(base+route);
         assert.equal(response.status(),200);
-        assert.match(await response.text(),/noindex/i);
+        const html = await response.text();
+        assert.match(html,/noindex/i);
+        if (route === 'legal/PRIVACY.html') {
+          assert.match(html,/GitHub Pages/);
+          assert.match(html,/Cloudflare Workers/);
+          assert.match(html,/не е завршена политика/);
+        }
       }
       assert.equal((await page.request.get(base+'unavailable-mks-check.html')).status(),404);
     });
