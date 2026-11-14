@@ -131,6 +131,30 @@ class ParticipationReviewTests(unittest.TestCase):
         self.assertEqual(WORLDSCRIPT.count("'participation.rights'"), 5)
         self.assertIn("Не е регистрирана политичка партија", PAGE)
 
+    def test_ai_advokat_is_explicit_opt_in_external_link_not_embedded_tracker(self):
+        from html import unescape
+        self.assertIn('id="ai-advokat"', PAGE)
+        self.assertIn('id="ai-advokat-heading"', PAGE)
+        link = re.search(r'<a\b[^>]*\bid="ai-advokat-launch"[^>]*>', PAGE)
+        self.assertIsNotNone(link)
+        tag = unescape(link.group(0))
+        self.assertIn('href="https://ai-advokat.github.io/#ai-advokat-chat"', tag)
+        self.assertIn('target="_blank"', tag)
+        self.assertIn('rel="noopener noreferrer"', tag)
+        self.assertIn('referrerpolicy="no-referrer"', tag)
+        self.assertIn('aria-describedby="ai-advokat-warning"', tag)
+        for path in ("legal-notice.html", "privacy-policy.html"):
+            self.assertIn('href="https://ai-advokat.github.io/' + path + '"', PAGE)
+        self.assertIn("Ниту еден избор од овој портал не се испраќа автоматски", PAGE)
+        self.assertIn("Достапноста на AI-разговорот зависи", PAGE)
+        self.assertNotRegex(PAGE, r"<(?:iframe|embed|object)\b")
+        self.assertNotIn("ai-advokat.github.io", JS)  # no auto-load or transfer from MKS JS
+        self.assertNotIn("fetch(", JS)
+        self.assertNotIn("window.open", JS)
+        for key in ("ai.eyebrow", "ai.external", "ai.intro", "ai.warning",
+                    "ai.launch", "ai.legal", "ai.privacy", "ai.disclaimer"):
+            self.assertIn('"' + key + '"', JS)
+
     def test_no_operational_claims_or_personal_identity_fields(self):
         for forbidden in ("type=\"file\"", "type=\"password\"", "type=\"tel\"",
                           "type=\"date\"", "upload-document", "membership-approved",
