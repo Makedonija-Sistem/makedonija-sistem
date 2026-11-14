@@ -1,0 +1,133 @@
+name: MKS side-by-side review (non-deploy)
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'review-preview/**'
+      - 'archive/main-index-original-20261113.html.disabled'
+      - 'docs/MKS_*'
+      - '.github/workflows/mks-side-by-side-review.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  review-only-qa:
+    name: Preserve original and validate isolated preview
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout for read-only checks
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 22 for JavaScript syntax validation
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Validate original hash and archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected='59d29dc5d4b56168eba1b6952b16c253d638d4aa'
+          actual="$(git hash-object index.html)"
+          archived="$(git hash-object archive/main-index-original-20261113.html.disabled)"
+          test "$actual" = "$expected" || { echo 'FAIL: original root index.html changed'; exit 1; }
+          test "$archived" = "$expected" || { echo 'FAIL: archive does not match original'; exit 1; }
+          echo 'PASS: original root and archive have identical expected Git blob SHA'
+
+      - name: Validate preview links, manifest, safety and JavaScript syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          import json
+          import re
+          import subprocess
+          import tempfile
+          from urllib.parse import unquote
+
+          base = Path('review-preview')
+          html = (base / 'index.html').read_text(encoding='utf-8')
+          assert html.lstrip().lower().startswith('<!doctype html>'), 'Missing DOCTYPE'
+          assert 'noindex,nofollow' in html, 'Review preview must not be indexed'
+          assert 'не е регистрирана' in html.lower(), 'Public draft status missing'
+          assert 'Disallow: /' in (base / 'robots.txt').read_text(encoding='utf-8')
+
+          required = [
+              '404.html', 'VERSION', 'manifest.json', 'sw.js',
+              'assets/icons/icon.svg', 'assets/og/og-image.png',
+              'legal/PRIVACY.html', 'legal/TERMS.html',
+          ]
+          for path in required:
+              assert (base / path).is_file(), f'Missing {path}'
+
+          manifest = json.loads((base / 'manifest.json').read_text(encoding='utf-8'))
+          assert manifest.get('start_url') == './', 'Preview start_url must be relative'
+          assert manifest.get('scope') == './', 'Preview scope must be relative'
+          for icon in manifest.get('icons', []):
+              src = icon.get('src', '')
+              assert src.startswith('./') and (base / src[2:]).is_file(), f'Missing icon: {src}'
+
+          class Audit(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.ids = set()
+                  self.hrefs = []
+                  self.scripts = []
+                  self.current_script = None
+              def handle_starttag(self, tag, attrs):
+                  a = dict(attrs)
+                  if 'id' in a:
+                      self.ids.add(a['id'])
+                  if tag == 'a' and a.get('href', '').startswith('#'):
+                      self.hrefs.append(a['href'][1:])
+                  if tag == 'script':
+                      self.current_script = {'type': a.get('type', ''), 'src': a.get('src'), 'code': ''}
+              def handle_data(self, data):
+                  if self.current_script is not None:
+                      self.current_script['code'] += data
+              def handle_endtag(self, tag):
+                  if tag == 'script' and self.current_script is not None:
+                      self.scripts.append(self.current_script)
+                      self.current_script = None
+
+          parsed = Audit()
+          parsed.feed(html)
+          broken = sorted({anchor for anchor in parsed.hrefs if anchor and unquote(anchor) not in parsed.ids})
+          assert not broken, f'Broken in-page anchor links: {broken}'
+          assert len(parsed.ids) >= 40, f'Too few section IDs: {len(parsed.ids)}'
+          assert len(parsed.hrefs) >= 30, f'Too few in-page links: {len(parsed.hrefs)}'
+
+          js_count = 0
+          with tempfile.TemporaryDirectory() as folder:
+              for index, script in enumerate(parsed.scripts):
+                  if script['src']:
+                      raise AssertionError(f'Unexpected externally loaded script: {script["src"]}')
+                  if script['type'] == 'application/ld+json':
+                      json.loads(script['code'])
+                      continue
+                  if script['type'] not in ('', 'text/javascript', 'application/javascript'):
+                      continue
+                  path = Path(folder) / f'inline_{index}.js'
+                  path.write_text(script['code'], encoding='utf-8')
+                  subprocess.run(['node', '--check', str(path)], check=True)
+                  js_count += 1
+          subprocess.run(['node', '--check', str(base / 'sw.js')], check=True)
+          assert js_count >= 10, f'Too few JavaScript scripts checked: {js_count}'
+
+          # Two separate legacy service worker registrations must remain disabled.
+          registers = list(re.finditer(r'navigator\.serviceWorker\.register\s*\(', html))
+          guard = "if (false && 'serviceWorker' in navigator"
+          assert len(registers) == 2, f'Unexpected service worker registration call count: {len(registers)}'
+          for call in registers:
+              guard_start = html.rfind(guard, 0, call.start())
+              assert 0 <= call.start() - guard_start <= 900, 'Unguarded service worker registration'
+
+          print(f'PASS: {len(parsed.ids)} IDs, {len(parsed.hrefs)} in-page links, '
+                f'{js_count} inline JS scripts, service worker kept inactive')
+          print('NOTICE: No browser, factual, legal, translation or production tests are asserted here')
+          PY
