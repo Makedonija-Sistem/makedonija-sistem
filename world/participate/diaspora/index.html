@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="mk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#0a213e">
+  <meta name="description" content="МАКЕДОНИЈА СИСТЕМ — информативен водич за граѓани во САД, Канада, Австралија и Европа. Видео-консултација и правна проверка, без активни пријави и нотарска заверка.">
+  <title>Дијаспора · правен и нотарски пат · МАКЕДОНИЈА СИСТЕМ</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main" data-t="skip">Прескокни кон содржината</a>
+  <div class="review-line" role="status" data-t="review">ИНФОРМАТИВЕН ПРОТОТИП · БЕЗ ПРИЈАВИ · БЕЗ ОНЛАЈН НОТАРСКА ЗАВЕРКА</div>
+  <header class="sitehead">
+    <div class="wrap header-content">
+      <a href="../" class="brand" id="home"><span aria-hidden="true" class="brandmark">М</span><span>МАКЕДОНИЈА — СИСТЕМ<small data-t="brand.sub">Дијаспора · правен пат</small></span></a>
+      <nav class="links" aria-label="Навигација">
+        <a href="#steps" data-t="nav.steps">Чекори</a><a href="#sources" data-t="nav.sources">Официјални извори</a><a href="#controls" data-t="nav.controls">Контроли</a>
+      </nav>
+      <div class="languages" role="group" aria-label="Language">
+        <button type="button" class="language current" data-lang="mk" aria-pressed="true">MK</button>
+        <button type="button" class="language" data-lang="en" aria-pressed="false">EN</button>
+        <button type="button" class="language" data-lang="al" aria-pressed="false">SQ</button>
+        <button type="button" class="language" data-lang="sr" aria-pressed="false">SR</button>
+        <button type="button" class="language" data-lang="de" aria-pressed="false">DE</button>
+      </div>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow" data-t="hero.kicker">ДИЈАСПОРА · ДИГИТАЛЕН ПРАВЕН ПАТ</span>
+          <h1 data-t="hero.title">Од било каде во светот. Со јасна постапка и човечка проверка.</h1>
+          <p class="lede" data-t="hero.body">Разгледај кои законски чекори треба да се потврдат за 14 држави, вклучувајќи ги САД, Канада, Австралија и европските земји. AI Адвокат помага со правни информации; видеоразговор не значи автоматска нотарска заверка или членство.</p>
+          <a href="#steps" class="primary" data-t="hero.start">Отвори го водичот ↓</a>
+        </div>
+        <div class="hero-badge" aria-hidden="true"><div class="circle circle-1"></div><div class="circle circle-2"></div><span>М</span><small>VERIFY · HUMAN GATE</small></div>
+      </div>
+    </section>
+    <section id="steps" class="main-section">
+      <div class="wrap">
+        <div class="eyebrow navy" data-t="steps.kicker">01 / ВОДИЧ ПО ДРЖАВА</div>
+        <h2 data-t="steps.title">Избери држава и вид постапка.</h2>
+        <p class="muted" data-t="steps.intro">Изборите се пресметуваат локално. Не бараме и не снимаме име, државјанство, адреса, политичко определување, документ или контакт.</p>
+        <div class="selectors">
+          <div>
+            <label for="country" data-t="form.country">Каде престојуваш?</label>
+            <select id="country">
+              <option value="us" data-t="country.us">САД</option>
+              <option value="ca" data-t="country.ca">Канада</option>
+              <option value="au" data-t="country.au">Австралија</option>
+              <option value="de" data-t="country.de">Германија</option>
+              <option value="ch" data-t="country.ch">Швајцарија</option>
+              <option value="it" data-t="country.it">Италија</option>
+              <option value="se" data-t="country.se">Шведска</option>
+              <option value="at" data-t="country.at">Австрија</option>
+              <option value="si" data-t="country.si">Словенија</option>
+              <option value="hr" data-t="country.hr">Хрватска</option>
+              <option value="rs" data-t="country.rs">Србија</option>
+              <option value="bg" data-t="country.bg">Бугарија</option>
+              <option value="gr" data-t="country.gr">Грција</option>
+              <option value="al" data-t="country.al">Албанија</option>
+            </select>
+          </div>
+          <div>
+            <label for="purpose" data-t="form.purpose">За што бараш информации?</label>
+            <select id="purpose">
+              <option value="membership" data-t="purpose.membership">Доброволно членство (идна постапка)</option>
+              <option value="founding" data-t="purpose.founding">Основачки потпис / регистрација</option>
+            </select>
+          </div>
+        </div>
+        <aside class="country-result" aria-live="polite">
+          <div class="result-label" data-t="result.title">ТВОЈОТ ИНФОРМАТИВЕН ПАТ · НЕ Е ПРИЈАВА</div>
+          <h3 id="result-country">САД</h3>
+          <p id="result-description">Потребна е посебна правна проверка.</p>
+          <p id="result-purpose"></p>
+          <a id="country-official" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer" href="https://mfa.gov.mk/mk-MK/ambasadi?region=north_america"><span data-t="result.official">Отвори ги официјалните претставништва</span> ↗</a>
+        </aside>
+
+        <section class="cost-policy" id="cost-policy" aria-labelledby="cost-policy-heading">
+          <div class="cost-head">
+            <span class="cost-kicker" data-t="cost.kicker">ПРЕДЛОЖЕН ФИНАНСИСКИ МОДЕЛ · НЕАКТИВНО</span>
+            <h3 id="cost-policy-heading" data-t="cost.title">Предлог: трошоците за постапката да ги покрива МАКЕДОНИЈА — СИСТЕМ.</h3>
+            <p data-t="cost.intro">Предлогот е граѓанинот да не плаќа за претходно одобрени, законски неопходни услуги поврзани со постапката. Организацијата би плаќала директно на овластени даватели, врз основа на документирани фактури и одобрен буџет.</p>
+          </div>
+          <ul class="cost-items" aria-labelledby="cost-policy-heading">
+            <li><span class="cost-icon" aria-hidden="true">⚖</span><span data-t="cost.ai">AI Адвокат и неопходна човечка правна проверка</span></li>
+            <li><span class="cost-icon" aria-hidden="true">✍</span><span data-t="cost.notary">Законски потребна нотарска или конзуларна заверка</span></li>
+            <li><span class="cost-icon" aria-hidden="true">◎</span><span data-t="cost.video">Видео-консултација / заверка само ако е законски призната</span></li>
+            <li><span class="cost-icon" aria-hidden="true">▣</span><span data-t="cost.admin">Нужни документи, преводи и административни заверки, кога се одобрени</span></li>
+          </ul>
+          <p class="cost-guard" data-t="cost.status">Важна граница: Ова е предложена политика, НЕ активна финансиска гаранција. Нема одобрен буџет, договорени даватели, плаќања или право на надоместување. Пред примената се потребни законит извор на средства, финансиско одобрување, документирање и Human Gate.</p>
+          <p class="cost-dues" data-t="cost.dues">Трошоците за постапката не се исто што и евентуална годишна членарина; нејзиното постоење и висина не се определуваат со овој водич.</p>
+        </section>
+
+        <div class="timeline">
+          <article class="stage">
+            <div class="step-number">01</div><div class="step-body">
+              <h3 data-t="stage.ai.title">AI Адвокат · правно истражување</h3>
+              <p data-t="stage.ai.body">Разгледај ги применливите прописи во одделниот AI Адвокат. Не испраќаме избрана држава, цел, лични податоци или текст од овој водич.</p>
+              <a class="stage-link" href="https://ai-advokat.github.io/#ai-advokat-chat" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer" id="diaspora-ai-link"><span data-t="stage.ai.open">Отвори AI Адвокат (нов таб)</span> ↗</a>
+              <p class="stage-note" data-t="stage.ai.note">AI не дава правно важечка заверка и не носи одлука за членство.</p>
+            </div>
+          </article>
+          <article class="stage">
+            <div class="step-number">02</div><div class="step-body">
+              <h3 data-t="stage.video.title">Видео-консултација · не и заверка</h3>
+              <p data-t="stage.video.body">Може да се испланира видео-разговор за правни прашања и подготовка. Далечинска нотарска заверка, идентитетска проверка и признавање на странски документи мора претходно да ги потврдат надлежните лица.</p>
+              <button type="button" class="locked" id="video-locked" disabled data-t="stage.video.locked">Видео-термин: не е поврзан со проверен давател</button>
+              <p class="stage-note" data-t="stage.video.note">Не снимаме видео, не активираме камера, микрофон, биометрија или конференциска соба.</p>
+            </div>
+          </article>
+          <article class="stage">
+            <div class="step-number">03</div><div class="step-body">
+              <h3 data-t="stage.notary.title">Нотар / конзуларен пат</h3>
+              <p data-t="stage.notary.body">Побарај писмена потврда дали е потребен потпис пред нотар, конзуларна заверка или друга постапка, и дали исправата од странство ќе се признае во Македонија.</p>
+              <div class="stage-links">
+                <a class="stage-link" href="https://mfa.gov.mk/mk-MK/konzularni-uslugi/notarski-uslugi" rel="noopener noreferrer" referrerpolicy="no-referrer" target="_blank" data-t="stage.notary.consular">Службени конзуларни заверки ↗</a>
+                <a class="stage-link" href="https://www.nkrm.org.mk/" rel="noopener noreferrer" referrerpolicy="no-referrer" target="_blank" data-t="stage.notary.chamber">Нотарска комора ↗</a>
+              </div>
+            </div>
+          </article>
+          <article class="stage">
+            <div class="step-number">04</div><div class="step-body">
+              <h3 data-t="stage.human.title">Проверка на документи и Human Gate</h3>
+              <p data-t="stage.human.body">Само одговорно овластено лице, по проверка на законскиот статус, подобноста, документите, потписот и правната основа, може да постапи по членство. Овој прототип не прима пријави.</p>
+              <p class="not-live" data-t="stage.human.locked">ЧЛЕНСТВО: НЕАКТИВНО · НЕМА ПОТВРДА ЗА ЗАЧЛЕНУВАЊЕ</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="checklist">
+          <h3 data-t="check.title">Локална листа за подготовка</h3>
+          <p data-t="check.intro">Провери ги прашањата пред видео-консултација. Оваа листа не е правна согласност и не се испраќа.</p>
+          <ul id="check-items">
+            <li><label><input type="checkbox" data-check="law"><span data-t="check.law">Потврди кој правен режим важи</span></label></li>
+            <li><label><input type="checkbox" data-check="sign"><span data-t="check.sign">Потврди дали е потребен потпис и во која форма</span></label></li>
+            <li><label><input type="checkbox" data-check="notary"><span data-t="check.notary">Потврди дали заверката од далечина е признаена</span></label></li>
+            <li><label><input type="checkbox" data-check="privacy"><span data-t="check.privacy">Провери кој би ги обработувал личните податоци</span></label></li>
+            <li><label><input type="checkbox" data-check="human"><span data-t="check.human">Потврди кој носи конечна човечка одлука</span></label></li>
+          </ul>
+          <button id="reset" type="button" data-t="check.reset">Исчисти локален избор</button><span id="reset-status" role="status" aria-live="polite"></span>
+        </div>
+      </div>
+    </section>
+    <section class="main-section soft" id="sources">
+      <div class="wrap">
+        <div class="eyebrow navy" data-t="sources.kicker">02 / ДОКУМЕНТИ И ИЗВОРИ</div>
+        <h2 data-t="sources.title">Проверувај ги официјалните извори.</h2>
+        <p class="muted" data-t="sources.desc">Законската важност на видео-заверката и на странски електронски или нотарски исправи за конкретната постапка останува непотврдена. Ова се почетни извори, не правно одобрение.</p>
+        <div class="source-links">
+          <a href="https://ustavensud.mk/2025/05/%D1%83-%D0%B1%D1%80-186-2024-2/" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer" data-t="sources.court">Уставен суд · Закон за политички партии ↗</a>
+          <a href="https://www.pravda.gov.mk/mk-MK/kontakt/cpp-cesto-postavuvani-prasanja" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer" data-t="sources.justice">Министерство за правда · Заверка на потпис ↗</a>
+          <a href="https://mfa.gov.mk/mk-MK/konzularni-uslugi/notarski-uslugi" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer" data-t="sources.mfa">МНР · Нотарски конзуларни услуги ↗</a>
+          <a href="https://e-ucilnica.azlp.mk/prasanja-odgovori/" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer" data-t="sources.azlp">АЗЛП · Податоци за политичко членство ↗</a>
+        </div>
+      </div>
+    </section>
+    <section class="main-section" id="controls">
+      <div class="wrap">
+        <div class="eyebrow navy" data-t="control.kicker">03 / ГРАНИЦИ</div>
+        <h2 data-t="control.title">Не е доволно само да се вклучи камера.</h2>
+        <p class="muted" data-t="control.body">Нема автоматско зачленување преку AI, обичен видеоразговор или едно поле за согласност. За активирање треба правна процена по земја, соодветна организациска регистрација, валидни потписи, овластен нотарски или конзуларен процес, безбедни податоци и Human Gate.</p>
+        <p class="privacy-border" data-t="control.privacy">Податоците за политичко членство се чувствителни. Овој водич не зачувува избор на земја, цел, штиклирани полиња или какви било идентификациски податоци.</p>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap footrow">
+    <div><strong>МАКЕДОНИЈА — СИСТЕМ</strong><p data-t="foot.note">Развоен информативен модул · без зачленување, нотаријална заверка или серверско собирање на податоци.</p></div>
+    <div class="footer-links"><a href="../" data-t="foot.back">Назад до „Мои права“</a><a href="../../" data-t="foot.world">Светски навигатор</a></div>
+  </div></footer>
+</body>
+</html>
