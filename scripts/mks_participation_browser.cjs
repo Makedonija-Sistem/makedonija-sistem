@@ -40,6 +40,9 @@ async function check(name,fn) {
       assert.equal(await page.locator('#choice-result').isHidden(),true);
       assert.equal(await page.locator('#copy-template').isDisabled(),true);
       assert.deepEqual(runtimeErrors,[]);
+      if (process.env.MKS_CAPTURE_REVIEW === '1') {
+        await page.screenshot({path:'/tmp/mks-participation-desktop.png',fullPage:true});
+      }
     });
     await check('five languages translate heading and change HTML language',async()=>{
       const cases=[['en','en','Participation is your choice'],
@@ -154,6 +157,9 @@ async function check(name,fn) {
       assert.equal(await small.locator('html').getAttribute('lang'),'sq');
       await small.locator('.choice[data-choice="membership"]').click();
       assert.equal(await small.locator('#choice-result').isVisible(),true);
+      if (process.env.MKS_CAPTURE_REVIEW === '1') {
+        await small.screenshot({path:'/tmp/mks-participation-mobile.png',fullPage:true});
+      }
     });
     await check('compact 320px viewport has no horizontal overflow',async()=>{
       await small.setViewportSize({width:320,height:690});
