@@ -34,20 +34,26 @@ jobs:
         run: npm install --prefix /tmp/mks-browser-tools --no-save --no-audit --no-fund playwright@1.65.1
       - name: Install isolated Chromium browser and dependencies
         run: /tmp/mks-browser-tools/node_modules/.bin/playwright install --with-deps chromium
-      - name: Browser smoke test against local HTTP server only
+      - name: Browser smoke both Cloudflare-root and GitHub-Pages-subpath locally
         shell: bash
         env:
-          MKS_LOCAL_URL: http://127.0.0.1:8765/
           MKS_PLAYWRIGHT_MODULE: /tmp/mks-browser-tools/node_modules/playwright
         run: |
           set -euo pipefail
-          python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/mks-browser-http.log 2>&1 &
-          server_pid=$!
-          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/mks-browser-root-http.log 2>&1 &
+          root_pid=$!
+          (cd .. && python3 -m http.server 8766 --bind 127.0.0.1 > /tmp/mks-browser-subpath-http.log 2>&1) &
+          subpath_pid=$!
+          trap 'kill "$root_pid" "$subpath_pid" 2>/dev/null || true' EXIT
           for attempt in {1..30}; do
-            if curl --fail --silent --output /dev/null http://127.0.0.1:8765/; then break; fi
+            if curl --fail --silent --output /dev/null http://127.0.0.1:8765/ &&
+               curl --fail --silent --output /dev/null http://127.0.0.1:8766/makedonija-sistem/; then break; fi
             sleep 1
           done
           curl --fail --silent --output /dev/null http://127.0.0.1:8765/
+          curl --fail --silent --output /dev/null http://127.0.0.1:8766/makedonija-sistem/
           node --check scripts/mks_browser_smoke.cjs
-          node scripts/mks_browser_smoke.cjs
+          echo "Checking Cloudflare-style root path (LOCAL ONLY)"
+          MKS_LOCAL_URL=http://127.0.0.1:8765/ node scripts/mks_browser_smoke.cjs
+          echo "Checking GitHub Pages-style project subpath (LOCAL ONLY)"
+          MKS_LOCAL_URL=http://127.0.0.1:8766/makedonija-sistem/ node scripts/mks_browser_smoke.cjs
