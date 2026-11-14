@@ -41,6 +41,9 @@ async function check(name, fn) {
       assert.match(await page.locator('.review-line').innerText(),/БЕЗ ОНЛАЈН НОТАРСКА ЗАВЕРКА/);
       assert.match(await page.locator('.not-live').innerText(),/ЧЛЕНСТВО: НЕАКТИВНО/);
       assert.deepEqual(errors,[]);
+      if(process.env.MKS_CAPTURE_DIASPORA === '1') {
+        await page.screenshot({path:'/tmp/mks-diaspora-desktop.png',fullPage:true});
+      }
     });
 
     await check('US Canada Australia routes use official country-specific mission pages',async()=>{
@@ -162,6 +165,9 @@ async function check(name, fn) {
       const b=await m.evaluate(()=>({width:innerWidth,doc:document.documentElement.scrollWidth}));
       assert.ok(b.doc<=b.width+4,JSON.stringify(b));
       assert.equal(await m.locator('#video-locked').isDisabled(),true);
+      if(process.env.MKS_CAPTURE_DIASPORA === '1') {
+        await m.screenshot({path:'/tmp/mks-diaspora-mobile.png',fullPage:true});
+      }
     });
     await check('compact 320 layout remains navigable',async()=>{
       await m.setViewportSize({width:320,height:700});
