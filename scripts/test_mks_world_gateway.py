@@ -79,7 +79,7 @@ class WorldGatewayReview(unittest.TestCase):
         ids = set(re.findall(r'\bid\s*=\s*["\']([^"\']+)["\']', MAIN))
         for anchor in expected.values():
             self.assertIn(anchor, ids)
-            self.assertIn("'" + anchor + "'", JS)
+            self.assertIn("'#" + anchor + "'", JS)
 
     def test_no_personal_data_or_automated_signup(self):
         self.assertNotIn("<form", SOURCE.lower())
@@ -96,7 +96,8 @@ class WorldGatewayReview(unittest.TestCase):
         for locale in ("mk", "en", "al", "sr", "de"):
             self.assertRegex(SOURCE, r'data-lang="' + locale + r'"')
             self.assertRegex(JS, r'(?m)^\s*' + locale + r': \{')
-        self.assertEqual(len(re.findall(r'data-t="', SOURCE)), len(set(re.findall(r'data-t="([^"]+)"', SOURCE))) + 0 if False else len(re.findall(r'data-t="', SOURCE)))
+        for key in set(re.findall(r'data-t="([^"]+)"', SOURCE)):
+            self.assertRegex(JS, r"(?:['\\\"]" + re.escape(key) + r"['\\\"]|" + re.escape(key) + r")\\s*:")
         self.assertIn("Incomplete navigator locale", JS)
         self.assertIn("aria-pressed", JS)
         self.assertIn("textContent =", JS)
