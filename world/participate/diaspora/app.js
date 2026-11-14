@@ -66,11 +66,11 @@ const TRANSLATIONS = [
   ],
   [
     "hero.body",
-    "Разгледај кои законски чекори треба да се потврдат за САД, Канада и Австралија. AI Адвокат помага со правни информации; видеоразговор не значи автоматска нотарска заверка или членство.",
-    "Explore the legal steps that need verification for the USA, Canada and Australia. AI Advokat provides legal information; a video call is not automatically a notarization or membership.",
-    "Shiko hapat ligjorë që duhet të verifikohen për SHBA-në, Kanadanë dhe Australinë. AI Advokat ofron informacion juridik; një video-thirrje nuk është automatikisht noterizim ose anëtarësim.",
-    "Размотри законске кораке које треба проверити за САД, Канаду и Аустралију. AI Advokat пружа правне информације; видео-позив није аутоматски овера или чланство.",
-    "Prüfe die rechtlichen Schritte für die USA, Kanada und Australien. AI Advokat bietet Rechtsinformationen; ein Videoanruf ist nicht automatisch eine notarielle Beglaubigung oder Mitgliedschaft."
+    "Разгледај кои законски чекори треба да се потврдат за 14 држави, вклучувајќи ги САД, Канада, Австралија и европските земји. AI Адвокат помага со правни информации; видеоразговор не значи автоматска нотарска заверка или членство.",
+    "Explore the legal steps that need verification for 14 countries across North America, Australia and Europe. AI Advokat provides legal information; a video call is not automatically a notarization or membership.",
+    "Shiko hapat ligjorë që duhet të verifikohen për 14 shtete në Amerikën e Veriut, Australi dhe Evropë. AI Advokat ofron informacion juridik; një video-thirrje nuk është automatikisht noterizim ose anëtarësim.",
+    "Размотри законске кораке које треба проверити за 14 држава у Северној Америци, Аустралији и Европи. AI Advokat пружа правне информације; видео-позив није аутоматски овера или чланство.",
+    "Prüfe die rechtlichen Schritte für 14 Länder in Nordamerika, Australien und Europa. AI Advokat bietet Rechtsinformationen; ein Videoanruf ist nicht automatisch eine notarielle Beglaubigung oder Mitgliedschaft."
   ],
   [
     "hero.start",
@@ -145,6 +145,94 @@ const TRANSLATIONS = [
     "Australien"
   ],
   [
+    "country.de",
+    "Германија",
+    "Germany",
+    "Gjermania",
+    "Немачка",
+    "Deutschland"
+  ],
+  [
+    "country.ch",
+    "Швајцарија",
+    "Switzerland",
+    "Zvicra",
+    "Швајцарска",
+    "Schweiz"
+  ],
+  [
+    "country.it",
+    "Италија",
+    "Italy",
+    "Italia",
+    "Италија",
+    "Italien"
+  ],
+  [
+    "country.se",
+    "Шведска",
+    "Sweden",
+    "Suedia",
+    "Шведска",
+    "Schweden"
+  ],
+  [
+    "country.at",
+    "Австрија",
+    "Austria",
+    "Austria",
+    "Аустрија",
+    "Österreich"
+  ],
+  [
+    "country.si",
+    "Словенија",
+    "Slovenia",
+    "Sllovenia",
+    "Словенија",
+    "Slowenien"
+  ],
+  [
+    "country.hr",
+    "Хрватска",
+    "Croatia",
+    "Kroacia",
+    "Хрватска",
+    "Kroatien"
+  ],
+  [
+    "country.rs",
+    "Србија",
+    "Serbia",
+    "Serbia",
+    "Србија",
+    "Serbien"
+  ],
+  [
+    "country.bg",
+    "Бугарија",
+    "Bulgaria",
+    "Bullgaria",
+    "Бугарска",
+    "Bulgarien"
+  ],
+  [
+    "country.gr",
+    "Грција",
+    "Greece",
+    "Greqia",
+    "Грчка",
+    "Griechenland"
+  ],
+  [
+    "country.al",
+    "Албанија",
+    "Albania",
+    "Shqipëria",
+    "Албанија",
+    "Albanien"
+  ],
+  [
     "purpose.membership",
     "Доброволно членство (идна постапка)",
     "Voluntary membership (future process)",
@@ -199,6 +287,14 @@ const TRANSLATIONS = [
     "Për Australinë: pyet përfaqësitë në Canberra ose Melbourne për vërtetimin, dokumentet origjinale, nënshkrimet ose paraqitjen personale.",
     "За Аустралију: питај представништва у Канбери или Мелбурну која је овера доступна и да ли су потребни оригинали, потписи или лични долазак.",
     "Australien: Kläre mit Canberra oder Melbourne, welche Beglaubigung möglich ist und ob Originale, Unterschriften oder ein persönlicher Besuch nötig sind."
+  ],
+  [
+    "result.country.europe",
+    "За избраната европска држава, користи ја официјалната листа на македонски дипломатско-конзуларни претставништва. Побарај потврда за соодветната служба, формата на потпис и прифаќањето на документот; далечинска видео-заверка не е автоматски признаена.",
+    "For the selected European country, use the official directory of North Macedonia's diplomatic and consular missions. Verify the relevant office, signature format and document acceptance; remote video notarization is not automatically recognized.",
+    "Për shtetin evropian të zgjedhur, përdor listën zyrtare të përfaqësive diplomatike dhe konsullore të Maqedonisë së Veriut. Konfirmo zyrën përkatëse, formën e nënshkrimit dhe pranimin e dokumentit; noterizimi përmes videos nuk njihet automatikisht.",
+    "За изабрану европску државу користи званични списак македонских дипломатско-конзуларних представништава. Провери надлежну службу, облик потписа и прихватање исправе; видео-овера на даљину није аутоматски призната.",
+    "Für das gewählte europäische Land nutze das amtliche Verzeichnis der nordmazedonischen Auslandsvertretungen. Kläre die zuständige Stelle, Unterschriftsform und Anerkennung des Dokuments; eine Videobeglaubigung wird nicht automatisch anerkannt."
   ],
   [
     "result.purpose.membership",
@@ -625,8 +721,20 @@ const TRANSLATIONS = [
   const DESTINATIONS = Object.freeze({
     us:'https://mfa.gov.mk/mk-MK/ambasadi?region=north_america',
     ca:'https://mfa.gov.mk/mk-MK/ambasadi?region=north_america',
-    au:'https://mfa.gov.mk/mk-MK/ambasadi?region=australia_and_oceania'
+    au:'https://mfa.gov.mk/mk-MK/ambasadi?region=australia_and_oceania',
+    de:'https://mfa.gov.mk/mk-MK/ambasadi?region=europe',
+    ch:'https://mfa.gov.mk/mk-MK/ambasadi?region=europe',
+    it:'https://mfa.gov.mk/mk-MK/ambasadi?region=europe',
+    se:'https://mfa.gov.mk/mk-MK/ambasadi?region=europe',
+    at:'https://mfa.gov.mk/mk-MK/ambasadi?region=europe',
+    si:'https://mfa.gov.mk/mk-MK/ambasadi?region=europe',
+    hr:'https://mfa.gov.mk/mk-MK/ambasadi?region=europe',
+    rs:'https://mfa.gov.mk/mk-MK/ambasadi?region=europe',
+    bg:'https://mfa.gov.mk/mk-MK/ambasadi?region=europe',
+    gr:'https://mfa.gov.mk/mk-MK/ambasadi?region=europe',
+    al:'https://mfa.gov.mk/mk-MK/ambasadi?region=europe'
   });
+  const EUROPE_CODES = new Set(['de','ch','it','se','at','si','hr','rs','bg','gr','al']);
   const country = document.getElementById('country');
   const purpose = document.getElementById('purpose');
   const resultCountry = document.getElementById('result-country');
@@ -646,7 +754,7 @@ const TRANSLATIONS = [
     if (!['membership','founding'].includes(purpose.value)) purpose.value='membership';
     const place = country.value;
     resultCountry.textContent = msg('country.'+place);
-    resultDescription.textContent = msg('result.country.'+place);
+    resultDescription.textContent = EUROPE_CODES.has(place) ? msg('result.country.europe') : msg('result.country.'+place);
     resultPurpose.textContent = msg('result.purpose.'+purpose.value);
     official.href = DESTINATIONS[place];
   }
