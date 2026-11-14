@@ -48,7 +48,18 @@
     "countries": [
       "US",
       "CA",
-      "AU"
+      "AU",
+      "DE",
+      "CH",
+      "IT",
+      "SE",
+      "AT",
+      "SI",
+      "HR",
+      "RS",
+      "BG",
+      "GR",
+      "AL"
     ],
     "video_call_is_legal_notarial_certification": false,
     "remote_notarial_acceptance_confirmed": false,
@@ -65,7 +76,9 @@
     "decision_reference": null,
     "legal_opinion_reference": null,
     "provider_contract_reference": null,
-    "warning": "Consultation via video is NOT notarial certification. No actual membership application, recording, document upload or enrollment is allowed."
+    "warning": "Consultation via video is NOT notarial certification. No actual membership application, recording, document upload or enrollment is allowed.",
+    "mission_directory_europe": "https://mfa.gov.mk/mk-MK/ambasadi?region=europe",
+    "country_specific_remote_notary_legality_approved": false
   },
   "diaspora_cost_coverage": {
     "status": "PROPOSED_NOT_APPROVED_NOT_PAYABLE",
@@ -85,7 +98,18 @@
     "eligible_countries": [
       "US",
       "CA",
-      "AU"
+      "AU",
+      "DE",
+      "CH",
+      "IT",
+      "SE",
+      "AT",
+      "SI",
+      "HR",
+      "RS",
+      "BG",
+      "GR",
+      "AL"
     ],
     "legal_review_reference": null,
     "conflict_of_interest_register_reference": null,
@@ -106,6 +130,9 @@
       "owner_human_gate_approved": false,
       "production_payments_enabled": false
     },
-    "warning": "No cash transfers, reimbursement, provider fee payment, billing, subscription or card collection is activated. Proposed candidate zero procedural expenses are not a binding entitlement."
+    "warning": "No cash transfers, reimbursement, provider fee payment, billing, subscription or card collection is activated. Proposed candidate zero procedural expenses are not a binding entitlement.",
+    "country_specific_price_quotes_verified": false,
+    "budget_approval_per_country": false,
+    "foreign_provider_acceptance_approved": false
   }
 }
