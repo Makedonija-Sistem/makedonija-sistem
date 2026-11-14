@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
-"""Fail-closed, allowlisted static site staging for a Cloudflare Worker review.
-
-This script builds local files only. It does not call Cloudflare or deploy.
-"""
+"""Fail-closed Cloudflare static asset staging. Never deploy from this script."""
 from __future__ import annotations
 
 import hashlib
+from html.parser import HTMLParser
 import json
 from pathlib import Path
 import shutil
@@ -25,16 +23,56 @@ PUBLIC_FILES = (
     "legal/TERMS.html",
 )
 
+# For Cloudflare Workers STATIC assets only; this file is not served to visitors.
+# Keep the source site's own (currently weaker) inline-script CSP unchanged:
+# replacing it without a JS refactor would break the existing UI.
+SECURITY_HEADERS_FILE = "_headers"
+SECURITY_HEADERS = (
+    "/*\n"
+    "  X-Frame-Options: DENY\n"
+    "  X-Content-Type-Options: nosniff\n"
+    "  Referrer-Policy: no-referrer\n"
+    "  Content-Security-Policy: frame-ancestors 'none'\n"
+    "  X-Robots-Tag: noindex, nofollow\n"
+)
+
+
+class _RobotsMetaParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.policies: list[set[str]] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag.lower() != "meta":
+            return
+        values = {key.lower(): (value or "") for key, value in attrs}
+        if values.get("name", "").lower() == "robots":
+            self.policies.append({v.strip().lower() for v in values.get("content", "").split(",")})
+
+
+def _validate_review_gate(index: str, robots: str) -> None:
+    meta = _RobotsMetaParser()
+    meta.feed(index)
+    must = {"noindex", "nofollow"}
+    if not meta.policies or any(not must.issubset(policy) for policy in meta.policies):
+        raise ValueError("Every robots meta policy must retain noindex and nofollow")
+    active = {line.split("#", 1)[0].strip().lower() for line in robots.splitlines()}
+    if "user-agent: *" not in active or "disallow: /" not in active or "allow: /" in active:
+        raise ValueError("robots.txt must block all crawling in review mode")
+
 
 def build(root: Path, output: Path | None = None) -> dict[str, str]:
     root = root.resolve()
-    output = output or (root / "dist" / "cloudflare")
-    output = output.absolute()
+    output = (output or (root / "dist" / "cloudflare")).absolute()
+    # Do not stage through symlinked output parents, outside the project or over existing output.
+    if output.is_symlink() or any(part.is_symlink() for part in output.parents if part != root):
+        raise ValueError("Symlinked output path is not allowed")
+    output = output.resolve(strict=False)
+    if not output.is_relative_to(root) or output == root:
+        raise ValueError("Output must be a new subdirectory inside the repository")
     if output.exists() or output.is_symlink():
         raise ValueError(f"Refusing to overwrite an existing output directory: {output}")
-    if output == root or root == output:
-        raise ValueError("Output must be a new directory")
-    # Inspect every source before creating any output files.
+
     sources: dict[str, Path] = {}
     for name in PUBLIC_FILES:
         source = root / name
@@ -44,14 +82,14 @@ def build(root: Path, output: Path | None = None) -> dict[str, str]:
             raise ValueError(f"Missing or empty allowlisted public asset: {name}")
         sources[name] = source
 
-    html = sources["index.html"].read_text(encoding="utf-8")
-    robots = sources["robots.txt"].read_text(encoding="utf-8")
-    if 'content="noindex,nofollow"' not in html or "Disallow: /" not in robots:
-        raise ValueError("Review-only noindex/robots gate must remain in place")
+    _validate_review_gate(
+        sources["index.html"].read_text(encoding="utf-8"),
+        sources["robots.txt"].read_text(encoding="utf-8"),
+    )
     manifest = json.loads(sources["manifest.json"].read_text(encoding="utf-8"))
     for icon in manifest.get("icons", []):
         ref = icon.get("src", "")
-        if not ref.startswith("./") or ref[2:] not in PUBLIC_FILES:
+        if not isinstance(ref, str) or not ref.startswith("./") or ref[2:] not in PUBLIC_FILES:
             raise ValueError(f"Manifest icon is not allowlisted: {ref}")
 
     output.mkdir(parents=True, exist_ok=False)
@@ -61,6 +99,9 @@ def build(root: Path, output: Path | None = None) -> dict[str, str]:
         dest.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source, dest)
         checksums[name] = hashlib.sha256(dest.read_bytes()).hexdigest()
+    header_target = output / SECURITY_HEADERS_FILE
+    header_target.write_text(SECURITY_HEADERS, encoding="utf-8")
+    checksums[SECURITY_HEADERS_FILE] = hashlib.sha256(header_target.read_bytes()).hexdigest()
     return checksums
 
 
