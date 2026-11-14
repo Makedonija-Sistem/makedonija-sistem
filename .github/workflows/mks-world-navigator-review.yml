@@ -1,0 +1,62 @@
+name: MKS World Navigator review (NO DEPLOY)
+
+# PR-only offline source and localhost browser verification. No token, no build upload.
+on:
+  pull_request:
+    paths:
+      - "world/**"
+      - "scripts/test_mks_world_gateway.py"
+      - "scripts/mks_world_gateway_browser.cjs"
+      - ".github/workflows/mks-world-navigator-review.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  world-navigator-qa:
+    name: World information gateway / privacy / Chromium (NO DEPLOY)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Checkout review code without persistent credentials
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Check static structure and fail-closed safety rules
+        run: python3 -m unittest discover -s scripts -p "test_mks_world_gateway.py" -v
+      - name: Configure Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          package-manager-cache: false
+      - name: Validate JavaScript syntax
+        run: |
+          node --check world/app.js
+          node --check scripts/mks_world_gateway_browser.cjs
+      - name: Install pinned browser test package outside repository
+        run: npm install --prefix /tmp/mks-world-browser --no-save --no-audit --no-fund playwright@1.65.1
+      - name: Install isolated Chromium browser
+        run: /tmp/mks-world-browser/node_modules/.bin/playwright install --with-deps chromium
+      - name: Test both deployment path layouts on loopback only
+        shell: bash
+        env:
+          MKS_PLAYWRIGHT_MODULE: /tmp/mks-world-browser/node_modules/playwright
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8783 --bind 127.0.0.1 > /tmp/mks-world-root.log 2>&1 &
+          root_pid=$!
+          (cd .. && python3 -m http.server 8784 --bind 127.0.0.1 > /tmp/mks-world-subpath.log 2>&1) &
+          subpath_pid=$!
+          trap 'kill "$root_pid" "$subpath_pid" 2>/dev/null || true' EXIT
+          for attempt in {1..30}; do
+            if curl -fsS -o /dev/null http://127.0.0.1:8783/world/ &&
+               curl -fsS -o /dev/null http://127.0.0.1:8784/makedonija-sistem/world/; then break; fi
+            sleep 1
+          done
+          curl -fsS -o /dev/null http://127.0.0.1:8783/world/
+          curl -fsS -o /dev/null http://127.0.0.1:8784/makedonija-sistem/world/
+          echo "Cloudflare-style local path (not live)"
+          MKS_LOCAL_URL=http://127.0.0.1:8783/world/ node scripts/mks_world_gateway_browser.cjs
+          echo "GitHub Pages-style local path (not live)"
+          MKS_LOCAL_URL=http://127.0.0.1:8784/makedonija-sistem/world/ node scripts/mks_world_gateway_browser.cjs
