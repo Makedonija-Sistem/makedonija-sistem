@@ -97,7 +97,7 @@ class WorldGatewayReview(unittest.TestCase):
             self.assertRegex(SOURCE, r'data-lang="' + locale + r'"')
             self.assertRegex(JS, r'(?m)^\s*' + locale + r': \{')
         for key in set(re.findall(r'data-t="([^"]+)"', SOURCE)):
-            self.assertRegex(JS, r"(?:['\\\"]" + re.escape(key) + r"['\\\"]|" + re.escape(key) + r")\\s*:")
+            self.assertTrue(("'" + key + "':" in JS) or (key + ":" in JS), key)
         self.assertIn("Incomplete navigator locale", JS)
         self.assertIn("aria-pressed", JS)
         self.assertIn("textContent =", JS)
