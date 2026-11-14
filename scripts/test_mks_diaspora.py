@@ -67,7 +67,7 @@ class DiasporaReviewTests(unittest.TestCase):
         self.assertIn("ИНФОРМАТИВЕН ПРОТОТИП", PAGE)
         self.assertIn("НЕМА ПОТВРДА ЗА ЗАЧЛЕНУВАЊЕ", PAGE)
         self.assertIn("видеоразговор", PAGE.lower())
-        self.assertIn("не е заверка", PAGE.lower())
+        self.assertIn("не и заверка", PAGE.lower())
         self.assertIn('id="video-locked" disabled', PAGE)
         self.assertNotIn("Потврди членство", PAGE)
         self.assertNotIn("Join now", PAGE)
@@ -118,7 +118,7 @@ class DiasporaReviewTests(unittest.TestCase):
                 self.assertEqual(anchor.get("target"), "_blank")
                 self.assertIn("noopener", anchor.get("rel", ""))
                 self.assertEqual(anchor.get("referrerpolicy"), "no-referrer")
-        self.assertIn("No direct call", "No direct call")  # no hidden auto-launch
+        self.assertNotIn("ai-advokat.github.io", JS)  # no hidden cross-origin launch
 
     def test_all_five_languages_have_complete_tables(self):
         mark = "const TRANSLATIONS = "
