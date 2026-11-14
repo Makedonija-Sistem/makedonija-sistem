@@ -41,7 +41,9 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Read-only checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
       - name: Run fail-closed staging tests
         run: python3 -m unittest discover -s scripts -p "test_mks_cloudflare_stage.py" -v
       - name: Stage public resources only
@@ -70,9 +72,10 @@ jobs:
           print(f'PASS: exact Worker config, {len(staged)} assets incl. response header policy')
           PY
       - name: Configure Node runtime
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: "22"
+          package-manager-cache: false
       - name: Compile Cloudflare static bundle without any API access (dry-run)
         run: npx --yes wrangler@4.161.0 deploy --dry-run --config wrangler.jsonc --outdir /tmp/mks-cloudflare-dry-run
 
@@ -102,7 +105,9 @@ jobs:
             exit 1
           fi
       - name: Checkout reviewed main commit
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
       - name: Re-run staging verification on upload runner
         run: python3 -m unittest discover -s scripts -p "test_mks_cloudflare_stage.py" -v
       - name: Stage public resources
@@ -131,9 +136,10 @@ jobs:
           print(f'PASS: exact Worker config, {len(staged)} assets incl. response header policy')
           PY
       - name: Configure Node runtime
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: "22"
+          package-manager-cache: false
       - name: Validate Cloudflare bundle again with dry-run
         run: npx --yes wrangler@4.161.0 deploy --dry-run --config wrangler.jsonc --outdir /tmp/mks-cloudflare-dry-run
       - name: Check credentials are in the protected environment (do not expose)
