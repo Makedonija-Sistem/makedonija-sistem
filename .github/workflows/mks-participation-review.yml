@@ -68,6 +68,15 @@ jobs:
           curl -fsS -o /dev/null http://127.0.0.1:8791/world/participate/
           curl -fsS -o /dev/null http://127.0.0.1:8792/makedonija-sistem/world/participate/
           echo "Cloudflare-style path (localhost only)"
-          MKS_LOCAL_URL=http://127.0.0.1:8791/world/participate/ node scripts/mks_participation_browser.cjs
+          MKS_CAPTURE_REVIEW=1 MKS_LOCAL_URL=http://127.0.0.1:8791/world/participate/ node scripts/mks_participation_browser.cjs
           echo "GitHub Pages-style path (localhost only)"
           MKS_LOCAL_URL=http://127.0.0.1:8792/makedonija-sistem/world/participate/ node scripts/mks_participation_browser.cjs
+      - name: Publish non-sensitive screenshots for human visual QA
+        uses: actions/upload-artifact@v4
+        with:
+          name: mks-participation-review-screenshots
+          path: |
+            /tmp/mks-participation-desktop.png
+            /tmp/mks-participation-mobile.png
+          retention-days: 14
+          if-no-files-found: error
