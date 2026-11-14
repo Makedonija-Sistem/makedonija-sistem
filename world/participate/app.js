@@ -225,6 +225,70 @@ const TRANSLATIONS = [
     "Bei rechtmäßiger Verarbeitung personenbezogener Daten bestehen Rechte je nach Rechtsgrundlage und Umständen. Dieses Testmodul verarbeitet keine Mitgliedsdaten."
   ],
   [
+    "ai.eyebrow",
+    "ПОВРЗАН ПРАВНО-ИНФОРМАТИВЕН ПРОСТОР",
+    "CONNECTED LEGAL INFORMATION SERVICE",
+    "HAPËSIRË E LIDHUR INFORMATIVE JURIDIKE",
+    "ПОВЕЗАНИ ПРАВНО-ИНФОРМАТИВНИ ПРОСТОР",
+    "VERBUNDENER RECHTSINFORMATIONSDIENST"
+  ],
+  [
+    "ai.external",
+    "Надворешна платформа",
+    "External platform",
+    "Platformë e jashtme",
+    "Спољна платформа",
+    "Externe Plattform"
+  ],
+  [
+    "ai.intro",
+    "Истражувај правни информации и извори со AI Advokat — одделна алатка со човечка правна проверка, развивана во соработка со адвокат Зоран Стојанкиќ. Ова не е формално правно застапување или автоматска одлука.",
+    "Explore legal information and sources with AI Advokat — a separate research tool with human legal review, developed in collaboration with lawyer Zoran Stojankich. This is not legal representation or an automated decision.",
+    "Hulumto informacione dhe burime juridike me AI Advokat — një mjet i veçantë kërkimi me kontroll njerëzor, i zhvilluar në bashkëpunim me avokatin Zoran Stojankich. Kjo nuk është përfaqësim juridik apo vendim automatik.",
+    "Истражуј правне информације и изворе уз AI Advokat — посебан алат са људском правном провером, развијан у сарадњи са адвокатом Зораном Стојанкићем. Ово није правно заступање нити аутоматска одлука.",
+    "Recherchiere Rechtsinformationen und Quellen mit AI Advokat — einem eigenständigen Werkzeug mit menschlicher juristischer Prüfung, entwickelt in Zusammenarbeit mit Rechtsanwalt Zoran Stojankich. Dies ist weder Rechtsvertretung noch eine automatisierte Entscheidung."
+  ],
+  [
+    "ai.warning",
+    "Со отворање преминуваш на друга веб-страница, со сопствени правила за приватност. Не внесувај матични броеви, документи, адвокатска тајна или чувствителни политички податоци во јавниот AI-разговор. Ниту еден избор од овој портал не се испраќа автоматски.",
+    "Opening this link takes you to a separate website with its own privacy rules. Do not enter identity numbers, documents, legal professional secrets or sensitive political information in the public AI chat. No choices from this portal are transferred automatically.",
+    "Hapja e kësaj lidhjeje të çon në një faqe tjetër me rregullat e veta të privatësisë. Mos vendos numra identifikimi, dokumente, sekrete profesionale apo informacione të ndjeshme politike në bisedën publike AI. Zgjedhjet nga ky portal nuk dërgohen automatikisht.",
+    "Отварањем прелазиш на засебан сајт са сопственим правилима приватности. Не уноси матичне бројеве, документа, адвокатску тајну или осетљиве политичке податке у јавни AI разговор. Избори са овог портала не преносе се аутоматски.",
+    "Beim Öffnen wechselst du zu einer separaten Website mit eigenen Datenschutzregeln. Gib keine Identifikationsnummern, Dokumente, anwaltlichen Geheimnisse oder sensiblen politischen Daten in den öffentlichen KI-Chat ein. Deine Auswahl wird nicht automatisch übertragen."
+  ],
+  [
+    "ai.launch",
+    "Отвори AI Advokat · правно истражување (нов таб)",
+    "Open AI Advokat · legal research (new tab)",
+    "Hap AI Advokat · kërkim juridik (skedë e re)",
+    "Отвори AI Advokat · правно истраживање (нова картица)",
+    "AI Advokat öffnen · Rechtsrecherche (neuer Tab)"
+  ],
+  [
+    "ai.legal",
+    "Правно известување ↗",
+    "Legal notice ↗",
+    "Njoftim juridik ↗",
+    "Правно обавештење ↗",
+    "Rechtlicher Hinweis ↗"
+  ],
+  [
+    "ai.privacy",
+    "Приватност ↗",
+    "Privacy policy ↗",
+    "Politika e privatësisë ↗",
+    "Политика приватности ↗",
+    "Datenschutzerklärung ↗"
+  ],
+  [
+    "ai.disclaimer",
+    "AI може да погреши; провери ја важечката верзија на официјалниот правен извор со овластен професионалец. Достапноста на AI-разговорот зависи од надворешниот сервис.",
+    "AI can make mistakes; verify the applicable official legal source with a qualified professional. AI chat availability depends on the external service.",
+    "AI mund të gabojë; verifiko burimin zyrtar juridik në fuqi me një profesionist të kualifikuar. Disponueshmëria e bisedës AI varet nga shërbimi i jashtëm.",
+    "AI може погрешити; провери важећи званични правни извор са овлашћеним стручњаком. Доступност AI разговора зависи од спољног сервиса.",
+    "KI kann Fehler machen; prüfe die geltende amtliche Rechtsquelle mit einer qualifizierten Fachperson. Die Verfügbarkeit des KI-Chats hängt vom externen Dienst ab."
+  ],
+  [
     "right.info",
     "Информирање",
     "Information",
