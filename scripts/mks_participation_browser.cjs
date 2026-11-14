@@ -131,6 +131,25 @@ async function check(name,fn) {
       }
       assert.equal(await page.locator('a[href="https://azlp.mk/vashite-prava/"]').count(),1);
     });
+    await check('AI Advokat is a visible user-initiated external legal module with no data transfer',async()=>{
+      const action=page.locator('#ai-advokat-launch');
+      assert.equal(await action.isVisible(),true);
+      assert.equal(await action.getAttribute('href'),'https://ai-advokat.github.io/#ai-advokat-chat');
+      assert.equal(await action.getAttribute('target'),'_blank');
+      assert.equal(await action.getAttribute('rel'),'noopener noreferrer');
+      assert.equal(await action.getAttribute('referrerpolicy'),'no-referrer');
+      assert.equal(await action.getAttribute('aria-describedby'),'ai-advokat-warning');
+      assert.equal(await page.locator('#ai-advokat iframe, #ai-advokat form').count(),0);
+      assert.equal(await page.locator('a[href="https://ai-advokat.github.io/legal-notice.html"]').count(),1);
+      assert.equal(await page.locator('a[href="https://ai-advokat.github.io/privacy-policy.html"]').count(),1);
+      await page.locator('.language[data-lang="de"]').click();
+      assert.match(await action.innerText(),/AI Advokat öffnen/);
+      await page.locator('.language[data-lang="en"]').click();
+      assert.match(await action.innerText(),/Open AI Advokat/);
+      assert.match(await page.locator('#ai-advokat-warning').innerText(),/separate website/);
+      assert.deepEqual(external,[]);
+      assert.deepEqual(runtimeErrors,[]);
+    });
     await check('no outbound requests or local storage, and no runtime errors',async()=>{
       await page.waitForTimeout(250);
       assert.deepEqual(external,[]);
@@ -178,6 +197,9 @@ async function check(name,fn) {
       assert.match(await plain.locator('#gate').innerText(),/ПРИЈАВИ: БЛОКИРАНИ/);
       assert.equal(await plain.locator('a[href="../../legal/PRIVACY.html"]').count(),1);
       assert.equal(await plain.locator('form').count(),0);
+      // The explicit external link remains usable without any MKS JavaScript.
+      assert.equal(await plain.locator('#ai-advokat-launch').getAttribute('href'),
+        'https://ai-advokat.github.io/#ai-advokat-chat');
     });
     await plainCtx.close();
   } finally { await browser.close(); }
