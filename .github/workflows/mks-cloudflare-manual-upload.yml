@@ -1,7 +1,7 @@
 name: MKS Cloudflare manual non-live version upload
 
-# PRs run checks only; no Cloudflare credential is read on PRs.
-# Uploading needs an explicit manual action on main after separate release review.
+# Pull requests can never consume a token or upload any Worker version.
+# Production traffic MUST NOT be changed by this workflow.
 on:
   pull_request:
     paths:
@@ -14,13 +14,18 @@ on:
   workflow_dispatch:
     inputs:
       requested_action:
-        description: "Default is checks only; UPLOAD_NONLIVE_VERSION creates a non-active Cloudflare version."
+        description: "CHECK_ONLY is default. Upload requires explicit nonlive selection AND approved main SHA."
         type: choice
         required: true
         default: "CHECK_ONLY"
         options:
           - "CHECK_ONLY"
           - "UPLOAD_NONLIVE_VERSION"
+      approved_main_sha:
+        description: "Only for UPLOAD: exact 40-character reviewed main commit SHA."
+        type: string
+        required: false
+        default: ""
 
 permissions:
   contents: read
@@ -31,38 +36,48 @@ concurrency:
 
 jobs:
   verify-static-assets:
-    name: Verify isolated public assets, never deploy
+    name: Verify public asset allowlist, security headers and release gate (NO DEPLOY)
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - name: Read-only checkout
         uses: actions/checkout@v4
-      - name: Run staging security tests
+      - name: Run fail-closed staging tests
         run: python3 -m unittest discover -s scripts -p "test_mks_cloudflare_stage.py" -v
-      - name: Assemble allowlisted public assets
+      - name: Stage public resources only
         run: python3 scripts/mks_cloudflare_stage.py
-      - name: Verify Wrangler target and staged file inventory
+      - name: Validate exact Cloudflare target and staged resources
+        shell: bash
         run: |
           python3 - <<'PY'
           from pathlib import Path
           import json, sys
           sys.path.insert(0, str(Path('scripts').resolve()))
-          from mks_cloudflare_stage import PUBLIC_FILES
+          from mks_cloudflare_stage import PUBLIC_FILES, SECURITY_HEADERS_FILE, SECURITY_HEADERS
+          
           cfg = json.loads(Path('wrangler.jsonc').read_text(encoding='utf-8'))
-          assert cfg['name'] == 'makedonija-sistem-preview', 'Wrong Cloudflare Worker'
-          assert cfg['assets']['directory'] == './dist/cloudflare', 'Wrong asset path'
-          assert 'main' not in cfg, 'This integration is for static assets only'
-          output = Path('dist/cloudflare')
-          staged = {str(p.relative_to(output)) for p in output.rglob('*') if p.is_file()}
-          assert staged == set(PUBLIC_FILES), 'Staging differs from strict public allowlist'
-          assert not (output / 'archive').exists(), 'Archive must remain excluded'
-          assert not (output / '.env').exists(), 'Environment secrets must remain excluded'
-          assert not (output / '.github').exists(), 'Internal workflow files must remain excluded'
-          print(f'PASS: exact Worker; {len(staged)} allowlisted files; zero internal files')
+          assert set(cfg) == {'name', 'compatibility_date', 'assets'}, 'Unexpected Worker config fields'
+          assert cfg['name'] == 'makedonija-sistem-preview', 'Worker name mismatch'
+          assert cfg['compatibility_date'] == '2026-11-14', 'Unexpected compatibility change'
+          assert set(cfg['assets']) == {'directory', 'not_found_handling'}, 'Unreviewed assets config'
+          assert cfg['assets']['directory'] == './dist/cloudflare', 'Wrong static asset directory'
+          assert cfg['assets']['not_found_handling'] == '404-page', 'Unexpected 404 handling'
+          root = Path('dist/cloudflare')
+          staged = {str(p.relative_to(root)) for p in root.rglob('*') if p.is_file()}
+          expected = set(PUBLIC_FILES) | {SECURITY_HEADERS_FILE}
+          assert staged == expected, f'Unexpected staged files: {sorted(staged ^ expected)}'
+          assert (root / SECURITY_HEADERS_FILE).read_text(encoding='utf-8') == SECURITY_HEADERS
+          print(f'PASS: exact Worker config, {len(staged)} assets incl. response header policy')
           PY
+      - name: Configure Node runtime
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Compile Cloudflare static bundle without any API access (dry-run)
+        run: npx --yes wrangler@4.161.0 deploy --dry-run --config wrangler.jsonc --outdir /tmp/mks-cloudflare-dry-run
 
   upload-nonlive-version:
-    name: MANUAL only - upload non-active version (not deploy)
+    name: MANUAL only - upload inactive version (NEVER deploy)
     needs: verify-static-assets
     if: >-
       github.event_name == 'workflow_dispatch' &&
@@ -72,32 +87,72 @@ jobs:
     timeout-minutes: 15
     environment: mks-cloudflare-nonlive-upload
     steps:
+      - name: Require precise approval of the currently checked-out main SHA
+        shell: bash
+        env:
+          APPROVED_MAIN_SHA: ${{ inputs.approved_main_sha }}
+          EXECUTING_COMMIT: ${{ github.sha }}
+        run: |
+          if [[ ! "$APPROVED_MAIN_SHA" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error::Please enter a 40-character approved_main_sha; no upload performed."
+            exit 1
+          fi
+          if [ "$APPROVED_MAIN_SHA" != "$EXECUTING_COMMIT" ]; then
+            echo "::error::Approved SHA does not match executing commit; no upload performed."
+            exit 1
+          fi
       - name: Checkout reviewed main commit
         uses: actions/checkout@v4
-      - name: Assemble public assets again on the upload runner
+      - name: Re-run staging verification on upload runner
+        run: python3 -m unittest discover -s scripts -p "test_mks_cloudflare_stage.py" -v
+      - name: Stage public resources
         run: python3 scripts/mks_cloudflare_stage.py
-      - name: Setup compatible Node.js runtime
+      - name: Re-verify exact Worker and security header guard
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json, sys
+          sys.path.insert(0, str(Path('scripts').resolve()))
+          from mks_cloudflare_stage import PUBLIC_FILES, SECURITY_HEADERS_FILE, SECURITY_HEADERS
+          
+          cfg = json.loads(Path('wrangler.jsonc').read_text(encoding='utf-8'))
+          assert set(cfg) == {'name', 'compatibility_date', 'assets'}, 'Unexpected Worker config fields'
+          assert cfg['name'] == 'makedonija-sistem-preview', 'Worker name mismatch'
+          assert cfg['compatibility_date'] == '2026-11-14', 'Unexpected compatibility change'
+          assert set(cfg['assets']) == {'directory', 'not_found_handling'}, 'Unreviewed assets config'
+          assert cfg['assets']['directory'] == './dist/cloudflare', 'Wrong static asset directory'
+          assert cfg['assets']['not_found_handling'] == '404-page', 'Unexpected 404 handling'
+          root = Path('dist/cloudflare')
+          staged = {str(p.relative_to(root)) for p in root.rglob('*') if p.is_file()}
+          expected = set(PUBLIC_FILES) | {SECURITY_HEADERS_FILE}
+          assert staged == expected, f'Unexpected staged files: {sorted(staged ^ expected)}'
+          assert (root / SECURITY_HEADERS_FILE).read_text(encoding='utf-8') == SECURITY_HEADERS
+          print(f'PASS: exact Worker config, {len(staged)} assets incl. response header policy')
+          PY
+      - name: Configure Node runtime
         uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - name: Validate scoped credential presence without exposing values
+      - name: Validate Cloudflare bundle again with dry-run
+        run: npx --yes wrangler@4.161.0 deploy --dry-run --config wrangler.jsonc --outdir /tmp/mks-cloudflare-dry-run
+      - name: Check credentials are in the protected environment (do not expose)
         shell: bash
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.MKS_CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.MKS_CLOUDFLARE_ACCOUNT_ID }}
         run: |
           if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
-            echo "::error::Configure both MKS_CLOUDFLARE_API_TOKEN and MKS_CLOUDFLARE_ACCOUNT_ID in GitHub Secrets."
+            echo "::error::Set MKS_CLOUDFLARE_API_TOKEN and MKS_CLOUDFLARE_ACCOUNT_ID as environment secrets."
             exit 1
           fi
-      - name: Create NEW Cloudflare version, do NOT activate it
+      - name: Upload new Cloudflare version without production activation
         shell: bash
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.MKS_CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.MKS_CLOUDFLARE_ACCOUNT_ID }}
-        run: npx --yes wrangler@4 versions upload --config wrangler.jsonc
-      - name: Record non-production result
+        run: npx --yes wrangler@4.161.0 versions upload --config wrangler.jsonc --message "MKS nonlive reviewed main $GITHUB_SHA"
+      - name: Record status - uploaded does not mean deployed
         run: |
-          echo 'Cloudflare non-live version upload command completed.'
-          echo 'This workflow does not perform deployment or production traffic changes.'
-          echo 'Cloudflare Dashboard confirmation of the resulting version ID is a separate verification gate.'
+          echo 'Cloudflare version upload completed; production traffic is not modified by this workflow.'
+          echo 'Independently check version ID and production traffic in Cloudflare Dashboard.'
