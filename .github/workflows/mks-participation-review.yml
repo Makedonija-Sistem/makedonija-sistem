@@ -10,6 +10,8 @@ on:
       - "api/participation-review-worker*"
       - "scripts/test_mks_participation.py"
       - "scripts/mks_participation_browser.cjs"
+      - "scripts/test_mks_diaspora.py"
+      - "scripts/mks_diaspora_browser.cjs"
       - "docs/mks-participation-gates.json"
       - ".github/workflows/mks-participation-review.yml"
   workflow_dispatch:
@@ -29,6 +31,8 @@ jobs:
           persist-credentials: false
       - name: Fail-closed source and Human Gate validation
         run: python3 -m unittest discover -s scripts -p "test_mks_participation.py" -v
+      - name: Fail-closed diaspora legal, video and privacy checks
+        run: python3 -m unittest discover -s scripts -p "test_mks_diaspora.py" -v
       - name: Re-check existing world navigator integration
         run: python3 -m unittest discover -s scripts -p "test_mks_world_gateway.py" -v
       - name: Configure pinned Node runtime
@@ -39,6 +43,8 @@ jobs:
       - name: Check all JavaScript syntax
         run: |
           node --check world/participate/app.js
+          node --check world/participate/diaspora/app.js
+          node --check scripts/mks_diaspora_browser.cjs
           node --check world/app.js
           node --check api/participation-review-worker.mjs
           node --check api/participation-review-worker.test.mjs
@@ -71,6 +77,10 @@ jobs:
           MKS_CAPTURE_REVIEW=1 MKS_LOCAL_URL=http://127.0.0.1:8791/world/participate/ node scripts/mks_participation_browser.cjs
           echo "GitHub Pages-style path (localhost only)"
           MKS_LOCAL_URL=http://127.0.0.1:8792/makedonija-sistem/world/participate/ node scripts/mks_participation_browser.cjs
+          echo "Diaspora: Cloudflare-style root path (localhost only)"
+          MKS_LOCAL_URL=http://127.0.0.1:8791/world/participate/ node scripts/mks_diaspora_browser.cjs
+          echo "Diaspora: GitHub Pages-style project subpath (localhost only)"
+          MKS_LOCAL_URL=http://127.0.0.1:8792/makedonija-sistem/world/participate/ node scripts/mks_diaspora_browser.cjs
       - name: Publish non-sensitive screenshots for human visual QA
         uses: actions/upload-artifact@v4
         with:
