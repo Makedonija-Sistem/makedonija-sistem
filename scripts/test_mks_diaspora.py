@@ -149,6 +149,33 @@ class DiasporaReviewTests(unittest.TestCase):
                          (ROOT / "scripts/mks_cloudflare_stage.py").read_text(encoding="utf-8"))
         self.assertNotIn("diaspora", (ROOT / "wrangler.jsonc").read_text(encoding="utf-8"))
 
+    def test_cost_covering_is_proposed_not_a_financial_commitment(self):
+        cost = GATE["diaspora_cost_coverage"]
+        self.assertEqual(cost["status"], "PROPOSED_NOT_APPROVED_NOT_PAYABLE")
+        self.assertEqual(cost["proposed_payer"], "MAKEDONIJA SISTEM")
+        self.assertTrue(cost["beneficiary_no_processing_cost_intent"])
+        self.assertEqual(cost["member_dues"], "NOT_SET_SEPARATE_LEGAL_ISSUE")
+        self.assertEqual(cost["payer_model"],
+                         "DIRECT_PAYMENT_TO_VERIFIED_LICENSED_SUPPLIERS_AFTER_APPROVAL_AND_INVOICE")
+        self.assertEqual(cost["eligible_countries"], ["US", "CA", "AU"])
+        self.assertEqual(len(cost["included_potential_costs"]), 4)
+        self.assertTrue(all(x is False for x in cost["checks"].values()))
+        self.assertEqual(len(cost["checks"]), 13)
+        for key in ("approved_budget_amount_mkd", "approved_unit_cost_cap_mkd",
+                    "legal_review_reference", "financial_human_gate_decision_reference",
+                    "provider_contract_reference", "conflict_of_interest_register_reference"):
+            self.assertIsNone(cost[key])
+        self.assertIn('id="cost-policy"', PAGE)
+        self.assertIn('data-t="cost.title"', PAGE)
+        self.assertIn('data-t="cost.status"', PAGE)
+        self.assertIn('data-t="cost.dues"', PAGE)
+        self.assertIn("НЕ активна финансиска гаранција", PAGE)
+        self.assertIn("членарина", PAGE)
+        for forbidden in ('type="card"', 'name="credit_card"', 'name="iban"',
+                          "checkout", "payment-provider", "reimburse-now", "stripe.com"):
+            self.assertNotIn(forbidden, PAGE.lower())
+        self.assertNotIn("fetch(", JS)
+
     def test_accessibility_and_reset_support(self):
         self.assertIn('aria-live="polite"', PAGE)
         self.assertIn('role="status"', PAGE)
