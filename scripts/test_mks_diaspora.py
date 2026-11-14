@@ -89,8 +89,16 @@ class DiasporaReviewTests(unittest.TestCase):
         self.assertNotIn("unsafe-inline", PAGE)
 
     def test_countries_and_processes_are_explicit_not_personalized(self):
-        self.assertEqual(set(re.findall(r'<option value="(us|ca|au)"', PAGE)),
-                         {"us", "ca", "au"})
+        countries = ["us", "ca", "au", "de", "ch", "it", "se", "at", "si",
+                     "hr", "rs", "bg", "gr", "al"]
+        self.assertEqual(re.findall(r'<option value="([a-z]{2})" data-t="country\.[a-z]{2}"', PAGE),
+                         countries)
+        self.assertEqual(len(countries), 14)
+        for country in countries[3:]:
+            self.assertIn("country." + country, JS)
+            self.assertIn(country + ":'https://mfa.gov.mk/mk-MK/ambasadi?region=europe'", JS)
+        self.assertIn("result.country.europe", JS)
+        self.assertIn("https://mfa.gov.mk/mk-MK/ambasadi?region=europe", JS)
         self.assertIn('value="membership"', PAGE)
         self.assertIn('value="founding"', PAGE)
         self.assertIn("north_america", JS)
@@ -140,8 +148,9 @@ class DiasporaReviewTests(unittest.TestCase):
     def test_video_and_membership_backend_are_locked(self):
         state = GATE["diaspora_remote_process"]
         self.assertEqual(state["status"], "BLOCKED_LEGAL_AND_PROVIDER_VERIFICATION")
-        self.assertEqual(state["countries"], ["US", "CA", "AU"])
+        self.assertEqual(state["countries"], ["US", "CA", "AU", "DE", "CH", "IT", "SE", "AT", "SI", "HR", "RS", "BG", "GR", "AL"])
         self.assertTrue(all(v is False for v in state.values() if isinstance(v, bool)))
+        self.assertFalse(state["country_specific_remote_notary_legality_approved"])
         for name in ("decision_reference", "legal_opinion_reference", "provider_contract_reference"):
             self.assertIsNone(state[name])
         self.assertEqual(GATE["release_status"], "BLOCKED_REVIEW_ONLY")
@@ -157,7 +166,10 @@ class DiasporaReviewTests(unittest.TestCase):
         self.assertEqual(cost["member_dues"], "NOT_SET_SEPARATE_LEGAL_ISSUE")
         self.assertEqual(cost["payer_model"],
                          "DIRECT_PAYMENT_TO_VERIFIED_LICENSED_SUPPLIERS_AFTER_APPROVAL_AND_INVOICE")
-        self.assertEqual(cost["eligible_countries"], ["US", "CA", "AU"])
+        self.assertEqual(cost["eligible_countries"], ["US", "CA", "AU", "DE", "CH", "IT", "SE", "AT", "SI", "HR", "RS", "BG", "GR", "AL"])
+        self.assertFalse(cost["country_specific_price_quotes_verified"])
+        self.assertFalse(cost["budget_approval_per_country"])
+        self.assertFalse(cost["foreign_provider_acceptance_approved"])
         self.assertEqual(len(cost["included_potential_costs"]), 4)
         self.assertTrue(all(x is False for x in cost["checks"].values()))
         self.assertEqual(len(cost["checks"]), 13)
