@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="mk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#0a213e">
+  <meta name="description" content="Доброволно учество, права и човечка контрола — информативен модул во тестна фаза, без пријави или собирање податоци.">
+  <title>Доброволно учество · МАКЕДОНИЈА — СИСТЕМ · тестен модул</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main" data-t="skip">Прескокни кон содржината</a>
+<div class="status-strip" role="status" data-t="status">РАЗВОЈНА ВЕРЗИЈА · БЕЗ ПОДНЕСУВАЊЕ · БЕЗ ЗАЧЛЕНУВАЊЕ · БЕЗ СОБИРАЊЕ ПОДАТОЦИ</div>
+<header class="header">
+  <div class="container header-row">
+    <a class="brand" href="../" id="home-link"><span class="brand-mark" aria-hidden="true">М</span><span>МАКЕДОНИЈА — СИСТЕМ<small data-t="brand.sub">Центар за доброволно учество</small></span></a>
+    <nav aria-label="Главно мени" id="primary-nav">
+      <a href="#paths" data-t="nav.paths">Можности</a>
+      <a href="#rights" data-t="nav.rights">Мои права</a>
+      <a href="#gate" data-t="nav.gate">Human Gate</a>
+    </nav>
+    <div class="language-options" role="group" aria-label="Language / Јазик">
+      <button class="language current" type="button" data-lang="mk" aria-pressed="true">MK</button>
+      <button class="language" type="button" data-lang="en" aria-pressed="false">EN</button>
+      <button class="language" type="button" data-lang="al" aria-pressed="false">SQ</button>
+      <button class="language" type="button" data-lang="sr" aria-pressed="false">SR</button>
+      <button class="language" type="button" data-lang="de" aria-pressed="false">DE</button>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <div class="eyebrow" data-t="hero.overline">ПАРТИЦИПАЦИЈА СО ПРАВА · v0.1</div>
+        <h1 data-t="hero.title">Учеството е твоја одлука. Контролата останува кај тебе.</h1>
+        <p class="lead" data-t="hero.body">Дознај кои форми на учество се можни во иднина, кои права ги имаш и какви услови мора да се исполнат пред формално зачленување. Сега не примаме никакви пријави.</p>
+        <a class="primary-cta" href="#paths"><span data-t="hero.cta">Разгледај ги можностите</span><span aria-hidden="true">↘</span></a>
+      </div>
+      <div class="hero-emblem" aria-hidden="true">
+        <div class="halo large"></div><div class="halo small"></div>
+        <div class="shield"><span>М</span><span class="mini-star">✦</span></div>
+        <div class="emblem-note">HUMAN GATE / PRIVACY FIRST</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="principles">
+    <div class="container principle-grid">
+      <div><span aria-hidden="true">◈</span><strong data-t="pill.voluntary">Доброволно</strong></div>
+      <div><span aria-hidden="true">◎</span><strong data-t="pill.transparent">Транспарентно</strong></div>
+      <div><span aria-hidden="true">◇</span><strong data-t="pill.private">Без собирање податоци</strong></div>
+      <div><span aria-hidden="true">✦</span><strong data-t="pill.human">Човечка одлука</strong></div>
+    </div>
+  </section>
+
+  <section class="section" id="paths">
+    <div class="container">
+      <div class="section-label" data-t="paths.overline">01 / ЛОКАЛЕН ИНФОРМАТИВЕН ИЗБОР</div>
+      <h2 data-t="paths.title">Избери што сакаш да дознаеш.</h2>
+      <p class="intro" data-t="paths.body">Изборот останува само на овој екран. Не создаваме кориснички профил, досие, запис за интерес или политичко определување.</p>
+      <div class="choices" role="group" aria-label="Информативни теми" id="choice-group">
+        <button type="button" class="choice" data-choice="learn" aria-pressed="false"><span class="choice-icon" aria-hidden="true">01</span><strong data-t="choice.learn">Да разгледам информации</strong><span aria-hidden="true">↗</span></button>
+        <button type="button" class="choice" data-choice="contribute" aria-pressed="false"><span class="choice-icon" aria-hidden="true">02</span><strong data-t="choice.contribute">Да се информирам за идно учество</strong><span aria-hidden="true">↗</span></button>
+        <button type="button" class="choice" data-choice="membership" aria-pressed="false"><span class="choice-icon" aria-hidden="true">03</span><strong data-t="choice.membership">Да ги прочитам условите за идно членство</strong><span aria-hidden="true">↗</span></button>
+      </div>
+
+      <div class="choice-result" id="choice-result" aria-live="polite" hidden>
+        <div class="result-state" data-t="result.label">САМО ИНФОРМАЦИЈА · НЕ Е ПРИЈАВА</div>
+        <h3 id="result-title"></h3>
+        <p id="result-description"></p>
+        <p class="result-reminder" data-t="result.reminder">Ниту еден избор не е поднесен, сниман или испратен.</p>
+        <button class="subtle-button" id="clear-choice" type="button" data-t="result.clear">Исчисти го изборот</button>
+      </div>
+      <div class="info-note"><strong data-t="paths.notehead">Важно:</strong> <span data-t="paths.note">Дигиталната изјава не е замена за законски пропишана постапка за зачленување или за потпис.</span></div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="rights">
+    <div class="container">
+      <div class="section-label" data-t="rights.overline">02 / ПРАВА И КОНТРОЛА</div>
+      <h2 data-t="rights.title">Знај ги своите права пред да споделиш податоци.</h2>
+      <p class="intro" data-t="rights.body">Кога некоја организација законито обработува лични податоци, лицето располага со права што зависат од правниот основ и околностите. Во овој тестен модул не се обработуваат податоци за членство.</p>
+      <div class="rights-grid">
+        <article><span>01</span><h3 data-t="right.info">Информирање</h3><p data-t="right.info.desc">Да знаеш кој, зошто и како обработува податоци.</p></article>
+        <article><span>02</span><h3 data-t="right.access">Пристап и исправка</h3><p data-t="right.access.desc">Да побараш преглед и исправка на неточни податоци.</p></article>
+        <article><span>03</span><h3 data-t="right.delete">Бришење и ограничување</h3><p data-t="right.delete.desc">Да побараш бришење или ограничување, кога се исполнети условите.</p></article>
+        <article><span>04</span><h3 data-t="right.object">Приговор и човечка проверка</h3><p data-t="right.object.desc">Да поднесеш приговор и да оспориш одредени автоматизирани одлуки.</p></article>
+      </div>
+      <div class="rights-tools">
+        <div>
+          <h3 data-t="template.title">Локален образец за барање</h3>
+          <p data-t="template.body">Избери право и добиј општ текст што можеш да го копираш. Не се бараат лични податоци и ништо не се испраќа. Ова не е официјално поднесено барање.</p>
+          <label for="right-type" data-t="template.label">Избери право</label>
+          <select id="right-type">
+            <option value="information" data-t="template.information">Информација</option>
+            <option value="access" data-t="template.access">Пристап</option>
+            <option value="correction" data-t="template.correction">Исправка</option>
+            <option value="deletion" data-t="template.deletion">Бришење</option>
+            <option value="restriction" data-t="template.restriction">Ограничување</option>
+            <option value="objection" data-t="template.objection">Приговор</option>
+            <option value="human" data-t="template.human">Човечка проверка</option>
+          </select>
+          <button class="secondary-cta" type="button" id="build-template" data-t="template.build">Подготви текст</button>
+        </div>
+        <div class="preview-card" aria-live="polite">
+          <span data-t="template.preview">ПРЕГЛЕД · НЕ Е ПОДНЕСЕНО</span>
+          <p class="template-output" id="template-output" data-t="template.empty">Избери право и притисни „Подготви текст“.</p>
+          <button type="button" id="copy-template" disabled data-t="template.copy">Копирај го текстот</button>
+          <div class="copy-state" id="copy-state" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+      <p class="authority"><span data-t="rights.official">Официјални информации за правата:</span> <a href="https://azlp.mk/vashite-prava/" rel="noopener noreferrer" target="_blank" data-t="rights.source">Агенција за заштита на личните податоци</a></p>
+    </div>
+  </section>
+
+  <section class="section" id="gate">
+    <div class="container gate-wrap">
+      <div>
+        <div class="section-label" data-t="gate.overline">03 / ИНСТИТУЦИОНАЛНА КОНТРОЛА</div>
+        <h2 data-t="gate.title">Не се активира со еден клик.</h2>
+        <p class="intro" data-t="gate.body">Вистинскиот систем за пријави ќе биде дозволен дури по одредување на правен контролор, проверка на правните основи, процена на ризици, технички тестови и експлицитна човечка одлука.</p>
+        <div class="gate-state"><span class="gate-dot"></span><strong data-t="gate.closed">ПРИЈАВИ: БЛОКИРАНИ · HUMAN GATE: НЕОДОБРЕН</strong></div>
+      </div>
+      <ol class="gate-list">
+        <li><span>01</span><div><strong data-t="gate.g1">Правен статус и контролор</strong><small data-t="gate.pending">Потребна проверка</small></div></li>
+        <li><span>02</span><div><strong data-t="gate.g2">Правен основ и посебни категории</strong><small data-t="gate.pending">Потребна проверка</small></div></li>
+        <li><span>03</span><div><strong data-t="gate.g3">Процена на влијанието и права</strong><small data-t="gate.pending">Потребна проверка</small></div></li>
+        <li><span>04</span><div><strong data-t="gate.g4">Безбеден сервер и рокови на чување</strong><small data-t="gate.pending">Потребна проверка</small></div></li>
+        <li><span>05</span><div><strong data-t="gate.g5">Независно тестирање и човечко одобрение</strong><small data-t="gate.pending">Потребна проверка</small></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="control">
+    <div class="container control-grid">
+      <div>
+        <div class="section-label" data-t="control.overline">04 / ТВОЈА КОНТРОЛА</div>
+        <h2 data-t="control.title">Можеш да ги исчистиш изборите во секој момент.</h2>
+        <p class="intro" data-t="control.body">Нема корисничка сметка, база на учесници, колачиња или зачувување во прелистувач. Копираниот текст е под твоја контрола. Чистењето ги отстранува изборите од овој екран, но не може да избрише текст што претходно сам си го копирал.</p>
+      </div>
+      <div class="control-actions">
+        <button class="reset-button" type="button" id="reset-local" data-t="control.reset">Исчисти ги локалните избори</button>
+        <div class="reset-state" id="reset-state" role="status" aria-live="polite"></div>
+        <p data-t="control.note">Без регистрација. Без следење. Без автоматска одлука за членство.</p>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="container footer-content">
+    <div><strong>МАКЕДОНИЈА — СИСТЕМ</strong><p data-t="footer.note">Граѓански и програмски нацрт во развој. Не е регистрирана политичка партија.</p></div>
+    <div class="footer-links">
+      <a href="../" data-t="footer.world">Светски навигатор</a>
+      <a href="../../legal/PRIVACY.html" data-t="footer.privacy">Приватност</a>
+      <a href="../../legal/TERMS.html" data-t="footer.terms">Услови</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
