@@ -72,6 +72,22 @@ async function check(name, fn) {
       assert.equal(await page.locator('#video-locked').isDisabled(),true);
     });
 
+    await check('MKS covers proposed procedure costs but financial commitment is blocked',async()=>{
+      assert.equal(await page.locator('#cost-policy').isVisible(),true);
+      assert.equal(await page.locator('.cost-items li').count(),4);
+      assert.match(await page.locator('#cost-policy-heading').innerText(),/МАКЕДОНИЈА/);
+      assert.match(await page.locator('.cost-guard').innerText(),/НЕ активна финансиска гаранција/);
+      assert.match(await page.locator('.cost-dues').innerText(),/членарина/);
+      assert.equal(await page.locator('#cost-policy input, #cost-policy button, #cost-policy form').count(),0);
+      await page.locator('.language[data-lang="en"]').click();
+      assert.match(await page.locator('#cost-policy-heading').innerText(),/MACEDONIA/);
+      assert.match(await page.locator('.cost-guard').innerText(),/not an active financial guarantee/);
+      await page.locator('.language[data-lang="de"]').click();
+      assert.match(await page.locator('.cost-guard').innerText(),/keine aktive Kostengarantie/);
+      await page.locator('.language[data-lang="mk"]').click();
+      assert.deepEqual(unexpected,[]);
+    });
+
     await check('five languages translate warnings and headings in place',async()=>{
       const cases=[
         ['en','en','From abroad'],
