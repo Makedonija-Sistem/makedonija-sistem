@@ -226,7 +226,7 @@ const TRANSLATIONS = [
   ],
   [
     "cost.title",
-    "Трошоците за постапката ги покрива МАКЕДОНИЈА — СИСТЕМ.",
+    "Предлог: трошоците за постапката да ги покрива МАКЕДОНИЈА — СИСТЕМ.",
     "MACEDONIA — SYSTEM is intended to cover procedural costs.",
     "MAQEDONIA — SISTEM synon të mbulojë shpenzimet e procedurës.",
     "МАКЕДОНИЈА — СИСТЕМ планира да покрије трошкове поступка.",
