@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /
+# Review-only version: explicit human release required
