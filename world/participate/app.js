@@ -361,6 +361,22 @@ const TRANSLATIONS = [
     "Widerspruch"
   ],
   [
+    "template.portability",
+    "Преносливост",
+    "Data portability",
+    "Bartshmëria e të dhënave",
+    "Преносивост података",
+    "Datenübertragbarkeit"
+  ],
+  [
+    "template.withdraw",
+    "Повлекување на согласност",
+    "Withdrawal of consent",
+    "Tërheqja e pëlqimit",
+    "Повлачење сагласности",
+    "Widerruf der Einwilligung"
+  ],
+  [
     "template.human",
     "Човечка проверка",
     "Human review",
