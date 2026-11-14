@@ -604,6 +604,6 @@ const TRANSLATIONS = [
     route();
     resetStatus.textContent=msg('check.cleared');
   });
-  // No fetch, cookies, localStorage, sessionStorage, URL tracking, analytics or camera permissions.
+  // Privacy boundary: ephemeral selections only; no tracking, recording, external calls or storage.
   applyLanguage(language);
 })();
