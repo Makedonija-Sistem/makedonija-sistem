@@ -105,6 +105,8 @@ async function check(name,fn) {
     });
     await check('copy is a direct local clipboard action with feedback',async()=>{
       await page.locator('#copy-template').click();
+      // Clipboard writes are asynchronous; verify the settled result, not a racing empty status.
+      await page.waitForFunction(() => document.getElementById('copy-state').textContent.length > 0, null, {timeout:5000});
       assert.match(await page.locator('#copy-state').innerText(),/Text copied/);
       const clipboard=await page.evaluate(()=>navigator.clipboard.readText());
       assert.equal(clipboard,await page.locator('#template-output').innerText());
