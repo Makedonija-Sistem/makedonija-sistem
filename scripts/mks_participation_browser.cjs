@@ -36,7 +36,7 @@ async function check(name,fn) {
       assert.equal(await page.locator('form').count(),0);
       assert.equal(await page.locator('input').count(),0);
       assert.equal(await page.locator('.choice').count(),3);
-      assert.match(await page.locator('.status-strip').innerText(),/НЕМА ЗАЧЛЕНУВАЊЕ/);
+      assert.match(await page.locator('.status-strip').innerText(),/БЕЗ ЗАЧЛЕНУВАЊЕ/);
       assert.equal(await page.locator('#choice-result').isHidden(),true);
       assert.equal(await page.locator('#copy-template').isDisabled(),true);
       assert.deepEqual(runtimeErrors,[]);
