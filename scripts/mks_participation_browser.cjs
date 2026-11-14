@@ -93,6 +93,16 @@ async function check(name,fn) {
       assert.match(translated,/Erasure/);
       assert.match(translated,/not been submitted/);
     });
+    await check('portability and withdrawal templates remain non-submitted and local',async()=>{
+      for (const [kind, phrase] of [['portability','Data portability'],['withdraw','Withdrawal of consent']]) {
+        await page.locator('#right-type').selectOption(kind);
+        assert.equal(await page.locator('#copy-template').isDisabled(),true);
+        await page.locator('#build-template').click();
+        assert.match(await page.locator('#template-output').innerText(),new RegExp(phrase));
+        assert.equal(await page.locator('#copy-template').isEnabled(),true);
+      }
+      assert.equal(await page.locator('form').count(),0);
+    });
     await check('copy is a direct local clipboard action with feedback',async()=>{
       await page.locator('#copy-template').click();
       assert.match(await page.locator('#copy-state').innerText(),/Text copied/);
