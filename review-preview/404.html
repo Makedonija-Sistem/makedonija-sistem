@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>404 · Страницата не постои · Македонија — Систем</title>
+<meta name="description" content="Страницата што ја баравте не постои. Вратете се на почетната страна на Македонија — Систем.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230a1d3a' rx='20'/%3E%3Ctext x='50' y='65' font-family='Georgia' font-size='50' font-weight='900' fill='%23d4ad4a' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --navy-deep:#0a1d3a;
+  --navy-mid:#0f2a52;
+  --gold:#d4ad4a;
+  --gold-deep:#a8842b;
+  --gold-soft:#e8c876;
+  --cream:#fdfbf5;
+  --cream-soft:#f7f3e8;
+  --ink:#1a1a1a;
+  --muted:#6b6552;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:linear-gradient(135deg,var(--navy-deep) 0%,var(--navy-mid) 50%,#1a3868 100%);
+  color:#fff;
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;
+  position:relative;overflow:hidden;
+}
+body::before{
+  content:"";position:absolute;top:-30%;right:-20%;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(212,173,74,.18),transparent 70%);
+  pointer-events:none;
+  animation:pulse 4s ease-in-out infinite;
+}
+body::after{
+  content:"";position:absolute;bottom:-30%;left:-20%;
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(212,173,74,.12),transparent 70%);
+  pointer-events:none;
+  animation:pulse 4s ease-in-out infinite reverse;
+}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+.card{
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(10px);
+  border:1.5px solid rgba(212,173,74,.3);
+  border-radius:24px;
+  padding:48px 40px;
+  max-width:560px;width:100%;
+  text-align:center;
+  position:relative;z-index:1;
+}
+.tag{
+  display:inline-block;
+  background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+  color:var(--navy-deep);
+  padding:5px 16px;border-radius:14px;
+  font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  margin-bottom:24px;
+}
+h1{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(60px,15vw,120px);
+  color:var(--gold-soft);
+  line-height:1;
+  letter-spacing:-4px;
+  margin-bottom:14px;
+  text-shadow:0 6px 24px rgba(212,173,74,.4);
+}
+h2{
+  font-family:Georgia,serif;
+  font-size:24px;color:#fff;
+  margin-bottom:14px;
+  font-weight:700;
+}
+h2 em{color:var(--gold-soft);font-style:normal}
+p{
+  color:rgba(255,255,255,.85);
+  font-size:15px;line-height:1.7;
+  margin-bottom:28px;
+}
+.actions{
+  display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+}
+.btn{
+  padding:12px 22px;border-radius:10px;
+  font-weight:700;text-decoration:none;
+  font-size:13px;letter-spacing:.5px;text-transform:uppercase;
+  transition:all .25s ease;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.btn.primary{
+  background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+  color:var(--navy-deep);
+}
+.btn.primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 24px rgba(212,173,74,.3);
+}
+.btn.secondary{
+  background:transparent;
+  color:#fff;
+  border:1.5px solid rgba(212,173,74,.4);
+}
+.btn.secondary:hover{
+  border-color:var(--gold);
+  background:rgba(212,173,74,.1);
+}
+.search{
+  margin-top:24px;
+  position:relative;
+}
+.search input{
+  width:100%;padding:12px 16px 12px 40px;
+  border:1.5px solid rgba(212,173,74,.3);
+  border-radius:10px;
+  background:rgba(0,0,0,.2);
+  color:#fff;font-size:14px;
+  font-family:inherit;
+}
+.search input::placeholder{color:rgba(255,255,255,.5)}
+.search input:focus{
+  outline:none;
+  border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(212,173,74,.2);
+}
+.search::before{
+  content:"🔍";position:absolute;left:14px;top:50%;
+  transform:translateY(-50%);font-size:14px;
+}
+.popular{
+  margin-top:32px;
+  padding-top:24px;
+  border-top:1px dashed rgba(212,173,74,.2);
+}
+.popular h3{
+  font-size:11px;color:var(--gold-soft);
+  text-transform:uppercase;letter-spacing:1px;
+  margin-bottom:14px;font-weight:700;
+}
+.popular ul{
+  list-style:none;padding:0;
+  display:flex;flex-direction:column;gap:8px;
+  text-align:left;
+}
+.popular li a{
+  color:rgba(255,255,255,.85);
+  text-decoration:none;
+  font-size:13px;
+  display:flex;align-items:center;gap:8px;
+  padding:8px 12px;border-radius:8px;
+  transition:all .15s ease;
+}
+.popular li a:hover{
+  background:rgba(212,173,74,.1);
+  color:var(--gold-soft);
+  transform:translateX(4px);
+}
+@media (max-width:480px){
+  .card{padding:32px 24px}
+  .actions{flex-direction:column;align-items:stretch}
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <span class="tag">🇲🇰 МАКЕДОНИЈА — СИСТЕМ</span>
+  <h1>404</h1>
+  <h2>Страницата <em>не постои</em>.</h2>
+  <p>Можеби е преместена, преименувана, или линкот е залепен погрешно. Не грижи се — тука сме за тебе.</p>
+  
+  <div class="actions">
+    <a href="/" class="btn primary">🏠 Почетна страна</a>
+    <a href="/#guide" class="btn secondary">📋 Упатство</a>
+  </div>
+
+  <div class="search">
+    <input type="text" id="searchInput" placeholder="Барај нешто..." onkeydown="if(event.key==='Enter')search()">
+  </div>
+
+  <div class="popular">
+    <h3>Популарни секции</h3>
+    <ul>
+      <li><a href="/#founders-drive">⚡ 1,000 основачи Drive</a></li>
+      <li><a href="/#diaspora-hub">🇲🇰 Дијаспорски Hub</a></li>
+      <li><a href="/#digital-notary">🎥 Дигитален нотар</a></li>
+      <li><a href="/#industrial-champions">🏭 Технолошки шампиони</a></li>
+      <li><a href="/#robotika-macedonia">🤖 Robotika Macedonia</a></li>
+      <li><a href="/#municipalities">🏛️ 80+1 општини</a></li>
+      <li><a href="/#monthly-magazine">📰 Дневни вести</a></li>
+      <li><a href="/#contact">✉️ Контакт</a></li>
+    </ul>
+  </div>
+</div>
+
+<script>
+function search(){
+  const q = document.getElementById('searchInput').value.trim();
+  if (q) window.location.href = '/?q=' + encodeURIComponent(q);
+}
+// Auto-redirect after 30s if user does nothing
+let countdown = 30;
+const url = new URL(window.location);
+if (url.searchParams.get('auto') !== 'no') {
+  // Optional: Could add a timer here
+}
+</script>
+
+</body>
+</html>
