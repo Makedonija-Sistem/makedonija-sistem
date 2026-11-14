@@ -46,7 +46,7 @@ class ParticipationReviewTests(unittest.TestCase):
 
     def test_preview_only_and_no_membership_pretence(self):
         self.assertIn('<meta name="robots" content="noindex,nofollow">', PAGE)
-        self.assertIn("НЕМА ЗАЧЛЕНУВАЊЕ", PAGE)
+        self.assertIn("БЕЗ ЗАЧЛЕНУВАЊЕ", PAGE)
         self.assertIn("Не е регистрирана политичка партија", PAGE)
         self.assertIn("не примаме никакви пријави", PAGE)
         self.assertIn('data-t="gate.closed"', PAGE)
