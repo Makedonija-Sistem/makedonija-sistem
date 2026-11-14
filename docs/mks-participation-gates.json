@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "system": "MKS voluntary participation",
+  "release_status": "BLOCKED_REVIEW_ONLY",
+  "issued_utc": "2026-11-14",
+  "current_use": "Local informational UI only; no server-side data collection",
+  "controls": {
+    "membership_applications_enabled": false,
+    "contact_registration_enabled": false,
+    "interest_records_enabled": false,
+    "identity_upload_enabled": false,
+    "political_profiling_enabled": false,
+    "campaign_messaging_enabled": false,
+    "automated_membership_decisions_enabled": false,
+    "remote_data_submissions_enabled": false
+  },
+  "legal_and_human_gate": {
+    "entity_registration_evidence_verified": false,
+    "identified_data_controller": false,
+    "approved_purpose_and_article_10_basis": false,
+    "article_13_special_category_condition_reviewed": false,
+    "applicable_membership_eligibility_reviewed": false,
+    "identity_and_signatures_procedure_reviewed": false,
+    "privacy_notice_approved": false,
+    "retention_and_deletion_schedule_approved": false,
+    "data_subject_request_workflow_tested": false,
+    "data_protection_impact_assessment_resolved": false,
+    "processor_and_cross_border_review_resolved": false,
+    "security_audit_and_incident_response_complete": false,
+    "independent_access_control_test_complete": false,
+    "owner_human_gate_explicitly_approved": false,
+    "production_release_separately_approved": false
+  },
+  "controller_legal_name": null,
+  "lawful_basis_article_10": null,
+  "special_category_exception_article_13": null,
+  "approved_retention_period": null,
+  "release_commit_sha": null,
+  "human_gate_decision_reference": null,
+  "notes": [
+    "Fail closed: the API code never accepts submissions, regardless of this JSON.",
+    "Setting a flag in this file never grants legal authority or deploy rights.",
+    "No valid consent or membership is recorded by the demo interface.",
+    "Separate verified legal review and a new backend implementation are required before any collection."
+  ]
+}
