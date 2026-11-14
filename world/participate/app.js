@@ -226,11 +226,11 @@ const TRANSLATIONS = [
   ],
   [
     "diaspora.kicker",
-    "САД · КАНАДА · АВСТРАЛИЈА",
-    "USA · CANADA · AUSTRALIA",
-    "SHBA · KANADA · AUSTRALIA",
-    "САД · КАНАДА · АУСТРАЛИЈА",
-    "USA · KANADA · AUSTRALIEN"
+    "14 ДРЖАВИ · ЕВРОПА · АМЕРИКА · АВСТРАЛИЈА",
+    "14 COUNTRIES · EUROPE · AMERICA · AUSTRALIA",
+    "14 SHTETE · EVROPË · AMERIKË · AUSTRALI",
+    "14 ДРЖАВА · ЕВРОПА · АМЕРИКА · АУСТРАЛИЈА",
+    "14 LÄNDER · EUROPA · AMERIKA · AUSTRALIEN"
   ],
   [
     "diaspora.title",
