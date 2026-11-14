@@ -3,11 +3,12 @@ name: MKS Cloudflare linking gate (NO DEPLOY)
 on:
   pull_request:
     paths:
+      - ".github/workflows/mks-cloudflare-link-review.yml"
+      - ".github/workflows/mks-cloudflare-manual-upload.yml"
       - "wrangler.jsonc"
       - "scripts/mks_cloudflare_stage.py"
       - "scripts/test_mks_cloudflare_stage.py"
       - "docs/MKS_CLOUDFLARE_LINK_REVIEW_20261114.md"
-      - ".github/workflows/mks-cloudflare-link-review.yml"
   workflow_dispatch:
 
 permissions:
@@ -15,41 +16,42 @@ permissions:
 
 jobs:
   safe-stage:
-    name: Offline asset allowlist and release-gate checks
+    name: Offline allowlist, response headers and Wrangler dry-run (NO DEPLOY)
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - name: Read-only checkout
         uses: actions/checkout@v4
-      - name: Run isolation regression tests
-        run: python3 -m unittest discover -s scripts -p 'test_mks_cloudflare_stage.py' -v
-      - name: Verify Cloudflare settings are review-scoped
-        shell: bash
-        run: |
-          python3 - <<'PY'
-          import json
-          from pathlib import Path
-          cfg = json.loads(Path('wrangler.jsonc').read_text(encoding='utf-8'))
-          assert cfg['name'] == 'makedonija-sistem-preview'
-          assert cfg['assets']['directory'] == './dist/cloudflare'
-          assert 'main' not in cfg, 'Script entrypoint requires independent Worker equivalence review'
-          print('PASS: static-only Worker review configuration; no deployment action')
-          PY
-      - name: Stage public assets ONLY, without deploying
+      - name: Verify fail-closed regression suite
+        run: python3 -m unittest discover -s scripts -p "test_mks_cloudflare_stage.py" -v
+      - name: Stage public assets only
         run: python3 scripts/mks_cloudflare_stage.py
-      - name: Check archive, credentials and internal files stay excluded
+      - name: Verify exact Worker config and generated security headers
         shell: bash
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          import sys
+          import json, sys
           sys.path.insert(0, str(Path('scripts').resolve()))
-          from mks_cloudflare_stage import PUBLIC_FILES
-          base = Path('dist/cloudflare')
-          found = {str(p.relative_to(base)) for p in base.rglob('*') if p.is_file()}
-          assert found == set(PUBLIC_FILES), sorted(found ^ set(PUBLIC_FILES))
-          assert not (base / 'archive').exists()
-          assert not (base / '.github').exists()
-          assert not (base / 'docs').exists()
-          print(f'PASS: {len(found)} explicitly allowlisted public files, zero extra files')
+          from mks_cloudflare_stage import PUBLIC_FILES, SECURITY_HEADERS_FILE, SECURITY_HEADERS
+          
+          cfg = json.loads(Path('wrangler.jsonc').read_text(encoding='utf-8'))
+          assert set(cfg) == {'name', 'compatibility_date', 'assets'}, 'Unexpected Worker config fields'
+          assert cfg['name'] == 'makedonija-sistem-preview', 'Worker name mismatch'
+          assert cfg['compatibility_date'] == '2026-11-14', 'Unexpected compatibility change'
+          assert set(cfg['assets']) == {'directory', 'not_found_handling'}, 'Unreviewed assets config'
+          assert cfg['assets']['directory'] == './dist/cloudflare', 'Wrong static asset directory'
+          assert cfg['assets']['not_found_handling'] == '404-page', 'Unexpected 404 handling'
+          root = Path('dist/cloudflare')
+          staged = {str(p.relative_to(root)) for p in root.rglob('*') if p.is_file()}
+          expected = set(PUBLIC_FILES) | {SECURITY_HEADERS_FILE}
+          assert staged == expected, f'Unexpected staged files: {sorted(staged ^ expected)}'
+          assert (root / SECURITY_HEADERS_FILE).read_text(encoding='utf-8') == SECURITY_HEADERS
+          print(f'PASS: exact Worker config, {len(staged)} assets incl. response header policy')
           PY
+      - name: Configure Node runtime for Cloudflare CLI
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Validate Cloudflare static build with dry-run (NO API TOKEN, NO DEPLOY)
+        run: npx --yes wrangler@4.161.0 deploy --dry-run --config wrangler.jsonc --outdir /tmp/mks-cloudflare-dry-run
