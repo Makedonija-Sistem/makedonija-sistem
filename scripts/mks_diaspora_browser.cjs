@@ -46,11 +46,23 @@ async function check(name, fn) {
       }
     });
 
-    await check('US Canada Australia routes use official country-specific mission pages',async()=>{
+    await check('all 14 diaspora country routes point to official MFA regional directories',async()=>{
+      assert.equal(await page.locator('#country option').count(),14);
       for(const [country,url,marker] of [
         ['us','north_america','САД'],
         ['ca','north_america','Канада'],
-        ['au','australia_and_oceania','Австралија']
+        ['au','australia_and_oceania','Австралија'],
+        ['de','europe','Германија'],
+        ['ch','europe','Швајцарија'],
+        ['it','europe','Италија'],
+        ['se','europe','Шведска'],
+        ['at','europe','Австрија'],
+        ['si','europe','Словенија'],
+        ['hr','europe','Хрватска'],
+        ['rs','europe','Србија'],
+        ['bg','europe','Бугарија'],
+        ['gr','europe','Грција'],
+        ['al','europe','Албанија']
       ]) {
         await page.locator('#country').selectOption(country);
         assert.equal(await page.locator('#result-country').innerText(),marker);
@@ -58,7 +70,9 @@ async function check(name, fn) {
         assert.equal(new URL(href).hostname,'mfa.gov.mk');
         assert.ok(href.includes(url),href);
         assert.equal(await page.locator('#country-official').getAttribute('referrerpolicy'),'no-referrer');
-        assert.ok((await page.locator('#result-description').innerText()).length>70);
+        const description=await page.locator('#result-description').innerText();
+        assert.ok(description.length>70);
+        if(url==='europe') assert.match(description,/европска држава/);
       }
     });
 
