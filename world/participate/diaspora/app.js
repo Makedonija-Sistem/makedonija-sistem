@@ -217,6 +217,78 @@ const TRANSLATIONS = [
     "Gründungsunterschriften unterliegen besonderen gesetzlichen und notariellen Anforderungen. Eine Video-Unterschrift aus dem Ausland ist dafür nicht als ausreichend bestätigt. Erforderlich ist eine schriftliche fachliche und behördliche Prüfung."
   ],
   [
+    "cost.kicker",
+    "ПРЕДЛОЖЕН ФИНАНСИСКИ МОДЕЛ · НЕАКТИВНО",
+    "PROPOSED COST POLICY · NOT ACTIVE",
+    "MODEL FINANCIAR I PROPOZUAR · JOAKTIV",
+    "ПРЕДЛОЖЕНИ МОДЕЛ ТРОШКОВА · НЕАКТИВНО",
+    "VORGESCHLAGENE KOSTENREGELUNG · NICHT AKTIV"
+  ],
+  [
+    "cost.title",
+    "Трошоците за постапката ги покрива МАКЕДОНИЈА — СИСТЕМ.",
+    "MACEDONIA — SYSTEM is intended to cover procedural costs.",
+    "MAQEDONIA — SISTEM synon të mbulojë shpenzimet e procedurës.",
+    "МАКЕДОНИЈА — СИСТЕМ планира да покрије трошкове поступка.",
+    "MAZEDONIEN — SYSTEM soll die Verfahrenskosten übernehmen."
+  ],
+  [
+    "cost.intro",
+    "Предлогот е граѓанинот да не плаќа за претходно одобрени, законски неопходни услуги поврзани со постапката. Организацијата би плаќала директно на овластени даватели, врз основа на документирани фактури и одобрен буџет.",
+    "The proposal is that individuals would not pay for pre-approved, legally necessary processing services. The organisation would pay authorised providers directly, against documented invoices and an approved budget.",
+    "Propozohet që personat të mos paguajnë shërbimet e nevojshme ligjërisht dhe të miratuara më parë. Organizata do t'i paguante drejtpërdrejt ofruesit e autorizuar, me fatura të dokumentuara dhe buxhet të miratuar.",
+    "Предлог је да лица не плаћају унапред одобрене, законом потребне услуге. Организација би директно плаћала овлашћеним пружаоцима уз фактуре и одобрен буџет.",
+    "Vorgesehen ist, dass Personen für vorab genehmigte, rechtlich erforderliche Verfahrensleistungen nicht zahlen. Die Organisation würde zugelassene Anbieter direkt anhand dokumentierter Rechnungen und eines genehmigten Budgets bezahlen."
+  ],
+  [
+    "cost.ai",
+    "AI Адвокат и неопходна човечка правна проверка",
+    "AI Advokat and necessary human legal review",
+    "AI Advokat dhe kontrolli i nevojshëm juridik nga një person",
+    "AI Advokat и потребна људска правна провера",
+    "AI Advokat und erforderliche menschliche juristische Prüfung"
+  ],
+  [
+    "cost.notary",
+    "Законски потребна нотарска или конзуларна заверка",
+    "Legally required notarial or consular certification",
+    "Vërtetim noterial ose konsullor kur kërkohet me ligj",
+    "Законом потребна нотарска или конзуларна овера",
+    "Gesetzlich erforderliche notarielle oder konsularische Beglaubigung"
+  ],
+  [
+    "cost.video",
+    "Видео-консултација / заверка само ако е законски призната",
+    "Video consultation / certification only where legally recognised",
+    "Konsultim video / vërtetim vetëm nëse njihet ligjërisht",
+    "Видео-консултација / овера само када је правно призната",
+    "Videoberatung / Beglaubigung nur bei rechtlicher Anerkennung"
+  ],
+  [
+    "cost.admin",
+    "Нужни документи, преводи и административни заверки, кога се одобрени",
+    "Necessary documents, translations and administrative certifications when approved",
+    "Dokumente, përkthime dhe vërtetime administrative të domosdoshme, kur miratohen",
+    "Неопходна документа, преводи и административне овере, ако су одобрени",
+    "Erforderliche Dokumente, Übersetzungen und Verwaltungsbeglaubigungen, soweit genehmigt"
+  ],
+  [
+    "cost.status",
+    "Важна граница: Ова е предложена политика, НЕ активна финансиска гаранција. Нема одобрен буџет, договорени даватели, плаќања или право на надоместување. Пред примената се потребни законит извор на средства, финансиско одобрување, документирање и Human Gate.",
+    "Important: This is a PROPOSAL, not an active financial guarantee. No approved budget, contracted providers, payments or reimbursement rights exist. Lawful funding, financial approval, records and a human release gate are required first.",
+    "E rëndësishme: Kjo është një PROPOZIM, jo garanci financiare aktive. Nuk ka buxhet të miratuar, ofrues të kontraktuar, pagesa ose të drejtë rimbursimi. Kërkohen burim ligjor fondesh, miratim financiar, dokumentim dhe vendim njerëzor.",
+    "Важно: Ово је ПРЕДЛОГ, а не активна финансијска гаранција. Нема одобреног буџета, уговорених пружалаца, плаћања нити права на накнаду. Прво су потребни законит извор средстава, одобрење, евиденција и људска одлука.",
+    "Wichtig: Dies ist ein VORSCHLAG und keine aktive Kostengarantie. Es gibt weder genehmigtes Budget noch vertraglich gebundene Anbieter, Zahlungen oder Erstattungsansprüche. Rechtmäßige Finanzierung, Freigabe, Dokumentation und menschliche Entscheidung sind erforderlich."
+  ],
+  [
+    "cost.dues",
+    "Трошоците за постапката не се исто што и евентуална годишна членарина; нејзиното постоење и висина не се определуваат со овој водич.",
+    "Process expenses are separate from any potential annual membership dues; this guide sets neither their existence nor amount.",
+    "Shpenzimet e procedurës dallojnë nga çdo kuotë vjetore e mundshme; ky udhëzues nuk vendos as ekzistencën dhe as shumën e saj.",
+    "Трошкови поступка нису исто што и евентуална годишња чланарина; овај водич не утврђује ни њено постојање ни висину.",
+    "Verfahrenskosten sind von möglichen jährlichen Mitgliedsbeiträgen getrennt; dieser Leitfaden legt weder deren Erhebung noch deren Höhe fest."
+  ],
+  [
     "stage.ai.title",
     "AI Адвокат · правно истражување",
     "AI Advokat · legal research",
