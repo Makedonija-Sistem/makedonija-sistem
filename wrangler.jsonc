@@ -1,0 +1,8 @@
+{
+  "name": "makedonija-sistem-preview",
+  "compatibility_date": "2026-11-14",
+  "assets": {
+    "directory": "./dist/cloudflare",
+    "not_found_handling": "404-page"
+  }
+}
