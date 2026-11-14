@@ -66,5 +66,46 @@
     "legal_opinion_reference": null,
     "provider_contract_reference": null,
     "warning": "Consultation via video is NOT notarial certification. No actual membership application, recording, document upload or enrollment is allowed."
+  },
+  "diaspora_cost_coverage": {
+    "status": "PROPOSED_NOT_APPROVED_NOT_PAYABLE",
+    "proposed_payer": "MAKEDONIJA SISTEM",
+    "beneficiary_no_processing_cost_intent": true,
+    "included_potential_costs": [
+      "necessary_ai_advokat_legal_information_and_independent_human_legal_review",
+      "legally_required_notary_or_consular_signature_certification",
+      "authorized_video_consultation_only_if_legally_allowed",
+      "necessary_preapproved_administrative_documents_translations_certifications"
+    ],
+    "exclusions": "No promise about travel, living expenses, unverified extra charges, statutory annual member dues, or cash benefits to members",
+    "payer_model": "DIRECT_PAYMENT_TO_VERIFIED_LICENSED_SUPPLIERS_AFTER_APPROVAL_AND_INVOICE",
+    "member_dues": "NOT_SET_SEPARATE_LEGAL_ISSUE",
+    "approved_budget_amount_mkd": null,
+    "approved_unit_cost_cap_mkd": null,
+    "eligible_countries": [
+      "US",
+      "CA",
+      "AU"
+    ],
+    "legal_review_reference": null,
+    "conflict_of_interest_register_reference": null,
+    "financial_human_gate_decision_reference": null,
+    "provider_contract_reference": null,
+    "checks": {
+      "legal_entity_permitted_to_spend": false,
+      "lawful_funds_and_finance_reporting_reviewed": false,
+      "political_membership_cost_subsidy_legality_reviewed": false,
+      "budget_and_max_cost_approved": false,
+      "procurement_conflicts_related_party_AI_Advokat_reviewed": false,
+      "notary_video_and_consular_fee_rules_verified": false,
+      "in_kind_and_third_party_financing_rules_reviewed": false,
+      "cross_border_tax_currency_and_payments_reviewed": false,
+      "supplier_contract_and_invoice_requirements_approved": false,
+      "applicant_eligibility_and_equal_treatment_policy_reviewed": false,
+      "independent_financial_authority_approved": false,
+      "owner_human_gate_approved": false,
+      "production_payments_enabled": false
+    },
+    "warning": "No cash transfers, reimbursement, provider fee payment, billing, subscription or card collection is activated. Proposed candidate zero procedural expenses are not a binding entitlement."
   }
 }
