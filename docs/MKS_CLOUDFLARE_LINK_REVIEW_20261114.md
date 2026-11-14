@@ -1,70 +1,61 @@
-# МАКЕДОНИЈА СИСТЕМ — директно GitHub Actions → Cloudflare (алтернатива)
+# МАКЕДОНИЈА СИСТЕМ — GitHub Actions → Cloudflare, без GitHub picker
 
-**Датум:** 14 ноември 2026  
-**Статус:** REVIEW ONLY / ПОДГОТВЕНО ВО ГИТХАБ; НЕ Е ПОВРЗАНО СО ТОКЕН; НЕ Е ПУШТЕНО ВО ПРОДУКЦИЈА.
+**Дата:** 14 ноември 2026  
+**Верзија:** review v0.2 (не е издание на порталот)  
+**СТАТУС:** DRAFT PR #4, преглед/тестирање. **НЕ Е СПОЕНО ВО MAIN, НЕ Е ИЗВРШЕН Cloudflare UPLOAD, НЕ Е АКТИВИРАНА ПРОДУКЦИЈА.**
 
-## Зошто оваа алтернатива
+## Одлука и потекло
 
-Cloudflare Workers Builds формуларот повторно го прикажува погрешниот GitHub корисник **makedonmessenger (355030331)** и репозиториумот `makedon-messenger-one`, иако точниот `Makedonija-Sistem` GitHub account има инсталирана и авторизирана Cloudflare GitHub апликација. НЕ го користиме тој формулар, НЕ ја отстрануваме апликацијата од MAKEDON MESSENGER.
+Cloudflare Workers Builds selector се заглавува со `makedonmessenger (355030331)` и `makedon-messenger-one`, иако GitHub `@Makedonija-Sistem` има авторизирана Cloudflare апликација. Го заобиколуваме *само* selector-от: користиме официјално поддржан GitHub Actions → Cloudflare API токен.
 
-**Алтернативата е GitHub Actions со ограничен Cloudflare API token, без Workers Builds Git поврзување.**
+**Цел:**
+- Репозиториум: `Makedonija-Sistem/makedonija-sistem`
+- Единствен Worker: `makedonija-sistem-preview`.
+- Постојна активна Cloudflare верзија од сопственички Dashboard: `f9b8f578`. Изворна еквивалентност со GitHub сè уште не е утврдена.
+- `icy-darkness-16d5` и `makedon-messenger-one`: недопрени.
 
-## Цел и граници
+## Безбедносни граници имплементирани во PR #4
 
-- **GitHub:** `Makedonija-Sistem/makedonija-sistem`
-- **Единствен дозволен Worker:** `makedonija-sistem-preview`
-- **Постојна активна верзија (според Dashboard на сопственикот):** `f9b8f578`
-- **Стар резервен Worker:** `icy-darkness-16d5` — останува недопрен.
-- **Cloudflare API token:** да има **Editor само за `makedonija-sistem-preview`**, доколку Cloudflare нуди грануларно ограничување на конкретен Worker; НЕ Workers Admin, НЕ пристап до сите апликации.
-- **Нема** автоматско поставување при push, merge или PR. Нема `wrangler deploy` или `versions deploy` во работниот тек.
+1. **Точно дозволени јавни ресурси.** `scripts/mks_cloudflare_stage.py` копира само 12 експлицитни статички датотеки во `dist/cloudflare`, без `.env`, `archive/`, `docs/`, `.github/`. Не препокрива постоечки output и одбива симболички линкови.
+2. **Реални HTTP headers за статички Cloudflare assets.** Генерира `_headers` во build output, со `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Referrer-Policy: no-referrer`, `Content-Security-Policy: frame-ancestors 'none'` и `X-Robots-Tag: noindex, nofollow`. Изворниот CSP сè уште користи inline скрипти — **не тврдиме дека е завршен XSS hardening**. HTTP headers во живиот Worker се непроверени.
+3. **Зачувана забрана за индексирање.** Robots meta `noindex,nofollow` и `robots.txt` `Disallow: /` се задолжителни. Ако ги нема, staging запира.
+4. **Офлајн тестови + вистинска Wrangler dry-run компилација.** `wrangler@4.161.0 deploy --dry-run` е само compile/config тест и не комуницира со продукцискиот Worker. Нема Cloudflare token на PR проверки.
+5. **Ниту едно автоматско upload/deploy на push, merge или PR.** Рачниот workflow `.github/workflows/mks-cloudflare-manual-upload.yml` има стандарден избор `CHECK_ONLY`.
+6. **Двоен Human Gate за нова неактивна верзија.** Cloudflare upload job бара: `workflow_dispatch` од `main` + експлицитно `UPLOAD_NONLIVE_VERSION` + точен 40-цифрен `approved_main_sha` што се совпаѓа со SHA на извршувањето, плус GitHub environment со наменски тајни.
+7. **Ниту еден production deploy.** Единствена дозволена upload команда: `npx --yes wrangler@4.161.0 versions upload --config wrangler.jsonc`. Не содржи `wrangler deploy` без `--dry-run`, ниту `versions deploy` или Cloudflare traffic promotion.
 
-## Внесени датотеки (во Draft PR #4)
+## Еднократен Human Gate и тајни (САМО ПО ОДОБРЕН И ПРОВЕРЕН PR)
 
-- `wrangler.jsonc` — точен Worker и assets path `./dist/cloudflare`.
-- `scripts/mks_cloudflare_stage.py` — fail-closed дозволен список од точно 12 јавни датотеки, без `archive/`, `.env`, `.github/` и интерни документи.
-- `scripts/test_mks_cloudflare_stage.py` — регресиски проверки.
-- `.github/workflows/mks-cloudflare-link-review.yml` — офлајн QA.
-- **`.github/workflows/mks-cloudflare-manual-upload.yml`** — QA на PR; рачен upload само од `main`, со експлицитен избор `UPLOAD_NONLIVE_VERSION`.
-- Овој документ — операторски упатства.
+**Внимание:** Овој PR е Draft. Во моментов **НЕ** создавај токен со широка дозвола. Не испраќај токени, клучеви или кодови во chat.
 
-## Што се прави само откако ќе има одобрение за спојување на PR #4
+1. Cloudflare Dashboard → **Manage Account → Account API Tokens → Create token**. Избери *account-owned* токен со **Workers Editor** за **Individual Worker: `makedonija-sistem-preview`**. Не давај Admin/All Workers/Zone Routes/други продукти. Официјално оваа грануларност е поддржана од 15.9.2026. Ако интерфејсот не дозволува ограничување на конкретниот Worker, **СТОП**.
+2. GitHub → **Settings → Environments → New environment**, име точно **`mks-cloudflare-nonlive-upload`**: https://github.com/Makedonija-Sistem/makedonija-sistem/settings/environments
+3. Во environment конфигурирај **Required reviewers** и deployment branches **main only**, според достапните опции. Ако акаунтот е единствен одобрувач, не активирај „Prevent self-review“ без втор овластен reviewer (инаку може да се блокираш). Environment settings мора рачно да се прегледаат; кодот сам не докажува дека се поставени.
+4. Во **истиот environment**, не во repository-wide Secrets, додај:
+   - `MKS_CLOUDFLARE_API_TOKEN`: ограничен Cloudflare токен.
+   - `MKS_CLOUDFLARE_ACCOUNT_ID`: ID на истиот Cloudflare account.
+5. **PR #4 да се спои во main само по независен ревизорски преглед и посебно изречно одобрение на сопственикот.** Спојувањето НЕ активира Cloudflare, но може да влијае на GitHub Pages, затоа е Human Gate.
 
-Работниот тек `workflow_dispatch` **не е достапен за рачно извршување додека датотеката не е во default branch `main`**. Спојувањето на PR е посебен Human Gate по ревизија. Дотогаш се извршуваат само PR тестови, без тајни.
+## Рачна проверка ПО одобрен merge — без промена на сообраќај
 
-### Еднократни поставки, без испраќање тајни во разговор
+1. GitHub → Actions → `MKS Cloudflare manual non-live version upload` → Run workflow на `main`.
+2. Најнапред избери `CHECK_ONLY` (без Cloudflare токен); провери дека тестовите и Wrangler dry-run се зелени.
+3. Дури по ревизија, за пробен **неактивен** Worker version избери `UPLOAD_NONLIVE_VERSION` и во `approved_main_sha` внеси го **точниот 40-цифрен main commit SHA** што си го одобрил. Ако не се совпаѓа, workflow мора да FAIL без upload.
+4. GitHub environment треба да бара одобрување. Само тогаш се ослободуваат неговите secrets.
+5. По успешен upload, во Cloudflare → `makedonija-sistem-preview` → Deployments/Versions утврди нова неактивна version ID; провери дека активната `f9b8f578` и распределбата на сообраќај остануваат непроменети. **Upload ≠ deploy.**
 
-1. Во Cloudflare Dashboard → **Manage Account → Account API Tokens** → Create token. Ако е достапно, користи account-owned token со дозвола **Workers Editor** за **Specified Workers → `makedonija-sistem-preview`**. Не додавај Workers Admin, routes, KV, R2, Messenger или други сервиси. Ограничен рок на важност и можност за ротација се препорачуваат. Ако Granular Worker scope не е достапен во интерфејсот, **стоп** и провери го понудениот опфат пред креирање.
-2. На GitHub отвори **Settings → Secrets and variables → Actions → New repository secret**, точно за `Makedonija-Sistem/makedonija-sistem`: https://github.com/Makedonija-Sistem/makedonija-sistem/settings/secrets/actions
-3. Додај `MKS_CLOUDFLARE_API_TOKEN`: токенот од Cloudflare (никогаш во код/commit/chat).
-4. Додај `MKS_CLOUDFLARE_ACCOUNT_ID`: Account ID од твојата Cloudflare Dashboard Account Details страница. Идентификаторот се чува како GitHub Secret за да не се објавува.
-5. За дополнителен Human Gate можеш да поставиш GitHub environment **`mks-cloudflare-nonlive-upload`** со required reviewers во repo Settings → Environments; не е задолжителен за основната функционалност, но е препорачлив.
+## Преостанати блокери пред било каков LIVE release
 
-### По одобрено спојување (без автоматско продукциско распоредување)
+- Нема независна байт-по-байт споредба на стар Cloudflare Worker и GitHub index, ниту browser E2E smoke-test.
+- Нема проверено финални 5-јазични преводи, дел од основните script CSP слабости, live HTTP headers, правни и privacy текстови.
+- Не е извршен workflow upload со Cloudflare токен. Не е одобрен production deploy или traffic change.
+- Потребно е да се потврди restore/rollback од зачуваната стара верзија пред евентуално идно promotion.
 
-1. GitHub → Actions → **MKS Cloudflare manual non-live version upload** → Run workflow.
-2. Branch **main**; избор **CHECK_ONLY** е безбеден стандарден режим.
-3. Само ако намерно сакаш нова **неактивна** верзија и се проверени secrets, избери **UPLOAD_NONLIVE_VERSION**.
-4. Работниот тек ќе ги изврши тестовите и `npx --yes wrangler@4 versions upload --config wrangler.jsonc`. Ова **создава нова Worker верзија**, но **не ја активира** за публика.
-5. Во Cloudflare → Worker → Deployments/Versions провери го новиот ID и дека активната верзија `f9b8f578` е непроменета. Ако нема проверка, статусот останува **НЕПОТВРДЕНО**.
+## Докази
 
-## Критични граници
-
-- **НЕ** спојувај PR #4 само затоа што тестовите се зелени. Нужни се независни прегледи и одобрение на сопственикот.
-- **НЕ** користи Deploy new version/Promote/Traffic changes без посебен експлицитен Human Gate.
-- **НЕ** копирај ги API токенот, лозинки или кодови во ChatGPT.
-- Постоечката Cloudflare верзија и GitHub root `index.html` **не се byte-equivalent проверени**. Подготвената static-only верзија може да биде функционално различна. Пред активирање задолжителни се browser smoke тестови, link/header/CSP/i18n проверка и rollback план.
-- `robots.txt` и `noindex,nofollow` остануваат активни.
-
-## Какво е нивото на доказ
-
-- VERIFIED FACT: GitHub е достапен за запишување, тестна гранка и PR #4 постојат.
-- VERIFIED FACT: Работната линија за static assets успешно помина претходна GitHub Actions офлајн проверка.
-- НЕПОТВРДЕНО: конфигурирани GitHub Secrets, Cloudflare API token, извршен upload со токен, нов Cloudflare version ID.
-- NOT AUTHORIZED: автоматски production deploy/traffic/promote/merge.
-
-## Официјални упатства
-
+- GitHub Draft PR: https://github.com/Makedonija-Sistem/makedonija-sistem/pull/4
+- Cloudflare Workers permissions: https://developers.cloudflare.com/workers/authorization/workers/
+- Cloudflare Versions and Deployments: https://developers.cloudflare.com/workers/versions-and-deployments/
+- Cloudflare Static Assets headers: https://developers.cloudflare.com/workers/static-assets/headers/
 - Cloudflare GitHub Actions: https://developers.cloudflare.com/workers/ci-cd/external-cicd/github-actions/
-- Worker-specific API token permissions: https://developers.cloudflare.com/workers/authorization/workers/
-- Cloudflare deployment management: https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/
-- GitHub workflow_dispatch: https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#workflow_dispatch
+- GitHub protected environments: https://docs.github.com/en/actions/how-tos/deploy/configure-and-manage-deployments/manage-environments
