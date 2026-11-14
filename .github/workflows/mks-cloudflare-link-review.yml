@@ -21,7 +21,9 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Read-only checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
       - name: Verify fail-closed regression suite
         run: python3 -m unittest discover -s scripts -p "test_mks_cloudflare_stage.py" -v
       - name: Stage public assets only
@@ -50,8 +52,9 @@ jobs:
           print(f'PASS: exact Worker config, {len(staged)} assets incl. response header policy')
           PY
       - name: Configure Node runtime for Cloudflare CLI
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: "22"
+          package-manager-cache: false
       - name: Validate Cloudflare static build with dry-run (NO API TOKEN, NO DEPLOY)
         run: npx --yes wrangler@4.161.0 deploy --dry-run --config wrangler.jsonc --outdir /tmp/mks-cloudflare-dry-run
