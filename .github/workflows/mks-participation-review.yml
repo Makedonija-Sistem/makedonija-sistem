@@ -1,0 +1,73 @@
+name: MKS voluntary participation rights gate (NO DEPLOY)
+
+# This workflow does not create Cloudflare versions, handle secrets, collect data or deploy.
+on:
+  pull_request:
+    paths:
+      - "world/participate/**"
+      - "world/index.html"
+      - "world/app.js"
+      - "api/participation-review-worker*"
+      - "scripts/test_mks_participation.py"
+      - "scripts/mks_participation_browser.cjs"
+      - "docs/mks-participation-gates.json"
+      - ".github/workflows/mks-participation-review.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  privacy-and-rights-review:
+    name: Local-only privacy, blocked API and Chromium browser checks (NO DEPLOY)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Checkout source with credentials disabled
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Fail-closed source and Human Gate validation
+        run: python3 -m unittest discover -s scripts -p "test_mks_participation.py" -v
+      - name: Re-check existing world navigator integration
+        run: python3 -m unittest discover -s scripts -p "test_mks_world_gateway.py" -v
+      - name: Configure pinned Node runtime
+        uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          package-manager-cache: false
+      - name: Check all JavaScript syntax
+        run: |
+          node --check world/participate/app.js
+          node --check world/app.js
+          node --check api/participation-review-worker.mjs
+          node --check api/participation-review-worker.test.mjs
+          node --check scripts/mks_participation_browser.cjs
+      - name: Verify server blocks every membership submission and omits CORS credentials
+        run: node --test api/participation-review-worker.test.mjs
+      - name: Install pinned Playwright outside repository
+        run: npm install --prefix /tmp/mks-participation-browser --no-save --no-audit --no-fund playwright@1.65.1
+      - name: Install independent Chromium
+        run: /tmp/mks-participation-browser/node_modules/.bin/playwright install --with-deps chromium
+      - name: Browser QA on localhost Worker-root and GitHub-subpath layouts
+        shell: bash
+        env:
+          MKS_PLAYWRIGHT_MODULE: /tmp/mks-participation-browser/node_modules/playwright
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8791 --bind 127.0.0.1 > /tmp/mks-participation-root.log 2>&1 &
+          root_pid=$!
+          (cd .. && python3 -m http.server 8792 --bind 127.0.0.1 > /tmp/mks-participation-subpath.log 2>&1) &
+          subpath_pid=$!
+          trap 'kill "$root_pid" "$subpath_pid" 2>/dev/null || true' EXIT
+          for attempt in {1..30}; do
+            if curl -fsS -o /dev/null http://127.0.0.1:8791/world/participate/ &&
+               curl -fsS -o /dev/null http://127.0.0.1:8792/makedonija-sistem/world/participate/; then break; fi
+            sleep 1
+          done
+          curl -fsS -o /dev/null http://127.0.0.1:8791/world/participate/
+          curl -fsS -o /dev/null http://127.0.0.1:8792/makedonija-sistem/world/participate/
+          echo "Cloudflare-style path (localhost only)"
+          MKS_LOCAL_URL=http://127.0.0.1:8791/world/participate/ node scripts/mks_participation_browser.cjs
+          echo "GitHub Pages-style path (localhost only)"
+          MKS_LOCAL_URL=http://127.0.0.1:8792/makedonija-sistem/world/participate/ node scripts/mks_participation_browser.cjs
