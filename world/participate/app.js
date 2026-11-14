@@ -225,6 +225,38 @@ const TRANSLATIONS = [
     "Bei rechtmäßiger Verarbeitung personenbezogener Daten bestehen Rechte je nach Rechtsgrundlage und Umständen. Dieses Testmodul verarbeitet keine Mitgliedsdaten."
   ],
   [
+    "diaspora.kicker",
+    "САД · КАНАДА · АВСТРАЛИЈА",
+    "USA · CANADA · AUSTRALIA",
+    "SHBA · KANADA · AUSTRALIA",
+    "САД · КАНАДА · АУСТРАЛИЈА",
+    "USA · KANADA · AUSTRALIEN"
+  ],
+  [
+    "diaspora.title",
+    "Правен и нотарски пат за дијаспората",
+    "Legal and notarial pathway for the diaspora",
+    "Rruga ligjore dhe noteriale për diasporën",
+    "Правни и нотарски пут за дијаспору",
+    "Rechts- und Notarweg für die Diaspora"
+  ],
+  [
+    "diaspora.description",
+    "Избери држава и провери како би изгледале правната подготовка преку AI Адвокат, видео-консултацијата и нотарскиот или конзуларниот чекор. Видео-разговорот сам по себе не е заверка. Не се примаат пријави.",
+    "Choose a country and review legal preparation with AI Advokat, a possible video consultation and the notarial or consular step. A video call alone is not certification. No applications are accepted.",
+    "Zgjidh shtetin dhe shqyrto përgatitjen ligjore me AI Advokat, konsultimin me video dhe hapat noterialë ose konsullorë. Video-thirrja nuk është noterizim. Nuk pranohen aplikime.",
+    "Изабери државу и провери правну припрему кроз AI Advokat, видео-консултацију и нотарски или конзуларни корак. Видео-позив није сам по себи овера. Пријаве се не примају.",
+    "Wähle ein Land und prüfe die rechtliche Vorbereitung mit AI Advokat, mögliche Videoberatung sowie notarielle oder konsularische Schritte. Ein Videoanruf allein ist keine Beglaubigung. Es werden keine Anträge angenommen."
+  ],
+  [
+    "diaspora.open",
+    "Отвори го водичот за дијаспората ↗",
+    "Open diaspora legal guide ↗",
+    "Hap udhëzuesin ligjor të diasporës ↗",
+    "Отвори правни водич за дијаспору ↗",
+    "Rechtsleitfaden für die Diaspora öffnen ↗"
+  ],
+  [
     "ai.eyebrow",
     "ПОВРЗАН ПРАВНО-ИНФОРМАТИВЕН ПРОСТОР",
     "CONNECTED LEGAL INFORMATION SERVICE",
