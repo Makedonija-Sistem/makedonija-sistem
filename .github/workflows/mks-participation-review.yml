@@ -78,7 +78,7 @@ jobs:
           echo "GitHub Pages-style path (localhost only)"
           MKS_LOCAL_URL=http://127.0.0.1:8792/makedonija-sistem/world/participate/ node scripts/mks_participation_browser.cjs
           echo "Diaspora: Cloudflare-style root path (localhost only)"
-          MKS_LOCAL_URL=http://127.0.0.1:8791/world/participate/ node scripts/mks_diaspora_browser.cjs
+          MKS_CAPTURE_DIASPORA=1 MKS_LOCAL_URL=http://127.0.0.1:8791/world/participate/ node scripts/mks_diaspora_browser.cjs
           echo "Diaspora: GitHub Pages-style project subpath (localhost only)"
           MKS_LOCAL_URL=http://127.0.0.1:8792/makedonija-sistem/world/participate/ node scripts/mks_diaspora_browser.cjs
       - name: Publish non-sensitive screenshots for human visual QA
@@ -88,5 +88,7 @@ jobs:
           path: |
             /tmp/mks-participation-desktop.png
             /tmp/mks-participation-mobile.png
+            /tmp/mks-diaspora-desktop.png
+            /tmp/mks-diaspora-mobile.png
           retention-days: 14
           if-no-files-found: error
