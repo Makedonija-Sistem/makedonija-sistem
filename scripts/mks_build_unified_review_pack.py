@@ -22,17 +22,21 @@ PUBLIC_REVIEW = (
     "research/party-tech/app.js",
     "research/party-tech/evidence.js",
     "research/strategic-investments.html",
+    "research/municipalities/index.html",
+    "research/municipalities/style.css",
+    "research/municipalities/data.js",
+    "research/municipalities/app.js",
     "legal/PROGRAM.md",
     "legal/STATUTE.md",
 )
-README = """MAKEDONIJA SISTEM - OFFLINE REVIEW v0.3 (2026-11-15)
+README = """MAKEDONIJA SISTEM - OFFLINE REVIEW v0.4 (2026-11-15)
 
 STATUS: SOURCE REVIEW ONLY; no deployment, membership or investment service.
 MEDIA CONNECT: Video joining DISABLED. No LiveKit account, tokens, recordings,
 API secrets, server integration or evidence of 500+500 live capacity is included.
 
 Files: index.html (61-card master), Party Atlas, economic programme,
-MEDIA CONNECT directory, role-gated videoroom frontend, legal drafts.
+MEDIA CONNECT directory, role-gated videoroom frontend, legal drafts, and\nread-only 80-municipality directory from the State Statistical Office 2026.
 Secrets and Cloudflare Worker backends are intentionally excluded.
 
 How to inspect:
