@@ -33,9 +33,9 @@ async function check(name,fn){
     await page.locator('.research-card').first().waitFor({state:'visible',timeout:12000});
     assert.equal(await page.locator('.research-card').count(),61);
     assert.equal(await page.locator('#count-atlas').innerText(),'61');
-    assert.equal(await page.locator('#count-researched').innerText(),'13');
-    assert.equal(await page.locator('#count-signals').innerText(),'20');
-    assert.equal(await page.locator('#count-sources').innerText(),'21');
+    assert.equal(await page.locator('#count-researched').innerText(),'15');
+    assert.equal(await page.locator('#count-signals').innerText(),'24');
+    assert.equal(await page.locator('#count-sources').innerText(),'25');
     assert.deepEqual(pageErrors,[]);
     assert.deepEqual(consoleErrors,[]);
   });
@@ -46,11 +46,11 @@ async function check(name,fn){
     assert.equal(await page.locator('a[href="../../index.html#world-parties"]').count(),3);
     assert.equal(await page.locator('form, iframe').count(),0);
   });
-  await check('exact 13 researched and 48 not-researched, not falsely absent',async()=>{
+  await check('exact 15 researched and 46 not-researched, not falsely absent',async()=>{
     await page.locator('#evidence').selectOption('researched');
-    assert.equal(await page.locator('.research-card').count(),13);
+    assert.equal(await page.locator('.research-card').count(),15);
     await page.locator('#evidence').selectOption('unresearched');
-    assert.equal(await page.locator('.research-card').count(),48);
+    assert.equal(await page.locator('.research-card').count(),46);
     assert.match(await page.locator('.no-evidence').first().innerText(),/не докажува отсуство/);
     await page.locator('#evidence').selectOption('all');
   });
@@ -116,9 +116,9 @@ async function check(name,fn){
     const p=await dl.path();
     const csv=fs.readFileSync(p,'utf8');
     assert.match(csv,/"party","country","region","atlas_block"/);
-    assert.match(csv,/https:\/\/meine\.cdu\.de/);
+    assert.match(csv,/https:\/\/www\.meine\.cdu\.de/);
     const lines=csv.trim().split(/\r?\n/);
-    assert.equal(lines.length,69,'20 sourced signal rows + 48 unresearched + header');
+    assert.equal(lines.length,71,'24 sourced signal rows + 46 unresearched + header');
     assert.deepEqual(outbound,[]);
   });
   await check('five language controls preserve dataset and translated synthesis statuses',async()=>{
@@ -143,10 +143,10 @@ async function check(name,fn){
     assert.equal(await page.locator('.synth-card[data-state="blocked"]').count(),2);
     assert.equal(await page.locator('input[type="password"],input[type="email"],input[type="tel"]').count(),0);
   });
-  await check('two additional researched examples remain outside 61-card atlas',async()=>{
-    assert.equal(await page.locator('#extra-cases .extra-card').count(),2);
+  await check('three additional researched examples remain outside 61-card atlas',async()=>{
+    assert.equal(await page.locator('#extra-cases .extra-card').count(),3);
     const names=await page.locator('#extra-cases h3').allInnerTexts();
-    assert.deepEqual(names,['La France insoumise','Movimento 5 Stelle']);
+    assert.deepEqual(names,['La France insoumise','Movimento 5 Stelle','Podemos']);
     assert.equal(await page.locator('.research-card').count(),61);
   });
   await check('zero tracking, external requests, cookies, storage or script errors',async()=>{
