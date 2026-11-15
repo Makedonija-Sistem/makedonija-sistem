@@ -186,7 +186,7 @@ class ResearchTechnologyAtlasTests(unittest.TestCase):
         self.assertIn("URL.createObjectURL", APP)
         self.assertIn("revokeObjectURL", APP)
         self.assertIn("function protectCsvCell", APP)
-        self.assertIn("'/^[", "'/^[")  # no inert export button
+        self.assertIn(r"/^[\s]*[=+@-]/", APP)  # formula injection guard
         self.assertIn("csv.addEventListener('click',exportCsv)", APP)
 
     def test_mobile_keyboard_and_no_js_fallback(self):
