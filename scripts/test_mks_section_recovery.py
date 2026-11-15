@@ -32,9 +32,12 @@ class SectionRecovery(unittest.TestCase):
         self.assertNotIn("59",section)
     def test_known_legacy_services_still_disabled(self):
         s=read("index.html")
-        for id in ["membership","digital-enrollment","poll-tool","donations","anonymous-proposals","media-hub"]:
+        for id in ["membership","digital-enrollment","poll-tool","donations","anonymous-proposals"]:
             section=s.split('<section id="'+id+'"',1)[1].split("</section>",1)[0]
             self.assertIn("data-review-status=\"unverified\"",section)
+        media=s.split('<section id="media-hub"',1)[1].split("</section>",1)[0]
+        self.assertIn('data-mks-recovery-status="read-only"',media)
+        self.assertIn("disabled data-may-historical-control",media)
         self.assertIn('<meta name="robots" content="noindex,nofollow">',s)
     def test_official_municipality_source(self):
         s=read("research/municipalities/data.js")
