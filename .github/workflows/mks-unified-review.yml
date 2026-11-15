@@ -39,8 +39,11 @@ jobs:
           set -euo pipefail
           node --check media-connect/room.js
           node --check media-connect/worker/token-worker.mjs
+          node --check media-connect/worker/invite-worker.mjs
+          node --check media-connect/tests/invite-worker.test.mjs
           node --check media-connect/app.js
           node --check scripts/mks_media_connect_browser.cjs
           node --check --input-type=module < research/party-tech/app.js
           node --check --input-type=module < research/party-tech/evidence.js
           node --test media-connect/tests/token-worker.test.mjs
+          node --test media-connect/tests/invite-worker.test.mjs
