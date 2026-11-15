@@ -43,7 +43,7 @@ async function check(name,fn){
     assert.equal(await page.locator('.research-card').count(),61);
     assert.equal(await page.locator('.research-card h3').first().innerText(),'CDU/CSU');
     assert.equal(await page.locator('a.card-link[href="https://cdu.de/"]').count(),1);
-    assert.equal(await page.locator('a[href="../../index.html#world-parties"]').count(),2);
+    assert.equal(await page.locator('a[href="../../index.html#world-parties"]').count(),3);
     assert.equal(await page.locator('form, iframe').count(),0);
   });
   await check('exact 13 researched and 48 not-researched, not falsely absent',async()=>{
@@ -115,7 +115,7 @@ async function check(name,fn){
     assert.equal(dl.suggestedFilename(),'MKS_Party_Tech_Research_2026-11-15.csv');
     const p=await dl.path();
     const csv=fs.readFileSync(p,'utf8');
-    assert.match(csv,/party,country,region,atlas_block/);
+    assert.match(csv,/"party","country","region","atlas_block"/);
     assert.match(csv,/https:\/\/meine\.cdu\.de/);
     const lines=csv.trim().split(/\r?\n/);
     assert.equal(lines.length,69,'20 sourced signal rows + 48 unresearched + header');
