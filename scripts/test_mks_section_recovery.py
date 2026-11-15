@@ -8,10 +8,13 @@ class SectionRecovery(unittest.TestCase):
     def test_58_original_section_identifiers_preserved(self):
         s=read("index.html")
         ids=re.findall(r'<section\b[^>]*\bid="([^"]+)"',s)
-        self.assertEqual(len(ids),58)
+        # The unified review adds the legitimate strategic-investments and media-connect sections.
+        self.assertEqual(len(ids),60)
         self.assertEqual(len(set(ids)),58)
         for need in ["municipalities","initiatives","diaspora","events","petitions","membership","world-parties"]:
             self.assertIn(need,ids)
+        self.assertIn("strategic-investments",ids)
+        self.assertIn("media-connect",ids)
     def test_all_fragment_links_have_unique_targets(self):
         s=read("index.html")
         ids=re.findall(r'\bid="([^"]+)"',s)
