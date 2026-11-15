@@ -1,0 +1,77 @@
+name: MKS Global Party Atlas technical evidence review (NO DEPLOY)
+
+# Review the existing 61-card catalogue and deterministic, source-linked research only.
+# No secrets, no voting, member databases, fundraising, outreach or production deployment.
+on:
+  pull_request:
+    paths:
+      - "index.html"
+      - "research/party-tech/**"
+      - "scripts/test_mks_party_tech_research.py"
+      - "scripts/mks_party_tech_browser.cjs"
+      - "docs/MKS_PARTY_TECH_ATLAS_RESEARCH_V0_1.md"
+      - ".github/workflows/mks-party-tech-review.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  atlas-evidence-qa:
+    name: Original atlas + research layer + privacy/Chromium (NO DEPLOY)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Checkout review branch with credentials disabled
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Confirm unchanged canonical profiles and provenance-linked research
+        run: python3 -m unittest discover -s scripts -p "test_mks_party_tech_research.py" -v
+      - name: Configure Node 22 without repository cache
+        uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          package-manager-cache: false
+      - name: Validate ESM and Chromium test JavaScript syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check --input-type=module < research/party-tech/app.js
+          node --check --input-type=module < research/party-tech/evidence.js
+          node --check scripts/mks_party_tech_browser.cjs
+      - name: Install pinned Playwright outside the repository
+        run: npm install --prefix /tmp/mks-party-tech-playwright --no-save --no-audit --no-fund playwright@1.65.1
+      - name: Install independent Chromium on runner
+        run: /tmp/mks-party-tech-playwright/node_modules/.bin/playwright install --with-deps chromium
+      - name: Verify both static-hosting path layouts strictly on loopback
+        shell: bash
+        env:
+          MKS_PLAYWRIGHT_MODULE: /tmp/mks-party-tech-playwright/node_modules/playwright
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8796 --bind 127.0.0.1 > /tmp/mks-party-tech-root.log 2>&1 &
+          root_pid=$!
+          (cd .. && python3 -m http.server 8797 --bind 127.0.0.1 > /tmp/mks-party-tech-project.log 2>&1) &
+          subpath_pid=$!
+          trap 'kill "$root_pid" "$subpath_pid" 2>/dev/null || true' EXIT
+          for attempt in {1..30}; do
+            if curl -fsS -o /dev/null http://127.0.0.1:8796/research/party-tech/ &&
+               curl -fsS -o /dev/null http://127.0.0.1:8797/makedonija-sistem/research/party-tech/; then break; fi
+            sleep 1
+          done
+          curl -fsS -o /dev/null http://127.0.0.1:8796/research/party-tech/
+          curl -fsS -o /dev/null http://127.0.0.1:8797/makedonija-sistem/research/party-tech/
+          echo "Root-hosting layout, LOCALHOST ONLY"
+          MKS_SCREENSHOT_RESEARCH=1 MKS_LOCAL_URL=http://127.0.0.1:8796/research/party-tech/ node scripts/mks_party_tech_browser.cjs
+          echo "GitHub Pages project layout, LOCALHOST ONLY"
+          MKS_LOCAL_URL=http://127.0.0.1:8797/makedonija-sistem/research/party-tech/ node scripts/mks_party_tech_browser.cjs
+      - name: Archive screenshots for visual human review only
+        uses: actions/upload-artifact@v4
+        with:
+          name: mks-party-tech-review-screenshots
+          path: |
+            /tmp/mks-party-tech-desktop.png
+            /tmp/mks-party-tech-mobile.png
+          retention-days: 14
+          if-no-files-found: error

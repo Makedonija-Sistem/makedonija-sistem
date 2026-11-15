@@ -1,0 +1,80 @@
+name: MKS MEDIA CONNECT pilot code and browser QA (NO DEPLOY)
+
+# Never publish from this workflow; no real media, secrets or external API calls.
+on:
+  pull_request:
+    paths:
+      - "media-connect/**"
+      - "scripts/test_mks_media_connect.py"
+      - "scripts/mks_media_connect_browser.cjs"
+      - "scripts/mks_media_connect_mock_browser.cjs"
+      - "index.html"
+      - ".github/workflows/mks-media-connect-pilot-review.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  media-review:
+    name: JWT permissions + disabled pilot + browser review (NO DEPLOY)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Checkout review without saved credentials
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Install Node 22 for Web Crypto and browser tests
+        uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          package-manager-cache: false
+      - name: Check JavaScript syntax
+        run: |
+          set -euo pipefail
+          for file in media-connect/app.js media-connect/room-config.js media-connect/room.js media-connect/worker/token-worker.mjs media-connect/tests/token-worker.test.mjs scripts/mks_media_connect_browser.cjs scripts/mks_media_connect_mock_browser.cjs media-connect/worker/invite-worker.mjs media-connect/tests/invite-worker.test.mjs; do
+            node --check "$file"
+          done
+      - name: Verify fail-closed tokens and isolated roles without provider credentials
+        run: |
+          node --test media-connect/tests/token-worker.test.mjs
+          node --test media-connect/tests/invite-worker.test.mjs
+      - name: Verify source integrity and root safety gate
+        run: |
+          python3 -m unittest -v scripts/test_mks_media_connect.py
+          python3 scripts/mks_root_review_qa.py
+      - name: Install pinned Playwright outside repository
+        run: npm install --prefix /tmp/mks-media-playwright --no-save --no-audit --no-fund playwright@1.65.1
+      - name: Install isolated Chromium
+        run: /tmp/mks-media-playwright/node_modules/.bin/playwright install --with-deps chromium
+      - name: Browser QA on root and GitHub Pages subpath (loopback only)
+        shell: bash
+        env:
+          MKS_PLAYWRIGHT_MODULE: /tmp/mks-media-playwright/node_modules/playwright
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8786 --bind 127.0.0.1 > /tmp/mks-media-root.log 2>&1 &
+          root_pid=$!
+          (cd .. && python3 -m http.server 8787 --bind 127.0.0.1 > /tmp/mks-media-project.log 2>&1) &
+          sub_pid=$!
+          trap 'kill "$root_pid" "$sub_pid" 2>/dev/null || true' EXIT
+          for attempt in {1..30}; do
+            if curl -fsS -o /dev/null http://127.0.0.1:8786/media-connect/ && curl -fsS -o /dev/null http://127.0.0.1:8787/makedonija-sistem/media-connect/; then break; fi
+            sleep 1
+          done
+          curl -fsS -o /dev/null http://127.0.0.1:8786/media-connect/
+          curl -fsS -o /dev/null http://127.0.0.1:8787/makedonija-sistem/media-connect/
+          MKS_MEDIA_SHOT=1 MKS_LOCAL_URL=http://127.0.0.1:8786/media-connect/ node scripts/mks_media_connect_browser.cjs
+          MKS_LOCAL_URL=http://127.0.0.1:8787/makedonija-sistem/media-connect/ node scripts/mks_media_connect_browser.cjs
+          MKS_LOCAL_URL=http://127.0.0.1:8786/media-connect/ node scripts/mks_media_connect_mock_browser.cjs
+          MKS_LOCAL_URL=http://127.0.0.1:8787/makedonija-sistem/media-connect/ node scripts/mks_media_connect_mock_browser.cjs
+      - name: Archive screenshots (review only)
+        uses: actions/upload-artifact@v4
+        with:
+          name: mks-media-connect-review
+          path: |
+            /tmp/mks-media-desktop.png
+            /tmp/mks-media-mobile.png
+          retention-days: 14
+          if-no-files-found: error

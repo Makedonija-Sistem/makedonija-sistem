@@ -1,0 +1,63 @@
+name: MKS Unified Atlas + Programme + Media review (NO DEPLOY)
+on:
+  pull_request:
+    paths:
+      - "index.html"
+      - "legal/PROGRAM.md"
+      - "legal/STATUTE.md"
+      - "research/party-tech/**"
+      - "research/strategic-investments.html"
+      - "media-connect/**"
+      - "scripts/test_mks_unified_review.py"
+      - "scripts/mks_build_unified_review_pack.py"
+      - "scripts/mks_media_operator.mjs"
+      - ".github/workflows/mks-unified-review.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  unification-qa:
+    name: Preserve 61 profiles, all three modules and release gates
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout without stored credentials
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Node 22
+        uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          package-manager-cache: false
+      - name: Python root safety and unified regression
+        run: |
+          python3 scripts/mks_root_review_qa.py
+          python3 -m unittest -v scripts/test_mks_unified_review.py
+          python3 -m unittest -v scripts/test_mks_party_tech_research.py
+          python3 -m unittest -v scripts/test_mks_media_connect.py
+      - name: Syntax and token permission controls
+        run: |
+          set -euo pipefail
+          node --check scripts/mks_media_operator.mjs
+          python3 -m py_compile scripts/mks_build_unified_review_pack.py
+          node --check media-connect/room.js
+          node --check media-connect/worker/token-worker.mjs
+          node --check media-connect/worker/invite-worker.mjs
+          node --check media-connect/tests/invite-worker.test.mjs
+          node --check media-connect/app.js
+          node --check scripts/mks_media_connect_browser.cjs
+          node --check --input-type=module < research/party-tech/app.js
+          node --check --input-type=module < research/party-tech/evidence.js
+          node --test media-connect/tests/token-worker.test.mjs
+          node --test media-connect/tests/invite-worker.test.mjs
+
+      - name: Package local review copy (no backend, no secrets)
+        run: python3 scripts/mks_build_unified_review_pack.py /tmp/mks-unified-review-v0.3.zip
+      - name: Attach review-only ZIP to this Actions run
+        uses: actions/upload-artifact@v4
+        with:
+          name: mks-unified-offline-review-v0-3
+          path: /tmp/mks-unified-review-v0.3.zip
+          retention-days: 14
+          if-no-files-found: error
