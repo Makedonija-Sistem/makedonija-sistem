@@ -485,6 +485,195 @@ const TRANSLATIONS = {
     "Burim publik",
     "Јавни извор",
     "Öffentliche Quelle"
+  ],
+  "nav.synth": [
+    "Синтеза",
+    "Synthesis",
+    "Sinteza",
+    "Синтеза",
+    "Synthese"
+  ],
+  "synth.kicker": [
+    "03 / ИНСТИТУЦИОНАЛНА СИНТЕЗА ЗА МКС",
+    "03 / INSTITUTIONAL SYNTHESIS FOR MKS",
+    "03 / SINTEZË INSTITUCIONALE PËR MKS",
+    "03 / ИНСТИТУЦИОНАЛНА СИНТЕЗА ЗА МКС",
+    "03 / INSTITUTIONELLE SYNTHESE FÜR MKS"
+  ],
+  "synth.title": [
+    "Девет слоеви за систем што служи — без политичко профилирање.",
+    "Nine layers for a system that serves — without political profiling.",
+    "Nëntë shtresa për një sistem në shërbim — pa profilizim politik.",
+    "Девет слојева за систем који служи — без политичког профилисања.",
+    "Neun Ebenen für ein dienendes System — ohne politisches Profiling."
+  ],
+  "synth.intro": [
+    "Ова е техничка архитектура и контролна листа, не опис на веќе активни услуги. Дигиталната зрелост се мери преку проверливи права, транспарентност и постапки, не преку резултати на политичко убедување.",
+    "This is an architectural proposal and checklist, not a description of live services. Digital maturity is measured by rights, transparency and procedures, not political persuasion.",
+    "Kjo është arkitekturë teknike dhe listë kontrolli, jo shërbim aktiv. Pjekuria digjitale matet me të drejta, transparencë dhe procedura, jo bindje politike.",
+    "Ово је технички предлог и контролна листа, не опис активних услуга. Дигитална зрелост се мери правима, транспарентношћу и поступцима, не политичким утицајем.",
+    "Dies ist ein Architekturvorschlag mit Prüfliste, keine Beschreibung aktiver Dienste. Digitale Reife wird an Rechten, Transparenz und Verfahren gemessen, nicht an politischer Überzeugung."
+  ],
+  "state.review": [
+    "ТЕСТЕН ПРЕГЛЕД",
+    "REVIEW PROTOTYPE",
+    "PROTOTIP NË SHQYRTIM",
+    "ПРОТОТИП ЗА ПРЕГЛЕД",
+    "PRÜFPROTOTYP"
+  ],
+  "state.planned": [
+    "УСЛОВНА СЛЕДНА ФАЗА",
+    "CONDITIONAL FUTURE PHASE",
+    "FAZË E ARDHSHME ME KUSHTE",
+    "УСЛОВНА БУДУЋА ФАЗА",
+    "BEDINGTE ZUKUNFTSPHASE"
+  ],
+  "state.blocked": [
+    "ЗАКЛУЧЕНО ДО ПРАВНА ПРОВЕРКА",
+    "BLOCKED PENDING LEGAL REVIEW",
+    "BLLOKUAR DERI NË VERIFIKIM LIGJOR",
+    "БЛОКИРАНО ДО ПРАВНЕ ПРОВЕРЕ",
+    "BIS ZUR RECHTSPRÜFUNG GESPERRT"
+  ],
+  "synth.1.title": [
+    "Канонски светски атлас",
+    "Single canonical atlas",
+    "Atlas botëror kanonik",
+    "Јединствени светски атлас",
+    "Kanonischer Weltatlas"
+  ],
+  "synth.1.desc": [
+    "Единствена листа од 61 постоен профил, без втор регистар и без дупликати.",
+    "One source of 61 existing profiles, with no duplicate register.",
+    "Një burim me 61 profile, pa regjistër të dytë.",
+    "Један извор са 61 профилом, без другог регистра.",
+    "Eine Quelle mit 61 Profilen, ohne Duplikatregister."
+  ],
+  "synth.2.title": [
+    "Регистар на доказите",
+    "Evidence register",
+    "Regjistër provash",
+    "Регистар доказа",
+    "Belegregister"
+  ],
+  "synth.2.desc": [
+    "Извор, датум, проверена функција и ограничување за секој истражувачки сигнал.",
+    "Source, date, documented function and limitation for each finding.",
+    "Burim, datë, funksion dhe kufizim për çdo gjetje.",
+    "Извор, датум, функција и ограничење за сваки налаз.",
+    "Quelle, Datum, Funktion und Grenze jedes Befunds."
+  ],
+  "synth.3.title": [
+    "Достапен повеќејазичен приказ",
+    "Accessible multilingual access",
+    "Ndërfaqe shumëgjuhëshe e qasshme",
+    "Доступан вишејезички приказ",
+    "Barrierearmer mehrsprachiger Zugang"
+  ],
+  "synth.3.desc": [
+    "Пет јазици за интерфејсот, пребарување, филтри, извоз и поддршка за мобилни уреди.",
+    "Five interface languages, search, filters, export and mobile layout.",
+    "Pesë gjuhë, kërkim, filtra, eksport dhe pamje mobile.",
+    "Пет језика, претрага, филтери, извоз и мобилни приказ.",
+    "Fünf Sprachen, Suche, Filter, Export und Mobilansicht."
+  ],
+  "synth.4.title": [
+    "Правно-информативна помош",
+    "Legal information support",
+    "Mbështetje me informacion ligjor",
+    "Правно-информативна подршка",
+    "Rechtsinformation"
+  ],
+  "synth.4.desc": [
+    "Одделна врска со AI Адвокат, проверливи извори и човечка правна оценка, без споделување досиеја.",
+    "Separate access to AI Advokat, sourced information and human legal review, without shared case files.",
+    "Qasje e veçantë në AI Advokat, burime dhe kontroll juridik njerëzor, pa dosje të përbashkëta.",
+    "Засебан AI Advokat, извори и људска правна провера, без дељења досијеа.",
+    "Getrennter Zugang zu AI Advokat, geprüfte Quellen und menschliche Rechtsprüfung, ohne Datenaustausch."
+  ],
+  "synth.5.title": [
+    "Предлози и внатрешна расправа",
+    "Proposals and deliberation",
+    "Propozime dhe diskutim",
+    "Предлози и расправа",
+    "Anträge und Debatte"
+  ],
+  "synth.5.desc": [
+    "Правила за поднесување предлози, амандмани, записници и јавна историја на одлуки.",
+    "Transparent rules for proposals, amendments, minutes and decision history.",
+    "Rregulla për propozime, amendamente, procesverbale dhe vendime.",
+    "Правила за предлоге, амандмане, записнике и историју одлука.",
+    "Regeln für Anträge, Änderungen, Protokolle und Entscheidungen."
+  ],
+  "synth.6.title": [
+    "Проверено членство",
+    "Verified membership",
+    "Anëtarësim i verifikuar",
+    "Проверено чланство",
+    "Geprüfte Mitgliedschaft"
+  ],
+  "synth.6.desc": [
+    "Идентитет, подобност, приговор и конечна одлука само врз законски основ и овластен човек.",
+    "Identity, eligibility, objections and decisions only with legal basis and authorized human review.",
+    "Identitet, kushte, ankesë dhe vendim vetëm sipas ligjit nga një person i autorizuar.",
+    "Идентитет, подобност, приговор и одлука само по закону и уз овлашћено лице.",
+    "Identität, Voraussetzungen, Einspruch und Entscheidung nur mit Rechtsgrundlage und befugtem Menschen."
+  ],
+  "synth.7.title": [
+    "Безбедност и права на податоците",
+    "Data rights and security",
+    "Siguria dhe të drejtat e të dhënave",
+    "Безбедност и права над подацима",
+    "Datenschutz und Sicherheit"
+  ],
+  "synth.7.desc": [
+    "Пристап според улоги, минимизација на податоци, независен аудит и права на пристап и бришење.",
+    "Role-based access, data minimisation, independent audit and access/deletion rights.",
+    "Qasje sipas roleve, minimizim i të dhënave, auditim dhe të drejta për qasje/fshirje.",
+    "Приступ по улогама, минимум података, ревизија и права приступа/брисања.",
+    "Rollenrechte, Datenminimierung, unabhängige Prüfung sowie Auskunfts- und Löschrechte."
+  ],
+  "synth.8.title": [
+    "Финансиска отчетност",
+    "Financial accountability",
+    "Llogaridhënie financiare",
+    "Финансијска одговорност",
+    "Finanzielle Rechenschaft"
+  ],
+  "synth.8.desc": [
+    "Дозволени приходи, трошоци, фактури, судир на интереси и независно одобрување пред исплата.",
+    "Lawful income, expenses, invoices, conflicts and independent sign-off before payments.",
+    "Të ardhura të ligjshme, shpenzime, fatura, konflikte dhe miratim para pagesës.",
+    "Дозвољени приходи, трошкови, рачуни, сукоби интереса и одобрење.",
+    "Rechtmäßige Mittel, Ausgaben, Rechnungen, Interessenkonflikte und Freigabe vor Zahlungen."
+  ],
+  "synth.9.title": [
+    "Human Gate и трага на измени",
+    "Human Gate and audit trail",
+    "Kontroll njerëzor dhe gjurmë ndryshimesh",
+    "Људска контрола и траг измена",
+    "Menschliche Freigabe und Änderungsnachweis"
+  ],
+  "synth.9.desc": [
+    "Јасен статус на доказ, верзија, преглед и човечко одобрение пред јавна или правна промена.",
+    "Evidence status, version, review and human authorization before public or legal change.",
+    "Status provash, version, rishikim dhe miratim njerëzor para ndryshimeve.",
+    "Статус доказа, верзија, преглед и људско одобрење пре промена.",
+    "Belegstatus, Version, Prüfung und menschliche Freigabe vor externen Änderungen."
+  ],
+  "synth.bottom.title": [
+    "Синтетички принцип",
+    "Synthetic principle",
+    "Parimi i sintezës",
+    "Принцип синтезе",
+    "Syntheseprinzip"
+  ],
+  "synth.bottom.body": [
+    "Германска процедуралност, британска модуларност, француска достапност, италијанско/шпанско дигитално учество и проверливи надворешни финансиски платформи — како јавни методолошки поуки, не како партиски партнерства или политичка технологија за влијание.",
+    "German procedural discipline, British modularity, French access, Italian/Spanish digital deliberation and verifiable external finance systems — methodological lessons, not affiliations or influence technology.",
+    "Procedura gjermane, modularitet britanik, qasje franceze, pjesëmarrje italiane/spanjolle dhe financa transparente — mësime metodologjike, jo partneritete politike.",
+    "Немачка процедура, британска модуларност, француска доступност, италијанско/шпанско учешће и проверљиве финансије — методолошке поуке, не партнерства.",
+    "Deutsche Verfahren, britische Modularität, französischer Zugang, italienisch-spanische Beteiligung und überprüfbare Finanzdienste — methodische Erkenntnisse, keine Partnerschaften."
   ]
 };
 const COUNTRY_REGION = Object.freeze({
