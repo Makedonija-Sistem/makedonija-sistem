@@ -61,6 +61,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: mks-unified-offline-review-v0-4
-          path: /tmp/mks-unified-review-v0.3.zip
+          path: /tmp/mks-unified-review-v0.4.zip
           retention-days: 14
           if-no-files-found: error
