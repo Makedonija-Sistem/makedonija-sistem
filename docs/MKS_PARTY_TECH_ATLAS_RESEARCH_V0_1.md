@@ -118,6 +118,7 @@ research/party-tech/index.html [independent informational layer, noindex]
 - Надворешните извори се обични links со `noopener noreferrer`, `referrerpolicy=no-referrer`, не автоматски фонови повици.
 - CSV се создава локално преку Blob, без сервер, со префикс за потенцијални spreadsheet-формули.
 - `noindex,nofollow`, self-only CSP и видлив статус **истражувачки прототип**.
+- `frame-ancestors` **не може да се наложи преку HTML meta CSP**; потребно е вистинско HTTP `Content-Security-Policy: frame-ancestors 'none'` и/или `X-Frame-Options: DENY` на конкретниот хостинг пред продукциско објавување. Ова останува **release security gate** (не се прогласува за завршен со локалниот тест).
 - `scripts/mks_cloudflare_stage.py` и `wrangler.jsonc` не се менуваат. Cloudflare static allowlist **не го вклучува** овој слој; тоа е НАМЕРНО.
 
 ### Изворен квалитет и граници
