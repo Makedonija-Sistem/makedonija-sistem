@@ -23,7 +23,6 @@ class SectionRecovery(unittest.TestCase):
         self.assertEqual(s.count('href="./research/municipalities/index.html"'),1)
         section=s.split('<section id="municipalities"',1)[1].split("</section>",1)[0]
         self.assertIn('data-review-status="informational"',section)
-        self.assertIn("Нема",section.capitalize()) if False else None
         self.assertNotIn("Активен координатор",section)
         self.assertNotIn("ЗЕЛС — Партнер",section)
         self.assertNotIn("59",section)
