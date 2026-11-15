@@ -32,6 +32,7 @@ jobs:
         run: |
           set -euo pipefail
           node --check research/municipalities/data.js
+          node --check research/municipalities/legacy-links.js
           node --check research/municipalities/app.js
           node --check scripts/mks_section_recovery_browser.cjs
           python3 -m unittest -v scripts/test_mks_section_recovery.py
