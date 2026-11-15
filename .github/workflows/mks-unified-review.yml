@@ -9,6 +9,8 @@ on:
       - "research/strategic-investments.html"
       - "media-connect/**"
       - "scripts/test_mks_unified_review.py"
+      - "scripts/mks_build_unified_review_pack.py"
+      - "scripts/mks_media_operator.mjs"
       - ".github/workflows/mks-unified-review.yml"
   workflow_dispatch:
 permissions:
@@ -37,6 +39,8 @@ jobs:
       - name: Syntax and token permission controls
         run: |
           set -euo pipefail
+          node --check scripts/mks_media_operator.mjs
+          python3 -m py_compile scripts/mks_build_unified_review_pack.py
           node --check media-connect/room.js
           node --check media-connect/worker/token-worker.mjs
           node --check media-connect/worker/invite-worker.mjs
