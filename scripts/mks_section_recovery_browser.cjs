@@ -100,6 +100,15 @@ async function check(name,fn){try{await fn();passed++;console.log("PASS "+name);
     assert.equal(await page.locator("#munSearch").isVisible(),true);
    }
   });
+  await check("navigation offers direct one-click restored map route",async()=>{
+   await page.goto(base.href,{waitUntil:"domcontentloaded",timeout:45000});
+   const citizens=page.locator('#navLinks details[data-group="citizens"]');
+   await citizens.locator("summary").click();
+   await citizens.locator('a[href="./research/municipalities/index.html"]').click();
+   await page.waitForURL(directory);
+   await page.waitForFunction(()=>document.querySelectorAll("#regionResults li").length===80);
+   assert.equal(await page.locator("#municipalityMap .region-shape").count(),8);
+ });
   await check("no exceptions or external network calls in directory",async()=>{
    assert.deepEqual(errs,[]);
    // The existing root HTML requests Google Fonts; the test blocks it.
