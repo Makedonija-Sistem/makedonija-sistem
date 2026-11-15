@@ -38,7 +38,7 @@ if(entry.protocol!=="http:"||!["127.0.0.1","localhost"].includes(entry.hostname)
   });
   await test("pilot code never placed in URL or sent while disabled",async()=>{
    await page.locator("#accessCode").fill("abcdefghijklmnopqrstuvwxyzABCDEFGH1234");
-   await page.locator("#role").selectOption("host");
+   assert.equal(await page.locator("#role").isDisabled(),true);
    assert.equal(await page.locator("#joinButton").isDisabled(),true);
    assert.doesNotMatch(page.url(),/abcdefghijklmnopqrstuvwxyz/);
    assert.deepEqual(external,[]);
