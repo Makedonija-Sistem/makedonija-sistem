@@ -1,0 +1,17 @@
+{
+  // REVIEW-ONLY EXAMPLE. Not connected to production and not included in the MKS root Cloudflare stage.
+  "name": "mks-media-connect-pilot-token",
+  "main": "./token-worker.mjs",
+  "compatibility_date": "2026-11-15",
+  "workers_dev": false,
+  "vars": {
+    "ENABLED": "false",
+    "HUMAN_GATE_APPROVED": "false",
+    "ALLOWED_ORIGIN": "https://example.invalid",
+    "LIVEKIT_URL": "wss://example.invalid",
+    "ROOM_NAME": "mks_pilot"
+  },
+  "ratelimits": [
+    { "name": "JOIN_LIMITER", "namespace_id": "301", "simple": { "limit": 10, "period": 60 } }
+  ]
+}
