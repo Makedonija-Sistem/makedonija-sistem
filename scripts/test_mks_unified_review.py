@@ -10,9 +10,11 @@ class UnifiedMKSReview(unittest.TestCase):
     def test_sections_and_links_once(self):
         x=read("index.html")
         for target in ('id="strategic-investments"','id="media-connect"',
-                       'href="./media-connect/"','href="#media-connect"',
+                       'href="#media-connect"',
                        'href="./research/party-tech/"','href="./research/strategic-investments.html"'):
             self.assertEqual(x.count(target),1,target)
+        # Two intentional links: directory from Channels and the dedicated section.
+        self.assertEqual(x.count('href="./media-connect/"'),2)
 
     def test_original_61_and_research_integration(self):
         x=read("index.html")
