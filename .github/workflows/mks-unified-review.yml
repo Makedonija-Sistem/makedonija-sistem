@@ -1,0 +1,46 @@
+name: MKS Unified Atlas + Programme + Media review (NO DEPLOY)
+on:
+  pull_request:
+    paths:
+      - "index.html"
+      - "legal/PROGRAM.md"
+      - "legal/STATUTE.md"
+      - "research/party-tech/**"
+      - "research/strategic-investments.html"
+      - "media-connect/**"
+      - "scripts/test_mks_unified_review.py"
+      - ".github/workflows/mks-unified-review.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  unification-qa:
+    name: Preserve 61 profiles, all three modules and release gates
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout without stored credentials
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Node 22
+        uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          package-manager-cache: false
+      - name: Python root safety and unified regression
+        run: |
+          python3 scripts/mks_root_review_qa.py
+          python3 -m unittest -v scripts/test_mks_unified_review.py
+          python3 -m unittest -v scripts/test_mks_party_tech_research.py
+          python3 -m unittest -v scripts/test_mks_media_connect.py
+      - name: Syntax and token permission controls
+        run: |
+          set -euo pipefail
+          node --check media-connect/room.js
+          node --check media-connect/worker/token-worker.mjs
+          node --check media-connect/app.js
+          node --check scripts/mks_media_connect_browser.cjs
+          node --check --input-type=module < research/party-tech/app.js
+          node --check --input-type=module < research/party-tech/evidence.js
+          node --test media-connect/tests/token-worker.test.mjs
