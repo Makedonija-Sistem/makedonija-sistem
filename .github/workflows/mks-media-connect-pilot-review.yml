@@ -7,6 +7,7 @@ on:
       - "media-connect/**"
       - "scripts/test_mks_media_connect.py"
       - "scripts/mks_media_connect_browser.cjs"
+      - "scripts/mks_media_connect_mock_browser.cjs"
       - "index.html"
       - ".github/workflows/mks-media-connect-pilot-review.yml"
   workflow_dispatch:
@@ -32,11 +33,13 @@ jobs:
       - name: Check JavaScript syntax
         run: |
           set -euo pipefail
-          for file in media-connect/app.js media-connect/room-config.js media-connect/room.js media-connect/worker/token-worker.mjs media-connect/tests/token-worker.test.mjs scripts/mks_media_connect_browser.cjs; do
+          for file in media-connect/app.js media-connect/room-config.js media-connect/room.js media-connect/worker/token-worker.mjs media-connect/tests/token-worker.test.mjs scripts/mks_media_connect_browser.cjs scripts/mks_media_connect_mock_browser.cjs media-connect/worker/invite-worker.mjs media-connect/tests/invite-worker.test.mjs; do
             node --check "$file"
           done
       - name: Verify fail-closed tokens and isolated roles without provider credentials
-        run: node --test media-connect/tests/token-worker.test.mjs
+        run: |
+          node --test media-connect/tests/token-worker.test.mjs
+          node --test media-connect/tests/invite-worker.test.mjs
       - name: Verify source integrity and root safety gate
         run: |
           python3 -m unittest -v scripts/test_mks_media_connect.py
@@ -64,6 +67,8 @@ jobs:
           curl -fsS -o /dev/null http://127.0.0.1:8787/makedonija-sistem/media-connect/
           MKS_MEDIA_SHOT=1 MKS_LOCAL_URL=http://127.0.0.1:8786/media-connect/ node scripts/mks_media_connect_browser.cjs
           MKS_LOCAL_URL=http://127.0.0.1:8787/makedonija-sistem/media-connect/ node scripts/mks_media_connect_browser.cjs
+          MKS_LOCAL_URL=http://127.0.0.1:8786/media-connect/ node scripts/mks_media_connect_mock_browser.cjs
+          MKS_LOCAL_URL=http://127.0.0.1:8787/makedonija-sistem/media-connect/ node scripts/mks_media_connect_mock_browser.cjs
       - name: Archive screenshots (review only)
         uses: actions/upload-artifact@v4
         with:
