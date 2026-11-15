@@ -24,7 +24,7 @@ class SectionRecovery(unittest.TestCase):
         self.assertEqual([v for v in fragments if v not in ids],[])
     def test_municipal_directory_link_and_status(self):
         s=read("index.html")
-        self.assertEqual(s.count('href="./research/municipalities/index.html"'),1)
+        self.assertEqual(s.count('href="./research/municipalities/index.html"'),2)
         section=s.split('<section id="municipalities"',1)[1].split("</section>",1)[0]
         self.assertIn('data-review-status="informational"',section)
         self.assertNotIn("Активен координатор",section)
