@@ -90,6 +90,8 @@ class MayHeritage(unittest.TestCase):
         self.assertNotRegex(page,r'\s+on(?:click|submit|change|input|load|error)\s*=')
         self.assertIn("script-src 'none'",page)
         self.assertIn("form-action 'none'",page)
+        self.assertNotIn('href="mailto:',page)
+        self.assertGreater(page.count('data-may-disabled-contact="true"'),50)
         self.assertIn("noindex,nofollow",page)
         self.assertIn('id="may-recovery-nav"',page)
         self.assertGreater(len(page),500000)
