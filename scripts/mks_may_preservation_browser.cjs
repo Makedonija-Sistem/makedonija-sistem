@@ -48,7 +48,7 @@ async function check(name,task){try{await task();passed++;console.log("PASS "+na
    assert.equal(await page.locator(".library-card").count(),27);
    await page.locator("#state").selectOption("restored");
    assert.equal(await page.locator(".library-card").count(),16);
-   await page.locator("#search").fill("роботика");
+   await page.locator("#search").fill("robotika");
    assert.ok((await page.locator(".library-card").count())>=1);
    await page.locator("#reset").click();
    assert.equal(await page.locator(".library-card").count(),58);
@@ -81,7 +81,7 @@ async function check(name,task){try{await task();passed++;console.log("PASS "+na
    await page.waitForFunction(()=>document.querySelectorAll(".library-card").length===58);
    const dims=await page.evaluate(()=>({w:innerWidth,scroll:document.documentElement.scrollWidth}));
    assert.ok(dims.scroll<=dims.w+2,JSON.stringify(dims));
-   await page.locator("#search").fill("општини");
+   await page.locator("#search").fill("municipalities");
    assert.ok((await page.locator(".library-card").count())>=1);
    await page.locator("#reset").click();
   });
