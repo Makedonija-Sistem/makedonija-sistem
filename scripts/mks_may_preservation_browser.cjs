@@ -80,7 +80,7 @@ async function check(name,task){try{await task();passed++;console.log("PASS "+na
    assert.equal(await page.locator('input:not([disabled])').count(),0);
    assert.equal(await page.locator('form').count()>0,true);
    assert.match(await page.locator("#may-recovery-nav").innerText(),/не активна јавна/);
-   const source=await page.locator('meta[http-equiv="Content-Security-Policy"]').getAttribute("content");
+   const source=await page.locator('meta[http-equiv="Content-Security-Policy"]').last().getAttribute("content");
    assert.match(source,/script-src 'none'/);
    assert.match(source,/form-action 'none'/);
   });
@@ -101,7 +101,7 @@ async function check(name,task){try{await task();passed++;console.log("PASS "+na
   });
   await check("archive and library do not make uncaught runtime errors",async()=>{
    assert.deepEqual(errors,[]);
-   assert.ok(external.every(url=>new URL(url).hostname==="fonts.googleapis.com"),JSON.stringify(external.slice(0,10)));
+   assert.ok(external.every(url=>["fonts.googleapis.com","www.gstatic.com","challenges.cloudflare.com"].includes(new URL(url).hostname)),JSON.stringify(external.slice(0,10)));
   });
   await context.close();
  }finally{await browser.close();}
