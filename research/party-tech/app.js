@@ -284,11 +284,11 @@ const TRANSLATIONS = {
     "Grenzen dieser Ausgabe"
   ],
   "limits.body": [
-    "13 од 61 партија имаат дополнети јавни технолошки докази. Останатите 48 се означени „неистражено во ова издание“. Надворешните ActBlue и WinRed не се мешаат со сопствените информатички системи на партиите. Нема пристап до приватни членски бази или овластување за објавување на чувствителни податоци.",
-    "13 of 61 parties have new public technology evidence; 48 remain not researched. ActBlue and WinRed are external providers, not parties' own internal systems. No access to private member data.",
-    "13 nga 61 parti kanë prova të reja publike; 48 mbeten të pahulumtuara. ActBlue dhe WinRed janë ofrues të jashtëm. Pa qasje në të dhëna private.",
-    "13 од 61 партије имају нове јавне техничке доказе; 48 нису истражене. ActBlue и WinRed су спољни добављачи. Нема приступа приватним подацима.",
-    "13 von 61 Parteien haben neue öffentliche Technikbelege; 48 sind nicht untersucht. ActBlue und WinRed sind externe Anbieter. Kein Zugriff auf private Mitgliederdaten."
+    "15 од 61 партија имаат дополнети јавни технолошки докази. Останатите 46 се означени „неистражено во ова издание“. Надворешните ActBlue и WinRed не се мешаат со сопствените информатички системи на партиите. Нема пристап до приватни членски бази или овластување за објавување на чувствителни податоци.",
+    "15 of 61 parties have public technology evidence; 46 remain not researched. ActBlue and WinRed are external providers, not party-owned internal systems. No access to private member data.",
+    "15 nga 61 parti kanë prova teknike publike; 46 mbeten të pahulumtuara. ActBlue dhe WinRed janë ofrues të jashtëm. Nuk ka qasje në të dhëna private.",
+    "15 од 61 партије имају јавне техничке доказе; 46 нису истражене. ActBlue и WinRed су спољни добављачи. Нема приступа приватним подацима.",
+    "15 von 61 Parteien haben öffentliche Technikbelege; 46 sind nicht untersucht. ActBlue und WinRed sind externe Anbieter. Kein Zugriff auf private Mitgliederdaten."
   ],
   "method.atlas": [
     "Врати се на изворниот Глобален партиски атлас",
@@ -305,11 +305,11 @@ const TRANSLATIONS = {
     "03 / ZUSÄTZLICHE FÄLLE"
   ],
   "extra.title": [
-    "Два вредни примера што не се меѓу 61 профил.",
-    "Two additional examples outside the 61 profiles.",
-    "Dy raste shtesë jashtë 61 profileve.",
-    "Два додатна случаја ван 61 профила.",
-    "Zwei weitere Fälle außerhalb der 61 Profile."
+    "Три дополнителни примера што не се меѓу 61 профил.",
+    "Three additional examples outside the 61 profiles.",
+    "Tri raste shtesë jashtë 61 profileve.",
+    "Три додатна случаја ван 61 профила.",
+    "Drei weitere Fälle außerhalb der 61 Profile."
   ],
   "extra.desc": [
     "Не ги додаваме автоматски во оригиналниот каталог. Ги прикажуваме одделно како истражувачки примери со јавни извори.",
