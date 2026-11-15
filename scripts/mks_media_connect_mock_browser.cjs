@@ -70,7 +70,7 @@ async function scenario(browser,role){
   await page.locator("#accessCode").fill("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789");
   await page.locator("#joinButton").click();
   await page.locator("#leaveButton").waitFor({state:"visible"});
-  await page.waitForFunction(()=>document.querySelector("#joinButton").disabled===true);
+  await page.waitForFunction(()=>document.querySelector("#connectionStatus")?.textContent.startsWith("Поврзано"));
   assert.equal(await page.locator("#role").inputValue(),role);
   assert.equal(await page.locator("#accessCode").inputValue(),"");
   assert.deepEqual(await page.evaluate(()=>window.__mockConnected),{
