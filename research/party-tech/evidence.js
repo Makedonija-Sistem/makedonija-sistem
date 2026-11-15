@@ -214,6 +214,34 @@ export const TECH_EVIDENCE = {
       "publisher": "Movimento 5 Stelle",
       "type": "party",
       "accessed_on": "2026-11-15"
+    },
+    "bjp-play": {
+      "title": "Bharatiya Janata Party App · official developer listing",
+      "url": "https://play.google.com/store/apps/details?id=com.bjp",
+      "publisher": "BJP4INDIA (Google Play developer listing)",
+      "accessed_on": "2026-11-15",
+      "type": "party"
+    },
+    "namo-play": {
+      "title": "Narendra Modi App · official developer listing",
+      "url": "https://play.google.com/store/apps/details?id=com.narendramodiapp",
+      "publisher": "NarendraModi.in (Google Play developer listing)",
+      "accessed_on": "2026-11-15",
+      "type": "party"
+    },
+    "victorian-labor": {
+      "title": "Victorian Labor member platform (vendor case study, June 2025)",
+      "url": "https://nexon.com.au/blog/victorian-labor-modernises-member-experience-with-new-digital-platform/",
+      "publisher": "Nexon Asia Pacific",
+      "accessed_on": "2026-11-15",
+      "type": "provider"
+    },
+    "podemos-2023": {
+      "title": "Podemos · 2023 consultation via Participa",
+      "url": "https://podemos.info/consulta-gobierno-sanchez/",
+      "publisher": "Podemos",
+      "accessed_on": "2026-11-15",
+      "type": "party"
     }
   },
   "records": {
@@ -490,6 +518,58 @@ export const TECH_EVIDENCE = {
           "verification": "documented-public-claim"
         }
       ]
+    },
+    "https://bjp.org": {
+      "signals": [
+        {
+          "dimension": "member",
+          "title": "BJP App · јавен опис на мобилни членски услуги",
+          "summary": "Официјалната страница на BJP во Google Play опишува информации, можност за поднесување членска регистрација, повратни информации и донации. Не се потврдува правниот ефект на електронската регистрација во Македонија.",
+          "source_ids": [
+            "bjp-play"
+          ],
+          "evidence_type": "party-public-store-listing",
+          "verification": "documented-public-claim",
+          "last_checked": "2026-11-15"
+        },
+        {
+          "dimension": "operations",
+          "title": "NaMo App · одделен медиумски мобилен производ",
+          "summary": "Одделната NaMo App е претставена во Google Play како апликација за јавни новости, видеа и интеракција. Таа не е идентична со BJP App; не се прави процена на нејзините кориснички податоци.",
+          "source_ids": [
+            "namo-play"
+          ],
+          "evidence_type": "party-public-store-listing",
+          "verification": "documented-public-claim",
+          "last_checked": "2026-11-15"
+        }
+      ]
+    },
+    "https://alp.org.au": {
+      "signals": [
+        {
+          "dimension": "member",
+          "title": "Victorian Labor · регионален членски портал (2025)",
+          "summary": "Добавувачот Nexon опишува членски услуги за Victorian Labor: обновување, профил и барања. Ова важи за регионалниот огранок во Викторија, а не како доказ за целата Australian Labor Party.",
+          "source_ids": [
+            "victorian-labor"
+          ],
+          "evidence_type": "vendor-self-description",
+          "verification": "documented-public-claim",
+          "last_checked": "2026-11-15"
+        },
+        {
+          "dimension": "governance",
+          "title": "Victorian Labor · пристап по улоги (тврдење на добавувач)",
+          "summary": "Во студијата од 24.06.2025 добавувачот наведува централизирано управување и улоги според локален огранок. Тоа е деловен опис, не независен безбедносен или приватносен аудит.",
+          "source_ids": [
+            "victorian-labor"
+          ],
+          "evidence_type": "vendor-self-description",
+          "verification": "documented-public-claim",
+          "last_checked": "2026-11-15"
+        }
+      ]
     }
   },
   "outside_atlas": [
@@ -504,6 +584,12 @@ export const TECH_EVIDENCE = {
       "country": "Италија",
       "note": "Во 2026 официјално документира онлајн гласања на членови; партијата не е меѓу 61-те картички.",
       "source_id": "m5s-online"
+    },
+    {
+      "name": "Podemos",
+      "country": "Шпанија",
+      "note": "Историски документиран пример: во ноември 2023 Podemos објавил консултација преку Participa за проверени членови. Не се тврди дека истиот систем е непроменет во 2026.",
+      "source_id": "podemos-2023"
     }
   ],
   "limitations": [
@@ -514,5 +600,5 @@ export const TECH_EVIDENCE = {
     "ActBlue и WinRed се надворешни финансиски платформи, не партиски системи во сопственост на партиите.",
     "Внатрешните системи зад најавување не се проверувани и немаме овластен пристап."
   ],
-  "source_quality_note": "URLs are public party/provider documents accessed or checked on 2026-11-15; source publication dates may be older (e.g. Partito Democratico 2022). An accessible webpage is not technical certification. Two contextual sources are stored without an associated finding."
+  "source_quality_note": "URLs are public party/provider documents accessed or checked on 2026-11-15; source publication dates may be older (e.g. Partito Democratico 2022). An accessible webpage is not technical certification. Two contextual sources are stored without an associated finding. BJP and NaMo are descriptions from official developers' public app-store listings; Victorian Labor is a vendor case study; Podemos evidence is historical (2023)."
 };
