@@ -99,14 +99,18 @@ class ResearchTechnologyAtlasTests(unittest.TestCase):
     def test_all_record_keys_match_canonical_atlas(self):
         party_urls = {c["url"] for c in extracted_party_cards()}
         record_urls = set(DATA["records"])
-        self.assertEqual(len(record_urls), 13)
+        self.assertEqual(len(record_urls), 15)
         self.assertTrue(record_urls.issubset(party_urls))
+        self.assertIn("https://bjp.org", record_urls)
+        self.assertIn("https://alp.org.au", record_urls)
+        self.assertIn("Victorian Labor", DATA["records"]["https://alp.org.au"]["signals"][0]["title"])
+        self.assertIn("2023", next(case["note"] for case in DATA["outside_atlas"] if case["name"] == "Podemos"))
         self.assertEqual(DATA["schema_version"], 1)
         self.assertEqual(DATA["snapshot_date"], "2026-11-15")
 
     def test_20_capabilities_have_exact_source_references(self):
         source_ids = set(DATA["sources"])
-        self.assertEqual(len(source_ids), 21)
+        self.assertEqual(len(source_ids), 25)
         count = 0
         dimensions = {d["id"] for d in DATA["dimensions"]}
         for url, doc in DATA["records"].items():
@@ -120,7 +124,7 @@ class ResearchTechnologyAtlasTests(unittest.TestCase):
                 self.assertGreaterEqual(len(signal["source_ids"]), 1)
                 for source in signal["source_ids"]:
                     self.assertIn(source, source_ids)
-        self.assertEqual(count, 20)
+        self.assertEqual(count, 24)
 
     def test_source_urls_are_https_and_provider_status_explicit(self):
         for ref, source in DATA["sources"].items():
@@ -135,8 +139,8 @@ class ResearchTechnologyAtlasTests(unittest.TestCase):
 
     def test_outside_examples_remain_distinct_from_main_catalogue(self):
         extra = DATA["outside_atlas"]
-        self.assertEqual(len(extra), 2)
-        self.assertEqual({x["name"] for x in extra}, {"La France insoumise", "Movimento 5 Stelle"})
+        self.assertEqual(len(extra), 3)
+        self.assertEqual({x["name"] for x in extra}, {"La France insoumise", "Movimento 5 Stelle", "Podemos"})
         for case in extra:
             self.assertIn(case["source_id"], DATA["sources"])
         self.assertNotIn("La France insoumise", {c["name"] for c in extracted_party_cards()})
