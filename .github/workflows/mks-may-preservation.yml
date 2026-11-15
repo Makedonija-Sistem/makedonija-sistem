@@ -1,0 +1,57 @@
+name: MKS May 2026 Preservation Regression (NO DEPLOY)
+on:
+  pull_request:
+    paths:
+      - "index.html"
+      - "heritage/**"
+      - "scripts/test_mks_may_preservation.py"
+      - "scripts/mks_may_preservation_browser.cjs"
+      - ".github/workflows/mks-may-preservation.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  may-preservation:
+    name: SHA original + 58 modules + 26 documents + Chromium root/subpath (NO DEPLOY)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Checkout review-only branch without stored credentials
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Node 22
+        uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          package-manager-cache: false
+      - name: Validate recovered archive, source fidelity and navigation
+        run: |
+          set -euo pipefail
+          node --check heritage/library.js
+          node --check heritage/library-app.js
+          node --check scripts/mks_may_preservation_browser.cjs
+          python3 -m unittest -v scripts/test_mks_may_preservation.py
+          python3 -m unittest -v scripts/test_mks_section_recovery.py
+          python3 scripts/mks_root_review_qa.py
+      - name: Install isolated Playwright + Chromium
+        run: |
+          npm install --prefix /tmp/mks-may-playwright --no-save --no-audit --no-fund playwright@1.65.1
+          /tmp/mks-may-playwright/node_modules/.bin/playwright install --with-deps chromium
+      - name: Check actual desktop and mobile user journeys at both host paths
+        shell: bash
+        env:
+          MKS_PLAYWRIGHT_MODULE: /tmp/mks-may-playwright/node_modules/playwright
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8786 --bind 127.0.0.1 >/tmp/mks-may-root.log 2>&1 &
+          root_pid=$!
+          (cd .. && python3 -m http.server 8787 --bind 127.0.0.1 >/tmp/mks-may-subpath.log 2>&1) &
+          sub_pid=$!
+          trap 'kill "$root_pid" "$sub_pid" 2>/dev/null || true' EXIT
+          for attempt in {1..30}; do
+            if curl -fsS -o /dev/null http://127.0.0.1:8786/ && curl -fsS -o /dev/null http://127.0.0.1:8787/makedonija-sistem/; then break; fi
+            sleep 1
+          done
+          MKS_LOCAL_URL=http://127.0.0.1:8786/ node scripts/mks_may_preservation_browser.cjs
+          MKS_LOCAL_URL=http://127.0.0.1:8787/makedonija-sistem/ node scripts/mks_may_preservation_browser.cjs
