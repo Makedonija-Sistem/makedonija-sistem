@@ -101,6 +101,8 @@ async function check(name,fn){try{await fn();passed++;console.log("PASS "+name);
    }
   });
   await check("navigation offers direct one-click restored map route",async()=>{
+   // Previous test deliberately shrinks this desktop context to 320/390 px.
+   await page.setViewportSize({width:1366,height:800});
    await page.goto(base.href,{waitUntil:"domcontentloaded",timeout:45000});
    const citizens=page.locator('#navLinks details[data-group="citizens"]');
    await citizens.locator("summary").click();
