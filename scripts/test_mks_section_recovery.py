@@ -1,6 +1,7 @@
 """MKS section source-of-truth recovery gate. No deploy, no personal-data processing."""
 from pathlib import Path
 import re
+import json
 import unittest
 ROOT=Path(__file__).resolve().parents[1]
 def read(name):return (ROOT/name).read_text(encoding="utf-8")
@@ -47,6 +48,36 @@ class SectionRecovery(unittest.TestCase):
         self.assertIn('src="./app.js"',page)
         self.assertNotIn("<form",page)
         self.assertIn("не се пренесени",page)
+    def test_original_svg_and_archived_contacts_are_restored(self):
+        page=read("research/municipalities/index.html")
+        self.assertIn('id="municipalityMap"',page)
+        self.assertIn('src="./legacy-links.js"',page)
+        self.assertEqual(page.count('class="region-shape" role="button" tabindex="0"'),8)
+        self.assertIn("Стилизирана",page)
+        self.assertNotIn("ЗЕЛС — Партнер",page)
+        self.assertNotIn("Активен координатор",page)
+        data=read("research/municipalities/legacy-links.js")
+        match=re.search(r"Object\.freeze\((\{[\s\S]*?\})\);",data)
+        self.assertIsNotNone(match)
+        obj=json.loads(match.group(1))
+        self.assertEqual(len(obj["rows"]),80)
+        self.assertEqual(obj["verification"],"ARCHIVED_WEBSITES_NOT_LIVE_CHECKED")
+        self.assertEqual(len({x["name"] for x in obj["rows"]}),80)
+        self.assertEqual(len({x["web"] for x in obj["rows"]}),80)
+        for item in obj["rows"]:
+            self.assertRegex(item["web"],r"^[a-z0-9.-]+\.gov\.mk$")
+            self.assertTrue(item["center"])
+            self.assertTrue(isinstance(item["archivePopulation"],int))
+        self.assertFalse(any("mayor" in x or "coord" in x for x in obj["rows"]))
+        self.assertIn("historical MKS v17",data)
+        app=read("research/municipalities/app.js")
+        self.assertIn('aria-pressed',app)
+        self.assertIn('addEventListener("keydown"',app)
+        self.assertIn('referrerPolicy="no-referrer"',app)
+        self.assertIn('recordByName',app)
+        self.assertIn('details',app)
+        self.assertNotIn("innerHTML",app)
+        self.assertNotIn("fetch(",app)
     def test_safe_loading_and_no_prod(self):
         s=read("research/municipalities/app.js")
         self.assertIn("replaceChildren",s)
