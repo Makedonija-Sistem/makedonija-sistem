@@ -26,6 +26,20 @@ async function check(name,task){try{await task();passed++;console.log("PASS "+na
    assert.equal(await page.locator("#wpGrid .wp-card").count(),61);
    const h=await page.locator("#robotika-macedonia").innerText();assert.ok(h.length>600);
   });
+  await check("recovered 42-media directory filters locally with no bulk send",async()=>{
+   const media=page.locator("#media-hub");
+   await page.waitForFunction(()=>document.querySelector("#media-hub")?.dataset.mksMayMediaReady==="true");
+   assert.equal(await media.locator(".mh-card").count(),42);
+   const input=media.locator("#mhSearch");assert.equal(await input.isEnabled(),true);
+   await media.locator('button[data-may-safe-filter][data-cat="tv"]').click();
+   assert.equal(await media.locator(".mh-card:not([hidden])").count(),10);
+   await input.fill("Sitel");
+   assert.equal(await media.locator(".mh-card:not([hidden])").count(),1);
+   assert.equal(await media.locator(".mh-bulk-actions button:not([disabled])").count(),0);
+   await input.fill("");
+   await media.locator('button[data-may-safe-filter][data-cat="all"]').click();
+   assert.equal(await media.locator(".mh-card:not([hidden])").count(),42);
+  });
   await check("May archive directly accessible from main menu",async()=>{
    const nav=page.locator('#navLinks details[data-group="home"]');
    // The link belongs to an existing nav group; find the parent via its own href.
