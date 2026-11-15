@@ -25,6 +25,7 @@ PUBLIC_REVIEW = (
     "research/municipalities/index.html",
     "research/municipalities/style.css",
     "research/municipalities/data.js",
+    "research/municipalities/legacy-links.js",
     "research/municipalities/app.js",
     "legal/PROGRAM.md",
     "legal/STATUTE.md",
