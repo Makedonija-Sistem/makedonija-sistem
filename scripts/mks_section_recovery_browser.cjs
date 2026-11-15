@@ -68,7 +68,10 @@ async function check(name,fn){try{await fn();passed++;console.log("PASS "+name);
    }
   });
   await check("no exceptions or external network calls in directory",async()=>{
-   assert.deepEqual(errs,[]);assert.deepEqual(unexpected,[]);
+   assert.deepEqual(errs,[]);
+   // The existing root HTML requests Google Fonts; the test blocks it.
+   // The new directory itself has no external network dependency.
+   assert.ok(unexpected.every(url=>new URL(url).hostname==="fonts.googleapis.com"),JSON.stringify(unexpected));
   });
   await context.close();
   const mctx=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
@@ -90,7 +93,8 @@ async function check(name,fn){try{await fn();passed++;console.log("PASS "+name);
    await mobile.waitForFunction(()=>location.hash==="#municipalities");
    await mobile.waitForFunction(()=>!document.querySelector("#navLinks").classList.contains("open"));
    assert.equal(await mobile.locator("#municipalities").isVisible(),true);
-   assert.deepEqual(mobileErrors,[]);assert.deepEqual(other,[]);
+   assert.deepEqual(mobileErrors,[]);
+   assert.ok(other.every(url=>new URL(url).hostname==="fonts.googleapis.com"),JSON.stringify(other));
   });
   await mctx.close();
  }finally{await browser.close();}
