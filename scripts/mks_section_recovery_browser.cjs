@@ -73,7 +73,7 @@ async function check(name,fn){try{await fn();passed++;console.log("PASS "+name);
   await check("search and reset",async()=>{
    await page.locator("#munSearch").fill("Охрид");
    assert.equal(await page.locator("#regionResults li").count(),1);
-   assert.equal(await page.locator("#regionResults li").first().textContent(),"Охрид");
+   assert.equal(await page.locator("#regionResults li strong").first().textContent(),"Охрид");
    await page.locator("#clearFilters").click();
    assert.equal(await page.locator("#regionResults li").count(),80);
   });
