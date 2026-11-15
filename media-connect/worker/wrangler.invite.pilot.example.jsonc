@@ -1,0 +1,27 @@
+{
+  // MEDIA CONNECT v0.3 — REVIEW ONLY — never deploy without Human Gate.
+  // No public workers.dev route or live tokens by default.
+  "name": "mks-media-connect-invite-pilot",
+  "main": "./invite-worker.mjs",
+  "compatibility_date": "2026-11-15",
+  "workers_dev": false,
+  "vars": {
+    "ENABLED": "false",
+    "HUMAN_GATE_APPROVED": "false",
+    "ALLOWED_ORIGIN": "https://example.invalid",
+    "LIVEKIT_URL": "wss://example.invalid",
+    "ROOM_NAME": "mks_test_room",
+    "ISSUE_CAP_HOST": "1",
+    "ISSUE_CAP_SPEAKER": "10",
+    "ISSUE_CAP_VIEWER": "25"
+  },
+  "durable_objects": {
+    "bindings": [{ "name": "INVITES", "class_name": "InviteRegistry" }]
+  },
+  "migrations": [
+    { "tag": "v1", "new_sqlite_classes": ["InviteRegistry"] }
+  ],
+  "ratelimits": [
+    { "name": "JOIN_LIMITER", "namespace_id": "3115", "simple": { "limit": 10, "period": 60 } }
+  ]
+}
