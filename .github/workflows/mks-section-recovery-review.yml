@@ -1,0 +1,60 @@
+name: MKS section recovery and municipality navigation QA (NO DEPLOY)
+
+on:
+  pull_request:
+    paths:
+      - "index.html"
+      - "research/municipalities/**"
+      - "scripts/test_mks_section_recovery.py"
+      - "scripts/mks_section_recovery_browser.cjs"
+      - ".github/workflows/mks-section-recovery-review.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  section-recovery:
+    name: Restore municipal directory + browser click-through (NO DEPLOY)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Checkout review branch without saved credentials
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Node.js 22
+        uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          package-manager-cache: false
+      - name: Syntax and content verification
+        run: |
+          set -euo pipefail
+          node --check research/municipalities/data.js
+          node --check research/municipalities/legacy-links.js
+          node --check research/municipalities/app.js
+          node --check scripts/mks_section_recovery_browser.cjs
+          python3 -m unittest -v scripts/test_mks_section_recovery.py
+          python3 scripts/mks_root_review_qa.py
+      - name: Install pinned local Chromium tooling
+        run: |
+          npm install --prefix /tmp/mks-section-playwright --no-save --no-audit --no-fund playwright@1.65.1
+          /tmp/mks-section-playwright/node_modules/.bin/playwright install --with-deps chromium
+      - name: Test desktop and mobile at Cloudflare and GitHub Pages paths
+        shell: bash
+        env:
+          MKS_PLAYWRIGHT_MODULE: /tmp/mks-section-playwright/node_modules/playwright
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8786 --bind 127.0.0.1 >/tmp/mks-section-root.log 2>&1 &
+          pid1=$!
+          (cd .. && python3 -m http.server 8787 --bind 127.0.0.1 >/tmp/mks-section-subpath.log 2>&1) &
+          pid2=$!
+          trap 'kill "$pid1" "$pid2" 2>/dev/null || true' EXIT
+          for i in {1..30}; do
+            if curl -fsS -o /dev/null http://127.0.0.1:8786/ && curl -fsS -o /dev/null http://127.0.0.1:8787/makedonija-sistem/; then break; fi
+            sleep 1
+          done
+          MKS_LOCAL_URL=http://127.0.0.1:8786/ node scripts/mks_section_recovery_browser.cjs
+          MKS_LOCAL_URL=http://127.0.0.1:8787/makedonija-sistem/ node scripts/mks_section_recovery_browser.cjs

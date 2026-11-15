@@ -10967,6 +10967,8 @@ html[data-lang="mk"] .mks-status-banner [data-mks-lang="mk"],html[data-lang="en"
 #pageLoader,.page-loader{display:none!important}
 .reveal{opacity:1!important;transform:none!important;visibility:visible!important}
 .mks-review-panel a {overflow-wrap:anywhere}
+/* Section navigation must not hide the selected heading beneath the sticky header. */
+main section[id], #municipalities{scroll-margin-top:105px}
 @media(max-width:1180px){body.menu-open #siteHeader{z-index:1200!important}.links.mks-grouped-nav{max-width:100vw}.links.mks-grouped-nav:not(.open){display:none!important}.links.mks-grouped-nav.open{display:flex!important;transform:none!important;visibility:visible!important;pointer-events:auto!important}.mks-nav-group{width:100%}}
 /* Review accessibility correction: keep the mobile toggle above the open drawer. */
 @media (max-width:1180px){body.menu-open #menuToggle{position:relative!important;z-index:2005!important;background:var(--paper)!important}}
@@ -11165,6 +11167,7 @@ html[data-lang="mk"] .mks-status-banner [data-mks-lang="mk"],html[data-lang="en"
           <a href="#citizens-march" data-i18n="nav.proposals">Предлози</a>
           <a href="#initiatives" data-i18n="nav.initiatives">Иницијативи</a>
           <a href="#municipalities" data-i18n="nav.municipalities">Општини</a>
+          <a href="./research/municipalities/index.html" title="Интерактивна карта со 80 општински веб-линкови">🗺️ Целосна карта на општини</a>
           <a href="#events" data-i18n="nav.events">📅 Настани</a>
           <a href="#petitions" data-i18n="nav.petitions">✍️ Петиции</a>
           <a href="#participatory-budget" data-i18n="nav.budget">💰 Буџет</a>
@@ -12275,10 +12278,12 @@ html[data-lang="mk"] .mks-status-banner [data-mks-lang="mk"],html[data-lang="en"
 </section>
 
 <!-- ═══ MUNICIPALITIES MAP ═══ -->
-<section id="municipalities" class="mks-review-section" data-review-status="unverified">
+<section id="municipalities" class="mks-review-section" data-review-status="informational">
   <div class="container"><div class="mks-review-panel">
-    <h2>Општинска мрежа · во подготовка</h2><p>Картата на региони е нацрт за идно претставување на општините. Нема потврдена мрежа на локални координатори или волонтери; претходните ознаки „активен“ не се институционално проверени.</p>
-    <p><small>Јавен преглед · v0.1.3-preview · Не е активна услуга.</small></p>
+    <h2>Општини · официјален информативен каталог</h2>
+    <p>Преглед на сите 80 општини во осумте статистички региони на Република Северна Македонија, со пребарување по општина и филтрирање по регион. Податоците се преземени од публикацијата на Државниот завод за статистика за 2026 година.</p>
+    <p><a href="./research/municipalities/index.html">Отвори го каталогот на општини (80) →</a></p>
+    <p><small>Информативна функција · нема регистар на членови, координатори, пријави или потврдено партнерство. Статус: REVIEW ONLY · NO DEPLOY.</small></p>
   </div></div>
 </section>
 
