@@ -13,7 +13,7 @@ PUBLIC_REVIEW = (
     "heritage/index.html",
     "heritage/library.css",
     "heritage/library.js",
-    "heritage/library-app.js",
+    "heritage/library-app.js",\n    "heritage/media-directory-bridge.js",
     "heritage/may-2026-v17-readonly.html",
     "media-connect/index.html",
     "media-connect/style.css",
