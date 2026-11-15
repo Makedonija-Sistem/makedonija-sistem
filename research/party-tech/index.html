@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="mk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#091d39">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data:; font-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'">
+<meta name="description" content="Истражувачка надградба на Глобалниот партиски атлас: јавно документирани дигитални функции на политички партии со извори и граници на потврденост.">
+<title>Дигитални технологии · Глобален партиски атлас · МАКЕДОНИЈА — СИСТЕМ</title>
+<link rel="stylesheet" href="./styles.css">
+<script type="module" src="./app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main" data-t="skip">Прескокни до содржината</a>
+<div class="review-strip" data-t="status">ИСТРАЖУВАЧКИ ПРОТОТИП · НЕ Е РАНГИРАЊЕ · НЕ ОЗНАЧУВА ПАРТНЕРСТВА · БЕЗ СОБИРАЊЕ ПОДАТОЦИ</div>
+<header class="header">
+  <div class="container headrow">
+    <a href="../../index.html#world-parties" class="brand">
+      <span class="brandmark" aria-hidden="true">М</span>
+      <span>МАКЕДОНИЈА — СИСТЕМ<small data-t="brand.sub">Истражувачка надградба на партискиот атлас</small></span>
+    </a>
+    <nav aria-label="Главно мени" class="headnav"><a href="#explore" data-t="nav.explore">Истражување</a><a href="#method" data-t="nav.method">Методологија</a><a href="#other" data-t="nav.other">Дополнителни случаи</a></nav>
+    <div class="langs" role="group" aria-label="Select language">
+      <button type="button" class="lang current" data-lang="mk" aria-pressed="true">MK</button>
+      <button type="button" class="lang" data-lang="en" aria-pressed="false">EN</button>
+      <button type="button" class="lang" data-lang="al" aria-pressed="false">SQ</button>
+      <button type="button" class="lang" data-lang="sr" aria-pressed="false">SR</button>
+      <button type="button" class="lang" data-lang="de" aria-pressed="false">DE</button>
+    </div>
+  </div>
+</header>
+<main id="main">
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="kicker" data-t="hero.kicker">ГЛОБАЛЕН ПАРТИСКИ АТЛАС / НОВ ИСТРАЖУВАЧКИ СЛОЈ</div>
+      <h1 data-t="hero.title">Дигиталните технологии на светските партии — со докази, не со претпоставки.</h1>
+      <p class="hero-lede" data-t="hero.intro">Ги зачувуваме постојните 61 партиски профил и додаваме проверливи описи на членски портали, предлози, правила, безбедносни механизми и надворешни финансиски платформи. Нема произволен технолошки скор.</p>
+      <a href="#explore" class="hero-cta"><span data-t="hero.go">Истражи ги профилите</span><span aria-hidden="true">↓</span></a>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="orbit orbit-outer"></div><div class="orbit orbit-inner"></div>
+      <div class="hero-glyph"><span>61</span><small>ATLAS</small></div>
+      <span class="hero-tag tag-a">EVIDENCE</span><span class="hero-tag tag-b">HUMAN GATE</span>
+    </div>
+  </div>
+</section>
+<div class="metric-band">
+  <div class="container metric-grid">
+    <div><strong id="count-atlas" aria-live="polite">61</strong><span data-t="metric.atlas">Постојни профили</span></div>
+    <div><strong id="count-researched" aria-live="polite">13</strong><span data-t="metric.researched">Со јавни технолошки извори</span></div>
+    <div><strong id="count-signals" aria-live="polite">20</strong><span data-t="metric.signals">Документирани сигнали</span></div>
+    <div><strong id="count-sources" aria-live="polite">21</strong><span data-t="metric.sources">Извори во регистарот</span></div>
+  </div>
+</div>
+<section id="explore" class="section">
+<div class="container">
+  <div class="section-header"><span class="section-label" data-t="explore.kicker">01 / ФИЛТРИРАЧКИ ИСТРАЖУВАЧКИ ПРЕГЛЕД</span><h2 data-t="explore.title">Истите партии. Нов доказен слој.</h2>
+  <p data-t="explore.desc">Податоците за имиња и држави се читаат од постојниот атлас при отворање. Истражувачките белешки имаат поединечни јавни извори. „Неистражено“ не значи дека партијата нема технологија.</p></div>
+  <div class="filter-panel" aria-label="Истражувачки филтри">
+    <div class="filter-grid">
+      <div class="field"><label for="search" data-t="filter.search">Пребарај партија или земја</label><input id="search" type="search" autocomplete="off" placeholder="Име, држава..." data-placeholder="search.placeholder"></div>
+      <div class="field"><label for="region" data-t="filter.region">Регион</label><select id="region"></select></div>
+      <div class="field"><label for="dimension" data-t="filter.dimension">Дигитална функција</label><select id="dimension"></select></div>
+      <div class="field"><label for="evidence" data-t="filter.evidence">Доказен статус</label><select id="evidence"></select></div>
+    </div>
+    <div class="filter-actions">
+      <button type="button" id="reset" class="quiet" data-t="filter.reset">Исчисти филтри</button>
+      <button type="button" id="csv" class="export" disabled data-t="filter.export">Преземи филтриран CSV</button>
+    </div>
+  </div>
+  <div class="list-topline" role="status" aria-live="polite"><span id="result-count" data-t="results.loading">Се вчитуваат профилите од постојниот атлас...</span><span class="source-date">SOURCE SNAPSHOT · 15.11.2026</span></div>
+  <div id="research-results" class="research-grid">
+    <div class="fallback" id="initial-fallback"><h3 data-t="fallback.title">Истражувачки преглед</h3><p data-t="fallback.text">За интерактивните податоци потребно е JavaScript. Оригиналниот каталог останува достапен.</p><a href="../../index.html#world-parties" data-t="fallback.link">Отвори го постојниот атлас</a></div>
+  </div>
+  <p class="help-note" data-t="explore.translation">Интерфејсот е достапен на пет јазици. Доказните описни белешки се изворно уредени на македонски; нивните преводи бараат посебна лекторска проверка.</p>
+</div>
+</section>
+<section id="method" class="section soft">
+  <div class="container">
+    <span class="section-label" data-t="method.kicker">02 / ПРОВЕНАНЦИЈА И МЕТОД</span><h2 data-t="method.title">Јавен доказ ≠ независен аудит.</h2>
+    <div class="method-grid">
+      <article><span class="method-icon">01</span><h3 data-t="method.a.title">Канонски каталог</h3><p data-t="method.a.desc">Сите 61 профил се читаат директно од постојниот HTML-атлас; не се создаваат нови партиски картички во базата.</p></article>
+      <article><span class="method-icon">02</span><h3 data-t="method.b.title">Доказни записи</h3><p data-t="method.b.desc">Секој технолошки сигнал мора да има јавен партиски или доставувачки извор. Описот покажува само што изворот може да потврди.</p></article>
+      <article><span class="method-icon">03</span><h3 data-t="method.c.title">Без спорни рангирања</h3><p data-t="method.c.desc">Нема оцена „најнапредна партија“, изборни прогнози, симпатии, политички профили или скриено убедување.</p></article>
+      <article><span class="method-icon">04</span><h3 data-t="method.d.title">Human Gate</h3><p data-t="method.d.desc">AI, приватни апликации и криптографска безбедност не се независно потврдени. Јавната продукциска промена бара посебна човечка ревизија.</p></article>
+    </div>
+    <div class="limitations">
+      <h3 data-t="limits.title">Граници на ова истражувачко издание</h3>
+      <p data-t="limits.body">13 од 61 партија имаат дополнети јавни технолошки докази. Останатите 48 се означени „неистражено во ова издание“. Надворешните ActBlue и WinRed не се мешаат со сопствените информатички системи на партиите. Нема пристап до приватни членски бази или овластување за објавување на чувствителни податоци.</p>
+      <p><a href="../../index.html#world-parties" data-t="method.atlas">Врати се на изворниот Глобален партиски атлас</a></p>
+    </div>
+  </div>
+</section>
+<section id="other" class="section">
+  <div class="container">
+    <span class="section-label" data-t="extra.kicker">03 / ДОПОЛНИТЕЛНИ КОМПАРАТИВНИ ПРИМЕРИ</span>
+    <h2 data-t="extra.title">Два вредни примера што не се меѓу 61 профил.</h2>
+    <p data-t="extra.desc">Не ги додаваме автоматски во оригиналниот каталог. Ги прикажуваме одделно како истражувачки примери со јавни извори.</p>
+    <div id="extra-cases" class="extra-grid"></div>
+  </div>
+</section>
+</main>
+<footer>
+<div class="container foot"><div><strong>МАКЕДОНИЈА — СИСТЕМ</strong><p data-t="foot.note">Независна истражувачка надградба · без партиски партнерства, кориснички досиеја или активни членски функции.</p></div><a href="../../index.html#world-parties" data-t="foot.return">← Назад во атласот</a></div>
+</footer>
+<noscript><div class="no-js"><a href="../../index.html#world-parties">Глобален партиски атлас / World Parties Atlas</a> — Оваа истражувачка страница има интерактивен преглед само кога е вклучен JavaScript.</div></noscript>
+</body>
+</html>
