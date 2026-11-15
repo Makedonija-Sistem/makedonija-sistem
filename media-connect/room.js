@@ -11,7 +11,7 @@
   const micButton=el("micButton"),camButton=el("camButton"),audioButton=el("audioButton");
   const grid=el("remoteTracks"),empty=el("emptyRoom");
   const cfg=window.MKS_MEDIA_ROOM_CONFIG||{};
-  let room=null, currentRole=null, pending=false;
+  let room=null, currentRole=null, pending=false, sequence=0, requestController=null;
   const tracks=new Map();
   const enabled=cfg.enabled===true &&
     typeof cfg.tokenEndpoint==="string" && /^https:\/\/[^\s]+$/.test(cfg.tokenEndpoint) &&
@@ -58,6 +58,8 @@
     empty.hidden=true;
   }
   function resetRoom(message){
+    sequence++;
+    if(requestController){requestController.abort();requestController=null;}
     const previous=room;room=null;currentRole=null;pending=false;
     if(previous){try{previous.disconnect();}catch{}}
     clearRemoteTracks();
@@ -101,14 +103,20 @@
     if(!enabled || pending || room)return;
     const code=codeControl.value;
     if(code.length<24){setStatus("Кодот за покана мора да има најмалку 24 знаци.");return;}
-    pending=true;buttons();setStatus("Проверка на поканата и поврзување...");
+    pending=true;
+    const attempt=++sequence;
+    requestController=new AbortController();
+    buttons();setStatus("Проверка на поканата и поврзување...");
     try {
       const result=await fetch(cfg.tokenEndpoint,{
         method:"POST",mode:"cors",credentials:"omit",cache:"no-store",redirect:"error",
+        signal:requestController.signal,
         referrerPolicy:"no-referrer",headers:{"Content-Type":"application/json"},
         body:JSON.stringify({role:roleControl.value,code})
       });
       codeControl.value="";
+      if(attempt!==sequence)return;
+      requestController=null;
       if(!result.ok){
         const msg=result.status===429?"Премногу обиди. Пробај подоцна.":
           result.status===403?"Невалидна покана или неодобрен домен.":
@@ -121,17 +129,19 @@
         throw new Error("Некоректен одговор од пилотскиот сервер.");
       }
       const lk=await loadSdk();
+      if(attempt!==sequence)return;
       const newRoom=new lk.Room({adaptiveStream:true,dynacast:true});
       room=newRoom;currentRole=data.role;
       registerRoomEvents(lk,newRoom);
       await newRoom.connect(data.serverUrl,data.token);
-      if(room!==newRoom)return;
+      if(room!==newRoom || attempt!==sequence){newRoom.disconnect();return;}
       pending=false;
       // Never publish by default. Explicit user action required for media.
       setStatus("Поврзано · "+(currentRole==="viewer"?"гледач":currentRole==="speaker"?"говорник":"модератор")+
         ". Камерата и микрофонот се исклучени.");
       buttons();
     }catch(error){
+      if(attempt!==sequence)return;
       codeControl.value="";
       const message=error instanceof Error?error.message:"Непозната грешка.";
       resetRoom(message);
