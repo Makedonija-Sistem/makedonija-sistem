@@ -112,7 +112,7 @@
         method:"POST",mode:"cors",credentials:"omit",cache:"no-store",redirect:"error",
         signal:requestController.signal,
         referrerPolicy:"no-referrer",headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({role:roleControl.value,code})
+        body:JSON.stringify({code})
       });
       codeControl.value="";
       if(attempt!==sequence)return;
@@ -131,7 +131,7 @@
       const lk=await loadSdk();
       if(attempt!==sequence)return;
       const newRoom=new lk.Room({adaptiveStream:true,dynacast:true});
-      room=newRoom;currentRole=data.role;
+      room=newRoom;currentRole=data.role;roleControl.value=data.role;
       registerRoomEvents(lk,newRoom);
       await newRoom.connect(data.serverUrl,data.token);
       if(room!==newRoom || attempt!==sequence){newRoom.disconnect();return;}
