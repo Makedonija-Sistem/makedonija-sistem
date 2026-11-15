@@ -79,8 +79,10 @@ async function registryAction(env,action,body){
  const res=await registry(env).fetch(new Request("https://registry.internal/"+action,{
   method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)
  }));
- if(!res.ok)throw new Error("Registry unavailable");
- return res.json();
+ if(res.status>=500)throw new Error("Registry unavailable");
+ const answer=await res.json();
+ if(!answer || typeof answer.ok!=="boolean")throw new Error("Invalid registry response");
+ return answer;
 }
 function issueCaps(env){
  const defaults={host:1,speaker:10,viewer:25};
