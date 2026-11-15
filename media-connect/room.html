@@ -19,12 +19,12 @@
 <h2 id="joinTitle">Приватен пристап</h2>
 <form id="joinForm" autocomplete="off">
 <div class="fields">
-<label for="role">Улога</label>
-<select id="role" name="role"><option value="viewer">Гледач · без камера и микрофон</option><option value="speaker">Говорник</option><option value="host">Модератор</option></select>
+<label for="role">Улога (ја одредува поканата)</label>
+<select id="role" name="role" disabled><option value="viewer">Гледач · без камера и микрофон</option><option value="speaker">Говорник</option><option value="host">Модератор</option></select>
 <label for="accessCode">Код за покана од организаторот</label>
 <input id="accessCode" type="password" name="accessCode" required minlength="24" maxlength="512" autocomplete="off" placeholder="Приватен код — не го споделувај">
 </div>
-<p class="fine">Не користи лична лозинка од друга услуга. Кодот не се зачувува во прелистувачот и не се внесува во URL. При влез се испраќа исклучиво до конфигурираниот пилотски сервер.</p>
+<p class="fine">Не користи лична лозинка од друга услуга. Кодот не се зачувува во прелистувачот и не се внесува во URL. Секоја покана е за едно приклучување, со улога доделена од организаторот. Ако врската се прекине, потребна е нова покана. При влез се испраќа исклучиво до конфигурираниот пилотски сервер.</p>
 <button id="joinButton" type="submit" disabled>Приклучи се во видеосалата</button>
 <button id="leaveButton" type="button" disabled>Напушти</button>
 </form>
