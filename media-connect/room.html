@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="mk"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self' https://cdn.jsdelivr.net; connect-src 'self' https: wss:; img-src 'self' data:; media-src 'self' blob:; base-uri 'none'; object-src 'none'; form-action 'none'">
+<meta name="description" content="MEDIA CONNECT пилот видеосала со приватни покани и серверски ограничени улоги. Услугата е исклучена до Human Gate и одделно поставување на видео инфраструктура.">
+<title>Видеосала · MEDIA CONNECT · МАКЕДОНИЈА — СИСТЕМ</title>
+<link rel="stylesheet" href="./style.css"><link rel="stylesheet" href="./room.css">
+<script defer src="./room-config.js"></script><script defer src="./room.js"></script>
+</head><body>
+<a class="skip" href="#main">Прескокни до содржината</a>
+<header class="shell top"><a href="./index.html">← MEDIA CONNECT</a><span>VIDEO PILOT v0.2 · HUMAN GATE</span></header>
+<main class="shell" id="main">
+<p class="eyebrow">Интерактивна видеосала · пилотска интеграција</p>
+<h1>Дискусија во живо</h1>
+<p class="lead">Интерфејс за приватен, модериран WebRTC разговор. Дозволите за модератор, говорник и гледач се издаваат само преку посебен сервер, кога пилотот е одобрен.</p>
+<p class="warning"><strong id="pilotStatus">Пилотот не е активиран.</strong> Нема автоматско снимање, повици до контакти, испраќање пораки или партиско профилирање. Пренос кон YouTube и други мрежи не е поврзан. Целта 500+500 учесници е непотврдено оптоварување и бара независен тест и договорен капацитет.</p>
+<section aria-labelledby="joinTitle" class="panel">
+<h2 id="joinTitle">Приватен пристап</h2>
+<form id="joinForm" autocomplete="off">
+<div class="fields">
+<label for="role">Улога</label>
+<select id="role" name="role"><option value="viewer">Гледач · без камера и микрофон</option><option value="speaker">Говорник</option><option value="host">Модератор</option></select>
+<label for="accessCode">Код за покана од организаторот</label>
+<input id="accessCode" type="password" name="accessCode" required minlength="24" maxlength="512" autocomplete="off" placeholder="Приватен код — не го споделувај">
+</div>
+<p class="fine">Не користи лична лозинка од друга услуга. Кодот не се зачувува во прелистувачот и не се внесува во URL. При влез се испраќа исклучиво до конфигурираниот пилотски сервер.</p>
+<button id="joinButton" type="submit" disabled>Приклучи се во видеосалата</button>
+<button id="leaveButton" type="button" disabled>Напушти</button>
+</form>
+<p id="connectionStatus" role="status" aria-live="polite">Функцијата е исклучена додека нема сервер, тајни и човечко одобрение.</p>
+</section>
+<section aria-labelledby="controlsTitle" class="panel">
+<h2 id="controlsTitle">Контроли</h2>
+<div class="controlRow">
+<button type="button" id="micButton" disabled aria-pressed="false">Вклучи микрофон</button>
+<button type="button" id="camButton" disabled aria-pressed="false">Вклучи камера</button>
+<button type="button" id="audioButton" disabled>Активирај звук</button>
+</div>
+<p class="fine">Гледачите не можат да вклучат микрофон или камера преку серверската дозвола. Говорниците стартуваат со исклучена камера и микрофон. Модераторските алатки за отстранување учесник и ред на збор се следна контролирана фаза.</p>
+</section>
+<section aria-labelledby="participantsTitle">
+<h2 id="participantsTitle">Пренос и учесници</h2>
+<div id="remoteTracks" class="trackGrid"><p id="emptyRoom">Сè уште нема активна сесија.</p></div>
+</section>
+<section aria-labelledby="legalTitle">
+<h2 id="legalTitle">Ограничувања и приватност</h2>
+<ul>
+<li>Само надлежен оператор може да ги постави серверските кодови, клучеви и пилотскиот домен.</li>
+<li>Медиумските токени се краткотрајни; LiveKit одделно управува со конекциите и може да обработува технички метаподатоци.</li>
+<li>Нема активна интеграција со приватни Viber, WhatsApp, Signal или Telegram разговори.</li>
+<li>Реална видеосесија бара договорен LiveKit план, вклучена инфраструктура и одобрение за тест-корисници.</li>
+<li>За снимање, задржување, известување, пристапност и малолетници потребни се одделни правила и согласности.</li>
+</ul>
+</section>
+</main><footer class="shell"><a href="./index.html">← Назад кон платформите</a><p class="fine">REVIEW ONLY · Нема активна услуга или гарантирани 1.000 истовремени учесници.</p></footer>
+</body></html>
