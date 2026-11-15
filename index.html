@@ -14642,7 +14642,7 @@ main section[id], #municipalities{scroll-margin-top:105px}
 </section>
 
 <!-- ═══ MEDIA HUB · Macedonia media outlets database ═══ -->
-<section id="media-hub" class="mh-section" data-mks-may-origin="historical" data-mks-recovery-status="read-only"><div class="mks-may-banner" role="note"><strong>Мај 2026 · реставрирана изворна содржина</strong> — историски предлог и информативен материјал. Не се потврдени актуелноста на бројките, партнерствата, организациите, медиумските контакти или надворешните линкови. Оперативни услуги, регистрација и автоматски испраќања не се активирани. <a href="./heritage/may-2026-v17-readonly.html#media-hub">Оригинален извор v17</a>.</div>
+<section id="media-hub" class="mh-section" data-mks-may-origin="historical" data-mks-recovery-status="read-only"><div class="mks-may-banner" role="note"><strong>Мај 2026 · реставрирана изворна содржина</strong> — историски предлог и информативен материјал. Не се потврдени актуелноста на бројките, партнерствата, организациите, медиумските контакти или надворешните линкови. Оперативни услуги, регистрација и автоматски испраќања не се активирани. Само локалното пребарување и филтрирање на архивскиот медиумски список е употребливо. <a href="./heritage/may-2026-v17-readonly.html#media-hub">Оригинален извор v17</a>.</div>
   <div class="container">
     <div class="section-head reveal" style="text-align:center">
       <span class="label" data-i18n="mh.label">📡 Медиумски Хаб · Press &amp; PR</span>
@@ -14681,32 +14681,32 @@ main section[id], #municipalities{scroll-margin-top:105px}
 
     <!-- Filters -->
     <div class="mh-filters reveal">
-      <button disabled data-may-historical-control class="mh-filter-btn active" data-cat="all">
+      <button type="button" data-may-safe-filter class="mh-filter-btn active" data-cat="all">
         <span data-i18n="mh.f.all">📡 Сите</span><span class="count">42</span>
       </button>
-      <button disabled data-may-historical-control class="mh-filter-btn" data-cat="tv">
+      <button type="button" data-may-safe-filter class="mh-filter-btn" data-cat="tv">
         <span data-i18n="mh.f.tv">📺 ТВ</span><span class="count">10</span>
       </button>
-      <button disabled data-may-historical-control class="mh-filter-btn" data-cat="radio">
+      <button type="button" data-may-safe-filter class="mh-filter-btn" data-cat="radio">
         <span data-i18n="mh.f.radio">📻 Радио</span><span class="count">7</span>
       </button>
-      <button disabled data-may-historical-control class="mh-filter-btn" data-cat="portal">
+      <button type="button" data-may-safe-filter class="mh-filter-btn" data-cat="portal">
         <span data-i18n="mh.f.portal">💻 Портали</span><span class="count">14</span>
       </button>
-      <button disabled data-may-historical-control class="mh-filter-btn" data-cat="print">
+      <button type="button" data-may-safe-filter class="mh-filter-btn" data-cat="print">
         <span data-i18n="mh.f.print">📰 Печат</span><span class="count">5</span>
       </button>
-      <button disabled data-may-historical-control class="mh-filter-btn" data-cat="agency">
+      <button type="button" data-may-safe-filter class="mh-filter-btn" data-cat="agency">
         <span data-i18n="mh.f.agency">📡 Агенции</span><span class="count">3</span>
       </button>
-      <button disabled data-may-historical-control class="mh-filter-btn" data-cat="diaspora">
+      <button type="button" data-may-safe-filter class="mh-filter-btn" data-cat="diaspora">
         <span data-i18n="mh.f.diaspora">🌍 Дијаспора</span><span class="count">3</span>
       </button>
     </div>
 
     <!-- Search -->
     <div class="mh-search reveal">
-      <input disabled data-may-historical-control type="text" id="mhSearch" placeholder="Барај медиум (пр. „МРТ", „Sitel", „Vecer")...">
+      <input type="search" aria-label="Локално пребарување по медиум" id="mhSearch" placeholder="Барај медиум (пр. „МРТ", „Sitel", „Vecer")...">
     </div>
 
     <!-- Media grid -->
@@ -24477,5 +24477,6 @@ function copyAllEmails(){
 })();
 </script>
 
+<script src="./heritage/media-directory-bridge.js" defer></script>
 </body>
 </html>
