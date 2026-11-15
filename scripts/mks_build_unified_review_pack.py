@@ -10,6 +10,11 @@ from zipfile import ZipFile, ZipInfo, ZIP_DEFLATED
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_REVIEW = (
     "index.html",
+    "heritage/index.html",
+    "heritage/library.css",
+    "heritage/library.js",
+    "heritage/library-app.js",
+    "heritage/may-2026-v17-readonly.html",
     "media-connect/index.html",
     "media-connect/style.css",
     "media-connect/app.js",
@@ -30,14 +35,14 @@ PUBLIC_REVIEW = (
     "legal/PROGRAM.md",
     "legal/STATUTE.md",
 )
-README = """MAKEDONIJA SISTEM - OFFLINE REVIEW v0.4 (2026-11-15)
+README = """MAKEDONIJA SISTEM - OFFLINE REVIEW v0.5 · MAY 2026 HERITAGE (2026-11-15)
 
 STATUS: SOURCE REVIEW ONLY; no deployment, membership or investment service.
 MEDIA CONNECT: Video joining DISABLED. No LiveKit account, tokens, recordings,
 API secrets, server integration or evidence of 500+500 live capacity is included.
 
 Files: index.html (61-card master), Party Atlas, economic programme,
-MEDIA CONNECT directory, role-gated videoroom frontend, legal drafts, and\nread-only 80-municipality directory from the State Statistical Office 2026.
+MEDIA CONNECT directory, role-gated videoroom frontend, legal drafts,\nrestored original regional municipality map, and full MAY 2026 heritage library\nwith 58 sections, 26 source-document GitHub links, and an inert historical v17 HTML.\nThe original 2026-05 source files are anchored by immutable Git commit SHA.\nArchived claims and actions are NOT verified live.
 Secrets and Cloudflare Worker backends are intentionally excluded.
 
 How to inspect:
@@ -45,10 +50,10 @@ How to inspect:
 2. In the extracted folder run: python3 -m http.server 8788
 3. In your browser open http://127.0.0.1:8788/
 4. Follow the links from the main portal. No external accounts required.
-5. DO NOT share this as a production portal or activate political/financial
+5. Open /heritage/index.html for 58 sections and full inert historic v17 copy.\n6. DO NOT share this as a production portal or activate political/financial
    services. The review-only video page cannot join a real room.
 
-GitHub reviewer: https://github.com/Makedonija-Sistem/makedonija-sistem/pull/12
+GitHub reviewer: https://github.com/Makedonija-Sistem/makedonija-sistem/pull/14
 Human Gate before any merge, hosting, secret deployment or public conference.
 """
 def arcinfo(name: str) -> ZipInfo:
