@@ -10,7 +10,7 @@ class SectionRecovery(unittest.TestCase):
         ids=re.findall(r'<section\b[^>]*\bid="([^"]+)"',s)
         # The unified review adds the legitimate strategic-investments and media-connect sections.
         self.assertEqual(len(ids),60)
-        self.assertEqual(len(set(ids)),58)
+        self.assertEqual(len(set(ids)),60)
         for need in ["municipalities","initiatives","diaspora","events","petitions","membership","world-parties"]:
             self.assertIn(need,ids)
         self.assertIn("strategic-investments",ids)
