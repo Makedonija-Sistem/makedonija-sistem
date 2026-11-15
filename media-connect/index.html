@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="mk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'none'; img-src 'self'; base-uri 'none'; object-src 'none'; form-action 'none'">
+<title>MEDIA CONNECT · МАКЕДОНИЈА — СИСТЕМ</title>
+<meta name="description" content="Истражувачки прототип за јавни видеодискусии и комуникациски канали. Нема активна услуга за видео повици, автоматски објави или внес на лични податоци.">
+<link rel="stylesheet" href="./style.css">
+<script defer src="./app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Прескокни до содржината</a>
+<header class="shell top"><a href="../index.html#channels">← МАКЕДОНИЈА — СИСТЕМ</a><span>MEDIA CONNECT · v0.1 · REVIEW ONLY</span></header>
+<main id="main" class="shell">
+<section class="hero" aria-labelledby="title"><p class="eyebrow">Јавна комуникација · дискусија · медиумска писменост</p>
+<h1 id="title">MEDIA CONNECT</h1><p class="lead">План за еден комуникациски центар со јасно одвоени видеосесии, јавни преноси и врски кон надворешни платформи.</p>
+<p class="warning"><strong>Прототип, не активна услуга.</strong> Нема вистински видеоповици, конекции со кориснички сметки, читање контакти, следење публика, автоматско испраќање пораки или емитување. Платформите подолу не се наши партнери.</p>
+</section>
+<section aria-labelledby="capacity"><h2 id="capacity">Капацитет за планирање: 500 + 500</h2>
+<div class="stats"><article class="panel"><strong>500</strong><h3>Интерактивна сала</h3><p>Пријавени учесници; микрофонот и камерата се активираат по модераторска дозвола. Не значи 500 истовремени HD видеа.</p></article>
+<article class="panel"><strong>500</strong><h3>Гледачи</h3><p>Одделен пренос со можност за прашања. Гледачите не испраќаат видео/аудио до салата.</p></article></div>
+<div class="panel"><h3>Интерактивен капацитетен планер · локална симулација</h3><p>Промени ги бројките за проценка на структурата. Ова не резервира ресурси и не прави реална видеосесија.</p>
+<div class="controls"><label for="speakers">Учесници во сала <output id="speakerValue" for="speakers">500</output></label><input id="speakers" type="range" min="1" max="500" step="1" value="500">
+<label for="viewers">Гледачи <output id="viewerValue" for="viewers">500</output></label><input id="viewers" type="range" min="0" max="500" step="1" value="500"></div>
+<p id="capacityMessage" aria-live="polite">Вкупно: 1.000 места за планирање — не е потврден оперативен капацитет.</p>
+</div></section>
+<section aria-labelledby="architecture"><h2 id="architecture">Техничка архитектура — предлог</h2>
+<div class="path"><article class="panel"><h3>01 · Влез и дозволи</h3><p>Серверски потпишани краткотрајни токени; улоги: модератор, говорник, гледач. Без јавно достапни секрети.</p></article>
+<article class="panel"><h3>02 · Видео јадро</h3><p>WebRTC преку SFU (на пр. LiveKit) или наменски Video SDK; нема peer-to-peer mesh за 1.000 лица.</p></article>
+<article class="panel"><h3>03 · Пренос</h3><p>Изборен RTMP/HLS излез кон дозволени streaming платформи. Влез на гледачи одделно од говорниците.</p></article>
+<article class="panel"><h3>04 · Човечка модерација</h3><p>Ред на зборување, исклучување микрофон, пријави на злоупотреби, ознака за снимање и согласност.</p></article></div>
+<p class="fine">Платен провајдер или сопствен WebRTC сервер, трошоци за еgress/CDN, TURN, капацитет, безбедност и оптоварување мора да бидат проценети и тестирани. 500 + 500 е цел, не докажан капацитет.</p></section>
+<section aria-labelledby="channels"><h2 id="channels">Социјални мрежи, стриминг и месинџери</h2>
+<p>Ова е каталог на независни платформи за рачна навигација, не интеграција со профили. Додавање официјални профили ќе се прави само по верификација на сопственоста и согласност на администратор.</p>
+<div class="directory">
+<article class="panel"><h3>Видео и јавни објави</h3><p><a href="https://www.youtube.com/" rel="noopener noreferrer" referrerpolicy="no-referrer">YouTube</a> · <a href="https://www.facebook.com/" rel="noopener noreferrer" referrerpolicy="no-referrer">Facebook</a> · <a href="https://www.instagram.com/" rel="noopener noreferrer" referrerpolicy="no-referrer">Instagram</a> · <a href="https://www.tiktok.com/" rel="noopener noreferrer" referrerpolicy="no-referrer">TikTok</a> · <a href="https://www.linkedin.com/" rel="noopener noreferrer" referrerpolicy="no-referrer">LinkedIn</a> · <a href="https://x.com/" rel="noopener noreferrer" referrerpolicy="no-referrer">X</a> · <a href="https://www.threads.net/" rel="noopener noreferrer" referrerpolicy="no-referrer">Threads</a> · <a href="https://rumble.com/" rel="noopener noreferrer" referrerpolicy="no-referrer">Rumble</a> · <a href="https://www.twitch.tv/" rel="noopener noreferrer" referrerpolicy="no-referrer">Twitch</a> · <a href="https://bsky.app/" rel="noopener noreferrer" referrerpolicy="no-referrer">Bluesky</a> · <a href="https://joinmastodon.org/" rel="noopener noreferrer" referrerpolicy="no-referrer">Mastodon</a></p></article>
+<article class="panel"><h3>Разговори и заедници</h3><p><a href="https://www.viber.com/" rel="noopener noreferrer" referrerpolicy="no-referrer">Viber</a> · <a href="https://telegram.org/" rel="noopener noreferrer" referrerpolicy="no-referrer">Telegram</a> · <a href="https://www.whatsapp.com/" rel="noopener noreferrer" referrerpolicy="no-referrer">WhatsApp</a> · <a href="https://signal.org/" rel="noopener noreferrer" referrerpolicy="no-referrer">Signal</a> · <a href="https://discord.com/" rel="noopener noreferrer" referrerpolicy="no-referrer">Discord</a> · <a href="https://matrix.org/" rel="noopener noreferrer" referrerpolicy="no-referrer">Matrix</a> · <a href="https://www.messenger.com/" rel="noopener noreferrer" referrerpolicy="no-referrer">Messenger</a></p></article>
+<article class="panel"><h3>Конференциски системи</h3><p><a href="https://zoom.us/" rel="noopener noreferrer" referrerpolicy="no-referrer">Zoom</a> · <a href="https://www.webex.com/" rel="noopener noreferrer" referrerpolicy="no-referrer">Webex</a> · <a href="https://meet.google.com/" rel="noopener noreferrer" referrerpolicy="no-referrer">Google Meet</a> · <a href="https://www.microsoft.com/microsoft-teams/" rel="noopener noreferrer" referrerpolicy="no-referrer">Microsoft Teams</a> · <a href="https://jitsi.org/" rel="noopener noreferrer" referrerpolicy="no-referrer">Jitsi</a> · <a href="https://livekit.io/" rel="noopener noreferrer" referrerpolicy="no-referrer">LiveKit</a></p></article></div>
+<p class="fine">Skype е историска референца, не претпоставена достапна интеграција. Можностите на секој провајдер и нивните правила мора да се проверуваат посебно. Нема универзален API што ги спојува приватните разговори од сите овие сервиси.</p></section>
+<section aria-labelledby="safeguards"><h2 id="safeguards">Правила пред активирање</h2>
+<ul><li>Нема купување листи на следбеници, политичко профилирање, скриено снимање или автоматско испраќање пораки.</li><li>Нема внесување лични контакти или сметки во истражувачкиот прототип.</li><li>Модераторски правила за говор, достапност, малолетници, злоупотреби и жалби.</li><li>Безбедносен аудит за токени, TURN/SFU, снимање, CDN, пристап и рокови за бришење.</li><li>Интеграции само со дозволени официјални APIs и експлицитни овластувања.</li><li>Пилот-тестови со согласни тест-корисници, без тврдење за 1.000 активни учесници пред независна верификација.</li></ul>
+</section>
+<section aria-labelledby="refs"><h2 id="refs">Технички извори</h2>
+<p><a href="https://docs.livekit.io/reference/internals/livekit-sfu/" rel="noopener noreferrer">LiveKit SFU документација</a> · <a href="https://developers.zoom.us/docs/video-sdk/" rel="noopener noreferrer">Zoom Video SDK</a> · <a href="https://developers.google.com/youtube/data/live/getting-started" rel="noopener noreferrer">YouTube Live API</a> · <a href="https://core.telegram.org/api/group-calls" rel="noopener noreferrer">Telegram Group Calls API</a></p>
+<p class="fine">Примарната документација дава можни интеграциони правци; оваа страница не тврди дека се направени или тестирани врски.</p></section>
+</main>
+<footer class="shell"><a href="../index.html#channels">Назад до комуникациски канали</a><p class="fine">МАКЕДОНИЈА — СИСТЕМ · Прототип за јавна информативна комуникација, не активна политичка или изборна платформа.</p></footer>
+</body></html>
