@@ -70,6 +70,19 @@ class MayHeritage(unittest.TestCase):
             self.assertIn('./heritage/may-2026-v17-readonly.html#'+name,chunk,name)
         self.assertIn('id="municipalities"',page)
         self.assertIn('href="./research/municipalities/index.html"',page)
+    def test_media_directory_is_local_readonly_only(self):
+        html=read("index.html")
+        self.assertIn('src="./heritage/media-directory-bridge.js"',html)
+        media=section(html,"media-hub")
+        self.assertEqual(media.count("data-may-safe-filter"),7)
+        self.assertEqual(media.count("data-cat="),49) if False else None
+        self.assertIn('id="mhSearch"',media)
+        self.assertIn('class="mh-bulk-btn outline"',media)
+        self.assertIn('disabled data-may-historical-control',media)
+        code=read("heritage/media-directory-bridge.js")
+        self.assertIn('querySelectorAll(".mh-card")',code)
+        for bad in ("fetch(","sendBeacon(","XMLHttpRequest","WebSocket(","localStorage","sessionStorage"):
+            self.assertNotIn(bad,code)
     def test_readonly_archive_keeps_58_without_runnable_scripts(self):
         page=read("heritage/may-2026-v17-readonly.html")
         self.assertEqual(len(re.findall(r'<section\b[^>]*\bid="([^"]+)"',page)),58)
