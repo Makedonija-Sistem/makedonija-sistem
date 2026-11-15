@@ -27,6 +27,11 @@
 <label for="viewers">Гледачи <output id="viewerValue" for="viewers">500</output></label><input id="viewers" type="range" min="0" max="500" step="1" value="500"></div>
 <p id="capacityMessage" aria-live="polite">Вкупно: 1.000 места за планирање — не е потврден оперативен капацитет.</p>
 </div></section>
+<section class="panel" aria-labelledby="roomTitle">
+<h2 id="roomTitle">Видеосала · пилот v0.2 (засега исклучена)</h2>
+<p>Додаден е вистински LiveKit клиент и посебен серверски gateway со улоги модератор, говорник и гледач. Прегледот на интерфејсот е достапен, но приклучувањето е блокирано додека не се постават одобрен провајдер, приватни кодови, серверска заштита и Human Gate.</p>
+<p><a href="./room.html">Отвори ја пилотската видеосала →</a></p>
+</section>
 <section aria-labelledby="architecture"><h2 id="architecture">Техничка архитектура — предлог</h2>
 <div class="path"><article class="panel"><h3>01 · Влез и дозволи</h3><p>Серверски потпишани краткотрајни токени; улоги: модератор, говорник, гледач. Без јавно достапни секрети.</p></article>
 <article class="panel"><h3>02 · Видео јадро</h3><p>WebRTC преку SFU (на пр. LiveKit) или наменски Video SDK; нема peer-to-peer mesh за 1.000 лица.</p></article>
