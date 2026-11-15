@@ -3,6 +3,8 @@ on:
   pull_request:
     paths:
       - "index.html"
+      - "heritage/**"
+      - "scripts/test_mks_may_preservation.py"
       - "legal/PROGRAM.md"
       - "legal/STATUTE.md"
       - "research/party-tech/**"
@@ -36,6 +38,7 @@ jobs:
         run: |
           python3 scripts/mks_root_review_qa.py
           python3 -m unittest -v scripts/test_mks_unified_review.py
+          python3 -m unittest -v scripts/test_mks_may_preservation.py
           python3 -m unittest -v scripts/test_mks_section_recovery.py
           python3 -m unittest -v scripts/test_mks_party_tech_research.py
           python3 -m unittest -v scripts/test_mks_media_connect.py
@@ -44,6 +47,8 @@ jobs:
           set -euo pipefail
           node --check scripts/mks_media_operator.mjs
           python3 -m py_compile scripts/mks_build_unified_review_pack.py
+          node --check heritage/library.js
+          node --check heritage/library-app.js
           node --check media-connect/room.js
           node --check media-connect/worker/token-worker.mjs
           node --check media-connect/worker/invite-worker.mjs
@@ -56,11 +61,11 @@ jobs:
           node --test media-connect/tests/invite-worker.test.mjs
 
       - name: Package local review copy (no backend, no secrets)
-        run: python3 scripts/mks_build_unified_review_pack.py /tmp/mks-unified-review-v0.4.zip
+        run: python3 scripts/mks_build_unified_review_pack.py /tmp/mks-unified-review-v0.5.zip
       - name: Attach review-only ZIP to this Actions run
         uses: actions/upload-artifact@v4
         with:
-          name: mks-unified-offline-review-v0-4
-          path: /tmp/mks-unified-review-v0.4.zip
+          name: mks-unified-offline-review-v0-5
+          path: /tmp/mks-unified-review-v0.5.zip
           retention-days: 14
           if-no-files-found: error
