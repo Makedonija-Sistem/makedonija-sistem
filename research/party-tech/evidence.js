@@ -70,150 +70,150 @@ export const TECH_EVIDENCE = {
   "sources": {
     "cdu-app": {
       "title": "Meine CDU · BETA app",
-      "url": "https://meine.cdu.de/",
+      "url": "https://www.meine.cdu.de/",
       "publisher": "CDU",
-      "date": "2026-11-15",
-      "type": "party"
+      "type": "party",
+      "accessed_on": "2026-11-15"
     },
     "spd-hub": {
       "title": "Meine SPD · Mitgliederservices",
-      "url": "https://meine.spd.de/",
+      "url": "https://meine.spd.de/start",
       "publisher": "SPD",
-      "date": "2026-11-15",
-      "type": "party"
+      "type": "party",
+      "accessed_on": "2026-11-15"
     },
     "greens-netz": {
       "title": "Das Grüne Netz",
-      "url": "https://www.gruene.de/service/das-gruene-netz",
+      "url": "https://netz.gruene.de/de",
       "publisher": "Bündnis 90/Die Grünen",
-      "date": "2026-11-15",
-      "type": "party"
+      "type": "party",
+      "accessed_on": "2026-11-15"
     },
     "greens-antrag": {
       "title": "Antragsgrün · Open-source Antragstool",
       "url": "https://antragsgruen.de/",
       "publisher": "Antragsgrün",
-      "date": "2026-11-15",
-      "type": "provider"
+      "type": "provider",
+      "accessed_on": "2026-11-15"
     },
     "greens-vote": {
       "title": "BDK Berlin 2026 · Anträge und digitale Wahlen",
       "url": "https://www.gruene.de/artikel/52-bdk-berlin",
       "publisher": "Bündnis 90/Die Grünen",
-      "date": "2026-11-15",
-      "type": "party"
+      "type": "party",
+      "accessed_on": "2026-11-15"
     },
     "labour-one": {
       "title": "Labour One · Release Notes 2026",
       "url": "https://one.labour.org.uk/release-notes",
       "publisher": "Labour One",
-      "date": "2026-11-15",
-      "type": "party"
+      "type": "party",
+      "accessed_on": "2026-11-15"
     },
     "con-members": {
       "title": "Conservative Party · Online membership terms",
       "url": "https://membership.conservatives.com/Join?lvl=3",
       "publisher": "Conservative Party",
-      "date": "2026-11-15",
-      "type": "party"
+      "type": "party",
+      "accessed_on": "2026-11-15"
     },
     "con-portal": {
       "title": "Conservatives Aduno · Restricted portal",
       "url": "https://aduno.conservatives.com/",
       "publisher": "Conservative Party",
-      "date": "2026-11-15",
-      "type": "party"
+      "type": "party",
+      "accessed_on": "2026-11-15"
     },
     "lr-members": {
       "title": "Les Républicains · Adhésion",
       "url": "https://republicains.fr/adhesion/",
       "publisher": "Les Républicains",
-      "date": "2026-11-15",
-      "type": "party"
+      "type": "party",
+      "accessed_on": "2026-11-15"
     },
     "ren-terms": {
       "title": "Renaissance · Conditions générales d'utilisation",
       "url": "https://parti-renaissance.fr/cgu",
       "publisher": "Renaissance",
-      "date": "2026-11-15",
-      "type": "party"
+      "type": "party",
+      "accessed_on": "2026-11-15"
     },
     "pd-rules": {
       "title": "Partito Democratico · Regolamento del tesseramento",
       "url": "https://partitodemocratico.it/regolamento-tesseramento/",
       "publisher": "Partito Democratico",
-      "date": "2026-11-15",
-      "type": "party"
+      "type": "party",
+      "accessed_on": "2026-11-15"
     },
     "pd-online": {
       "title": "Partito Democratico · Tesseramento online",
       "url": "https://partitodemocratico.it/manutenzione-tesseramento/",
       "publisher": "Partito Democratico",
-      "date": "2026-11-15",
-      "type": "party"
+      "type": "party",
+      "accessed_on": "2026-11-15"
     },
     "psoe-access": {
       "title": "PSOE · UNA SOLA CUENTA TODO EL PSOE",
       "url": "https://sts.psoe.es/account/signin",
       "publisher": "PSOE",
-      "date": "2026-11-15",
-      "type": "party"
+      "type": "party",
+      "accessed_on": "2026-11-15"
     },
     "actblue-about": {
       "title": "ActBlue · independent of the Democratic Party",
       "url": "https://help.actblue.com/hc/en-us/articles/16869078428055-Is-ActBlue-run-by-The-Democratic-Party-or-affiliated-with-any-organizations",
       "publisher": "ActBlue",
-      "date": "2026-11-15",
-      "type": "provider"
+      "type": "provider",
+      "accessed_on": "2026-11-15"
     },
     "actblue-product": {
       "title": "ActBlue · Digital fundraising platform",
       "url": "https://www.actblue.com/products/fundraising/",
       "publisher": "ActBlue",
-      "date": "2026-11-15",
-      "type": "provider"
+      "type": "provider",
+      "accessed_on": "2026-11-15"
     },
     "winred-about": {
       "title": "WinRed · Republican fundraising technology",
       "url": "https://winred.com/about",
       "publisher": "WinRed",
-      "date": "2026-11-15",
-      "type": "provider"
+      "type": "provider",
+      "accessed_on": "2026-11-15"
     },
     "liberal-train": {
       "title": "Liberal Party of Canada · Training hub",
       "url": "https://liberal.ca/training/",
       "publisher": "Liberal Party of Canada",
-      "date": "2026-11-15",
-      "type": "party"
+      "type": "party",
+      "accessed_on": "2026-11-15"
     },
     "aus-members": {
       "title": "Australian Greens · The Greenhouse",
       "url": "https://members.greens.org.au/",
       "publisher": "Australian Greens",
-      "date": "2026-11-15",
-      "type": "party"
+      "type": "party",
+      "accessed_on": "2026-11-15"
     },
     "aus-portal": {
       "title": "Queensland Greens · IT systems explainer",
       "url": "https://greens.org.au/qld/howqgworks",
       "publisher": "Queensland Greens",
-      "date": "2026-11-15",
-      "type": "party"
+      "type": "party",
+      "accessed_on": "2026-11-15"
     },
     "lfi-action": {
       "title": "Action Populaire · Public platform",
       "url": "https://actionpopulaire.fr/",
       "publisher": "La France insoumise",
-      "date": "2026-11-15",
-      "type": "party"
+      "type": "party",
+      "accessed_on": "2026-11-15"
     },
     "m5s-online": {
       "title": "M5S · Online member votes 2026",
       "url": "https://www.movimento5stelle.eu/categoria/movimento/votazioni/",
       "publisher": "Movimento 5 Stelle",
-      "date": "2026-11-15",
-      "type": "party"
+      "type": "party",
+      "accessed_on": "2026-11-15"
     }
   },
   "records": {
@@ -513,5 +513,6 @@ export const TECH_EVIDENCE = {
     "Партии без записи се НЕИСТРАЖЕНИ во ова издание, не технолошки заостанати.",
     "ActBlue и WinRed се надворешни финансиски платформи, не партиски системи во сопственост на партиите.",
     "Внатрешните системи зад најавување не се проверувани и немаме овластен пристап."
-  ]
+  ],
+  "source_quality_note": "URLs are public party/provider documents accessed or checked on 2026-11-15; source publication dates may be older (e.g. Partito Democratico 2022). An accessible webpage is not technical certification. Two contextual sources are stored without an associated finding."
 };
