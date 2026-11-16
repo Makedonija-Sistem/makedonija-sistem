@@ -5,46 +5,77 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'none'; connect-src 'none'; base-uri 'none'; object-src 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'none'; connect-src 'none'; base-uri 'none'; object-src 'none'; form-action 'none'; frame-src 'none'">
 <title>Мајска ризница 2026 · МАКЕДОНИЈА — СИСТЕМ</title>
-<meta name="description" content="Целосен каталог на оригиналните 58 секции и 26 документи од мај 2026. Историски материјали, без активни сервиси за членство, плаќање, гласање или лични податоци.">
+<meta name="description" content="Преглед на 58 мајски секции и 26 изворни документи. Петјазични наслови и каталог, со јасно обележување на непреведените целосни текстови.">
 <link rel="stylesheet" href="./library.css">
 <script defer src="./library.js"></script>
+<script defer src="./lang-data.js"></script>
 <script defer src="./library-app.js"></script>
 </head>
 <body>
 <a class="skip" href="#main">Прескокни до содржината</a>
-<header class="shell top"><a href="../index.html">← МАКЕДОНИЈА — СИСТЕМ</a><span>МАЈ 2026 · ПРОВЕНИЕНЦИЈА · REVIEW ONLY</span></header>
-<main class="shell" id="main">
- <p class="eyebrow">Изворна архива · GitHub 11 мај 2026</p>
- <h1>Мајска ризница</h1>
- <p class="lead">Ниту една вредна секција не мора да се изгуби кога се скратува главното мени. Овде ги наоѓаш 58-те оригинални секции и 26-те мајски документи, со линкови до оригиналот и нивниот статус на реставрација.</p>
- <p class="notice"><strong>Историски преглед, не продукциски портал.</strong> Старите бројки за членови и координатори, претпоставени партнерства, настани и понуди не се независно верификувани. Формулари, плаќање, гласање, кориснички профили, CRM и масовно испраќање пораки не се активираат од оваа архива.</p>
- <div class="counts" aria-label="Изворен фонд"><div><strong>58</strong><span>оригинални секции</span></div><div><strong>16</strong><span>реставрирани информативни секции во прегледот</span></div><div><strong>27</strong><span>историски модули со оперативни предуслови</span></div><div><strong>26</strong><span>мајски документи</span></div></div>
- <p class="featured"><a href="./may-2026-v17-readonly.html">Отвори го целосниот историски портал со 58 секции</a> · <a href="https://github.com/Makedonija-Sistem/makedonija-sistem/tree/a5f6f9f09e421309e267af384e945bbbdeb7b6d2" target="_blank" rel="noopener noreferrer">Погледни го изворниот GitHub commit</a></p>
- <section aria-labelledby="filter-heading">
- <h2 id="filter-heading">Каталог на 58 секции</h2>
- <div class="filters">
-  <label for="search">Пребарај секција</label><input id="search" type="search" placeholder="Општини, дијаспора, економија, медиуми…" autocomplete="off">
-  <label for="state">Статус</label>
-  <select id="state"><option value="all">Сите секции</option><option value="restored">Реставрирани информативни</option><option value="preserved">Веќе зачувани во порталот</option><option value="gated">Историски · потребна е проверка</option></select>
-  <button id="reset" type="button">Прикажи ги сите</button>
+<header class="shell top">
+ <a href="../index.html" data-msg="brand">← МАКЕДОНИЈА — СИСТЕМ</a>
+ <span>МАЈ 2026 · ПРОВЕНИЕНЦИЈА · REVIEW ONLY</span>
+</header>
+<nav class="shell heritage-languages" role="group" aria-label="Јазик на каталогот" id="heritageLangNav">
+ <span id="heritageLangLabel" data-msg="languageLabel">Јазик на каталогот</span>
+ <div class="heritage-lang-buttons">
+  <button type="button" class="heritage-lang-btn" data-lang="mk" aria-pressed="true" lang="mk">MK · Македонски</button>
+  <button type="button" class="heritage-lang-btn" data-lang="en" aria-pressed="false" lang="en">EN · English</button>
+  <button type="button" class="heritage-lang-btn" data-lang="al" aria-pressed="false" lang="sq">AL · Shqip</button>
+  <button type="button" class="heritage-lang-btn" data-lang="sr" aria-pressed="false" lang="sr">SR · Српски</button>
+  <button type="button" class="heritage-lang-btn" data-lang="de" aria-pressed="false" lang="de">DE · Deutsch</button>
  </div>
- <p id="summary" aria-live="polite" role="status">Се вчитува каталогот…</p>
- <div id="sectionList" class="library-grid"></div>
- <p id="noMatches" hidden>Нема пронајдена секција со тие филтри.</p>
+</nav>
+<main class="shell" id="main">
+ <p class="eyebrow" data-msg="eyebrow">Изворна архива · GitHub · 11 мај 2026</p>
+ <h1 data-msg="heading">Мајска ризница</h1>
+ <p class="lead" data-msg="lead">58 оригинални секции и 26 изворни документи. Каталогот има преведени наслови; целосните историски текстови се достапни на изворниот јазик.</p>
+ <p class="notice" data-msg="notice">ИСТОРИСКИ ПРЕГЛЕД, НЕ АКТИВЕН СЕРВИС. Старите бројки, контакти, партнерства и ветувања се непроверени. Нема регистрација, гласање, плаќање, CRM или испраќање пораки.</p>
+ <p class="source-note" id="translationScope" data-msg="sourceNote">Содржината во архивскиот оригинал останува на изворниот јазик. Ова не е машински превод на целите статии.</p>
+ <div class="counts" aria-label="Изворен фонд">
+  <div><strong>58</strong><span data-msg="sectionsCount">оригинални секции</span></div>
+  <div><strong>16</strong><span data-msg="restoredCount">информативни секции вратени во прегледот</span></div>
+  <div><strong>27</strong><span data-msg="gatedCount">оперативно ограничени модули</span></div>
+  <div><strong>26</strong><span data-msg="docsCount">изворни документи</span></div>
+ </div>
+ <p class="featured">
+  <a href="./may-2026-v17-readonly.html" data-msg="featuredArchive">Отвори го целиот историски оригинал (MK)</a>
+  <span aria-hidden="true"> · </span>
+  <a href="https://github.com/Makedonija-Sistem/makedonija-sistem/tree/a5f6f9f09e421309e267af384e945bbbdeb7b6d2" target="_blank" rel="noopener noreferrer" data-msg="featuredCommit">Изворен GitHub commit</a>
+ </p>
+ <section aria-labelledby="filter-heading">
+  <h2 id="filter-heading" data-msg="sectionsHeading">Каталог на 58 секции</h2>
+  <div class="filters">
+   <label for="search" data-msg="searchLabel">Пребарај секција</label>
+   <input id="search" type="search" placeholder="Општини, дијаспора, медиуми…" autocomplete="off">
+   <label for="state" data-msg="statusLabel">Статус</label>
+   <select id="state">
+    <option value="all" data-msg="all">Сите секции</option>
+    <option value="restored" data-msg="restored">Реставрирани информативни</option>
+    <option value="preserved" data-msg="preserved">Зачувани во порталот</option>
+    <option value="gated" data-msg="gated">Историски · потребна проверка</option>
+   </select>
+   <button id="reset" type="button" data-msg="reset">Прикажи ги сите</button>
+  </div>
+  <p id="summary" aria-live="polite" role="status" data-msg="loading">Се вчитува каталогот…</p>
+  <div id="sectionList" class="library-grid"></div>
+  <p id="noMatches" hidden data-msg="noMatches">Нема секции за избраните филтри.</p>
  </section>
  <section aria-labelledby="docs-heading">
- <h2 id="docs-heading">Изворни документи од мај 2026</h2>
- <p class="subtle">Сите линкови водат до точниот commit од 11 мај, наместо до понови верзии што можеби се променети.</p>
- <div id="documentList" class="doc-grid"></div>
+  <h2 id="docs-heading" data-msg="docsHeading">Изворни документи од мај 2026</h2>
+  <p class="subtle" data-msg="docsLead">Документите водат до точниот мајски commit. Нивните целосни текстови не се преведени со овој каталог.</p>
+  <div id="documentList" class="doc-grid"></div>
  </section>
  <section aria-labelledby="method-heading">
- <h2 id="method-heading">Што е реставрирано, а што не?</h2>
- <p><strong>Реставрирано информативно:</strong> оригинални програми и истражувања кои може да се прочитаат во развојниот портал, означени како мајски архивски материјал. Не се активни финансиски или институционални договори.</p>
- <p><strong>Зачувано:</strong> секциите кои не биле избришани при ноемвриското скратување, вклучително основните принципи, програмски текстови и партиски атлас.</p>
- <p><strong>Историско со ограничувања:</strong> оригиналната содржина постои во архивата, но нема потврдени сервиси, вистинска база, согласности или правен основ за активно членство, донации, гласање, координација и испраќање пораки.</p>
+  <h2 id="method-heading" data-msg="methodHeading">Што е достапно?</h2>
+  <p data-msg="method1">Реставрирано: историски информативни материјали, без активни услуги.</p>
+  <p data-msg="method2">Зачувано: секции што останале во порталот.</p>
+  <p data-msg="method3">Ограничено: старите формулари, CRM, донации и гласања остануваат исклучени.</p>
  </section>
+ <noscript><p class="notice">За пребарување и јазичен избор потребен е JavaScript. <a href="./may-2026-v17-readonly.html">Оригиналот е достапен и без JavaScript.</a></p></noscript>
 </main>
-<footer class="shell footer"><a href="../index.html">← Назад во интегрираниот портал</a><span>Целосна зачуваност · без автоматско објавување · Human Gate</span></footer>
+<footer class="shell footer"><a href="../index.html" data-msg="back">← Назад кон порталот</a><span data-msg="footer">Зачуван оригинал · без автоматско објавување · човечка потврда</span></footer>
 </body></html>

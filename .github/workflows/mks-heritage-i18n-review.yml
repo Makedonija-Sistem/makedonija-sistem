@@ -1,0 +1,59 @@
+name: MKS May heritage five-language catalogue (NO DEPLOY)
+on:
+  pull_request:
+    paths:
+      - "heritage/**"
+      - "scripts/test_mks_heritage_i18n.py"
+      - "scripts/mks_heritage_i18n_browser.cjs"
+      - ".github/workflows/mks-heritage-i18n-review.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  heritage-localization-review:
+    name: 58 titles x 5 locales, source hash, browser/mobile, two base paths (NO DEPLOY)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Checkout candidate without saved credentials
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Python source and translation inventory checks
+        run: |
+          set -euo pipefail
+          python3 scripts/test_mks_heritage_i18n.py
+          python3 -m unittest -v scripts/test_mks_may_preservation.py
+      - name: Node 22
+        uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          package-manager-cache: false
+      - name: JavaScript syntax tests
+        run: |
+          node --check heritage/library.js
+          node --check heritage/lang-data.js
+          node --check heritage/library-app.js
+          node --check scripts/mks_heritage_i18n_browser.cjs
+      - name: Install isolated test framework
+        run: |
+          npm install --prefix /tmp/mks-heritage-playwright --no-save --no-audit --no-fund playwright@1.65.1
+          /tmp/mks-heritage-playwright/node_modules/.bin/playwright install --with-deps chromium
+      - name: Browser QA on Cloudflare style root and GitHub Pages style subpath
+        shell: bash
+        env:
+          MKS_PLAYWRIGHT_MODULE: /tmp/mks-heritage-playwright/node_modules/playwright
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8795 --bind 127.0.0.1 >/tmp/mks-heritage-root.log 2>&1 &
+          root_pid=$!
+          (cd .. && python3 -m http.server 8796 --bind 127.0.0.1 >/tmp/mks-heritage-subpath.log 2>&1) &
+          sub_pid=$!
+          trap 'kill "$root_pid" "$sub_pid" 2>/dev/null || true' EXIT
+          for attempt in {1..30}; do
+            if curl -fsS -o /dev/null http://127.0.0.1:8795/heritage/index.html &&
+               curl -fsS -o /dev/null http://127.0.0.1:8796/makedonija-sistem/heritage/index.html; then break; fi
+            sleep 1
+          done
+          MKS_HERITAGE_LOCAL_URL=http://127.0.0.1:8795/ node scripts/mks_heritage_i18n_browser.cjs
+          MKS_HERITAGE_LOCAL_URL=http://127.0.0.1:8796/makedonija-sistem/ node scripts/mks_heritage_i18n_browser.cjs

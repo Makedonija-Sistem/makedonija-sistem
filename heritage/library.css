@@ -11,3 +11,17 @@ a,p,span,strong,h1,h2,h3,.meta,.doc-row{overflow-wrap:anywhere}
  .filters input{width:100%}
  .featured{padding:14px}
 }
+
+/* May Heritage language access v0.1 — no scripts/styles from third parties. */
+.heritage-languages{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:8px;padding-top:12px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.heritage-languages>span{font-size:.9rem;font-weight:700;color:var(--navy)}
+.heritage-lang-buttons{display:flex;flex-wrap:wrap;gap:6px}
+.heritage-lang-btn{border:1.5px solid #7990a9;border-radius:999px;padding:9px 13px;min-height:44px;color:var(--navy);background:#fff;cursor:pointer;font:inherit;font-size:.88rem;font-weight:650}
+.heritage-lang-btn.active,.heritage-lang-btn[aria-pressed=true]{border-color:var(--navy);background:var(--navy);color:#fff}
+.heritage-lang-btn:hover{border-color:#b58b38}
+.source-note{padding:12px 16px;border:1px solid #d4b97b;border-radius:8px;background:#fffbf0;color:#514025;font-weight:600;font-size:.92rem}
+.original-title{margin:0 0 8px;color:var(--muted);font-size:.85rem;line-height:1.4}
+.original-title b{font-size:.77rem}
+.translation-state{margin:0 0 12px;font-size:.78rem;color:#6e5934;font-weight:600}
+.library-card h3{line-height:1.35}
+@media(max-width:560px){.heritage-languages{display:block}.heritage-languages>span{display:block;margin-bottom:8px}.heritage-lang-btn{flex:1 0 auto}.heritage-lang-buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}}
