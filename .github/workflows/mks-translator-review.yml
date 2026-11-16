@@ -1,0 +1,50 @@
+name: MKS translator review - five languages (NO DEPLOY)
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "index.html"
+      - "assets/i18n/**"
+      - "scripts/test_mks_i18n_static.py"
+      - "scripts/mks_translator_browser.cjs"
+      - ".github/workflows/mks-translator-review.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  translator-qa:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Checkout review source read-only
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Static proof / syntax / coverage
+        run: python3 scripts/test_mks_i18n_static.py
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install test-only browser framework outside repository
+        run: npm install --prefix /tmp/mks-i18n-browser --no-save --no-audit --no-fund playwright@1.65.1
+      - name: Install isolated Chromium
+        run: /tmp/mks-i18n-browser/node_modules/.bin/playwright install --with-deps chromium
+      - name: Run loopback browser checks at both paths
+        shell: bash
+        env:
+          MKS_PLAYWRIGHT_MODULE: /tmp/mks-i18n-browser/node_modules/playwright
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8785 --bind 127.0.0.1 > /tmp/mks-i18n-root.log 2>&1 &
+          root_pid=$!
+          (cd .. && python3 -m http.server 8786 --bind 127.0.0.1 > /tmp/mks-i18n-subpath.log 2>&1) &
+          subpath_pid=$!
+          trap 'kill "$root_pid" "$subpath_pid" 2>/dev/null || true' EXIT
+          for attempt in {1..30}; do
+            if curl -fsS -o /dev/null http://127.0.0.1:8785/ &&
+               curl -fsS -o /dev/null http://127.0.0.1:8786/makedonija-sistem/; then break; fi
+            sleep 1
+          done
+          MKS_URL=http://127.0.0.1:8785/ node scripts/mks_translator_browser.cjs
+          MKS_URL=http://127.0.0.1:8786/makedonija-sistem/ node scripts/mks_translator_browser.cjs
