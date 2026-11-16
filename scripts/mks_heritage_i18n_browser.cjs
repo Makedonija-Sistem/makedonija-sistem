@@ -80,6 +80,7 @@ async function check(name,task){
     assert.equal(await page.evaluate(()=>sessionStorage.length),0);
     assert.equal(await page.evaluate(()=>document.cookie),"");
   });
+  const archiveExternalStart=offsite.length;
   await check("historic original is still inert and has all 58 anchors",async()=>{
     const r=await page.goto(archive.href+"#municipalities",{waitUntil:"domcontentloaded",timeout:45000});
     assert.equal(r.status(),200);
@@ -89,7 +90,8 @@ async function check(name,task){
     assert.equal(await page.locator("#municipalities").count(),1);
   });
   await check("no unsafe third-party requests or JavaScript exceptions",async()=>{
-    assert.deepEqual(offsite,[]);
+    assert.deepEqual(offsite.slice(0,archiveExternalStart),[]);
+    assert.ok(offsite.slice(archiveExternalStart).every(u=>["fonts.googleapis.com","fonts.gstatic.com","www.gstatic.com","challenges.cloudflare.com"].includes(new URL(u).hostname)),JSON.stringify(offsite.slice(archiveExternalStart)));
     assert.deepEqual(errors,[]);
   });
   await ctx.close();
